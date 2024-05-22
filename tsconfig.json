@@ -13,10 +13,13 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "jsx": "preserve",
-        "baseUrl": ".",
+        "baseUrl": "./",
         "paths": {
-            "@components/*": ["src/components/*"],
-            "@components": ["src/components"],
+            "@/*": ["src/*", "./*"],
+            "@/dictionaries/*": ["src/dictionaries/*"],
+            "@/components/*": ["src/app/_components/*"],
+            "@/lib/*": ["src/lib/*"],
+            "@components": ["src/app/_components"],
             "@public/*": ["public/*"],
             "@public": ["public"],
             "@styles/*": ["src/styles/*"],
@@ -27,14 +30,22 @@
             "@test/*": ["test/*"],
             "@test": ["test"]
         },
-        "incremental": true
+        "incremental": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
     },
     "include": [
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
-        "types/**/*.d.ts",
-        "next-i18next.config.js"
+        "src/types/**/*.d.ts",
+        "next-i18next.config.js",
+        ".next/types/**/*.ts",
+        "jest.config.ts",
+        "jest-resolver.js"
     ],
-    "exclude": ["node_modules", "test/*"]
+    "exclude": ["node_modules"]
 }

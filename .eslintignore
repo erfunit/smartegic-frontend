@@ -1,2 +1,6 @@
 node_modules
 __generated__
+*.spec.tsx
+*.spec.ts
+*.test.tsx
+*.test.ts
