@@ -1,12 +1,13 @@
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
+    compiler: {
+        removeConsole: process.env.NODE_ENV === "production" || false,
+    },
     pageExtensions: ["js", "jsx", "ts", "tsx"],
     webpack: (config) => {
-        // Add the src directory to the resolve modules
         config.resolve.modules.push(__dirname + "/src");
 
-        // Add the TsconfigPathsPlugin to support TypeScript path aliases
         if (!config.resolve.plugins) {
             config.resolve.plugins = [];
         }
@@ -23,5 +24,8 @@ module.exports = {
                 pathname: "**",
             },
         ],
+    },
+    experimental: {
+        webVitalsAttribution: ["CLS", "LCP"],
     },
 };
