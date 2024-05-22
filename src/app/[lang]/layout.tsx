@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/global.css";
+import "@/styles/global.css";
 import { Container } from "@/components/container/index";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -7,6 +7,7 @@ import { Metadata } from "next";
 import QueryProvider from "src/providers/react-query";
 import ReduxProvider from "src/providers/redux";
 import { Locale, i18n } from "../../../i18n.config";
+import { yekan } from "@/lib/fonts";
 
 export const metadata: Metadata = {
     title: "Smartegic Home",
@@ -29,7 +30,7 @@ export default function RootLayout({
 }): React.ReactNode {
     return (
         <html dir={params.lang === "en" ? "ltr" : "rtl"} lang={params.lang}>
-            <body>
+            <body className={`${yekan.className}`}>
                 <QueryProvider>
                     <ReduxProvider>
                         <Container>
