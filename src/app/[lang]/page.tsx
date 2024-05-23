@@ -1,7 +1,7 @@
 import React from "react";
 import { Locale } from "../../../i18n.config";
 import { getDictionary } from "@/lib/dictionary";
-import { FormField } from "@/types/form-generator.types";
+import { FormField } from "@/types/form-generator";
 import RegistrationForm from "./_components/form";
 
 const Home = async ({

@@ -2,7 +2,7 @@
 
 import React from "react";
 import FormGenerator from "@/components/form-generator";
-import { FormField } from "@/types/form-generator.types";
+import { FormField } from "@/types/form-generator";
 import { SubmitHandler } from "react-hook-form";
 
 const RegistrationForm = ({

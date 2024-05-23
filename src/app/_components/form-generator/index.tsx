@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import { FormGeneratorProps } from "@/types/form-generator.types";
+import { FormGeneratorProps } from "@/types/form-generator";
 import { renderField } from "./lib/render-fields";
 
 const FormGenerator: React.FC<FormGeneratorProps> = ({ schema, onSubmit }) => {

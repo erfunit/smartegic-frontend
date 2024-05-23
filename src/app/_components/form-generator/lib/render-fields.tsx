@@ -1,79 +1,9 @@
-import { FormField } from "@/types/form-generator.types";
+import { getRegisterOptions } from "@/lib/get-reg-options";
+import { FormField } from "@/types/form-generator";
 import React from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-
-const getRegisterOptions = (field: FormField) => ({
-    required: field.required
-        ? {
-              value: true,
-              message: field.errorMessage || "This field is required",
-          }
-        : undefined,
-    minLength: field.minLength
-        ? {
-              value: field.minLength,
-              message:
-                  field.errorMessage || `Minimum length is ${field.minLength}`,
-          }
-        : undefined,
-    maxLength: field.maxLength
-        ? {
-              value: field.maxLength,
-              message:
-                  field.errorMessage || `Maximum length is ${field.maxLength}`,
-          }
-        : undefined,
-    min: field.min
-        ? {
-              value: field.min,
-              message: field.errorMessage || `Minimum value is ${field.min}`,
-          }
-        : undefined,
-    max: field.max
-        ? {
-              value: field.max,
-              message: field.errorMessage || `Maximum value is ${field.max}`,
-          }
-        : undefined,
-    pattern: field.pattern
-        ? {
-              value: new RegExp(field.pattern),
-              message: field.errorMessage || "Invalid format",
-          }
-        : undefined,
-});
-
-const renderInputField = (
-    field: FormField,
-    register: UseFormRegister<FieldValues>,
-    errors: FieldErrors<FieldValues>,
-) => (
-    <input
-        type={field.type}
-        {...register(field.name, getRegisterOptions(field))}
-        placeholder={field.placeholder}
-        accept={field.accept}
-        className={`input input-bordered ${
-            errors[field.name] ? "input-error" : ""
-        }`}
-    />
-);
-
-const renderFileField = (
-    field: FormField,
-    register: UseFormRegister<FieldValues>,
-    errors: FieldErrors<FieldValues>,
-) => (
-    <input
-        type={field.type}
-        {...register(field.name, getRegisterOptions(field))}
-        placeholder={field.placeholder}
-        accept={field.accept}
-        className={`file-input file-input-bordered ${
-            errors[field.name] ? "input-error" : ""
-        }`}
-    />
-);
+import TextInput from "../../text-input";
+import { FileInput } from "../../file-input";
 
 const renderTextareaField = (
     field: FormField,
@@ -168,9 +98,13 @@ export const renderField = (
         case "password":
         case "number":
         case "date":
-            return renderInputField(field, register, errors);
+            return (
+                <TextInput field={field} register={register} errors={errors} />
+            );
         case "file":
-            return renderFileField(field, register, errors);
+            return (
+                <FileInput field={field} register={register} errors={errors} />
+            );
         case "textarea":
             return renderTextareaField(field, register, errors);
         case "select":
