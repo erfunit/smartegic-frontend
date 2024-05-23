@@ -1,12 +1,15 @@
-import { FormField } from "@/types/form-generator";
 import React from "react";
+
+import { FormField } from "@/types/form-generator";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import TextInput from "../../text-input";
-import { FileInput } from "../../file-input";
-import { Textarea } from "../../text-area";
-import { Dropdown } from "../../dropdown";
-import { Radio } from "../../radio";
-import { Checkbox } from "../../checkbox";
+import {
+    Checkbox,
+    Radio,
+    FileInput,
+    TextInput,
+    Textarea,
+    Dropdown,
+} from "@/components/form-generator/_components";
 
 export const renderField = (
     field: FormField,

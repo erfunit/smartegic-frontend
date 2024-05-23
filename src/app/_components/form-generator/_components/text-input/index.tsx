@@ -2,7 +2,7 @@ import React from "react";
 import { getRegisterOptions } from "@/lib/get-reg-options";
 import { FormFieldProps } from "@/types/input-fields";
 
-const TextInput = ({ field, register, errors }: FormFieldProps) => {
+export const TextInput = ({ field, register, errors }: FormFieldProps) => {
     return (
         <input
             type={field.type}
@@ -15,5 +15,3 @@ const TextInput = ({ field, register, errors }: FormFieldProps) => {
         />
     );
 };
-
-export default TextInput;
