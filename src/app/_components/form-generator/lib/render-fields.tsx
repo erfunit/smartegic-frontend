@@ -5,26 +5,7 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import TextInput from "../../text-input";
 import { FileInput } from "../../file-input";
 import { Textarea } from "../../text-area";
-
-const renderSelectField = (
-    field: FormField,
-    register: UseFormRegister<FieldValues>,
-    errors: FieldErrors<FieldValues>,
-) => (
-    <select
-        {...register(field.name, getRegisterOptions(field))}
-        className={`select select-bordered ${
-            errors[field.name] ? "select-error" : ""
-        }`}
-    >
-        <option value="">Select...</option>
-        {field.options?.map((option) => (
-            <option key={option} value={option}>
-                {option}
-            </option>
-        ))}
-    </select>
-);
+import { Dropdown } from "../../dropdown";
 
 const renderRadioField = (
     field: FormField,
@@ -96,7 +77,9 @@ export const renderField = (
                 <Textarea field={field} register={register} errors={errors} />
             );
         case "select":
-            return renderSelectField(field, register, errors);
+            return (
+                <Dropdown field={field} register={register} errors={errors} />
+            );
         case "radio":
             return renderRadioField(field, register, errors);
         case "checkbox":
