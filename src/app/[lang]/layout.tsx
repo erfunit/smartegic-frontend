@@ -1,11 +1,13 @@
 import React from "react";
-import "@/styles/global.css";
-import { Container } from "@/components/container/index";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import "@/app/globals.css";
+
 import { Metadata } from "next";
 import QueryProvider from "src/providers/react-query";
 import ReduxProvider from "src/providers/redux";
+
+import { Container } from "@/components/container/index";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import { Locale, i18n } from "../../../i18n.config";
 import { yekan } from "@/lib/fonts";
 

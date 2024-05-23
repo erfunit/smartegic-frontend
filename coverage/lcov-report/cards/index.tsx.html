@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for smartegic-frontend/src/app/_components/button/index.tsx</title>
+    <title>Code coverage report for cards/index.tsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">smartegic-frontend/src/app/_components/button</a> index.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">cards</a> index.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/23</span>
+                <span class='fraction'>24/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/23</span>
+                <span class='fraction'>24/24</span>
             </div>
         
             
@@ -86,50 +86,53 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
 &nbsp;
-export type IButton = React.DetailedHTMLProps&lt;
-    React.ButtonHTMLAttributes&lt;HTMLButtonElement&gt;,
-    HTMLButtonElement
-&gt;;
+import data from "@public/meta.json";
 &nbsp;
-export const Button: React.FC&lt;IButton&gt; = ({
-    className = "",
-    children,
-    ...rest
-}) =&gt; {
+export const Cards: React.FC = () =&gt; {
     return (
-        &lt;button
-            type="button"
-            className={`btn ${className}`}
-            {...rest}
-            data-testid="btn"
-        &gt;
-            {children}
-        &lt;/button&gt;
+        &lt;div className="container flex-1 max-w-screen-lg p-5 mx-auto my-8"&gt;
+            &lt;div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"&gt;
+                {(data?.<span class="branch-0 cbranch-no" title="branch not covered" >plugins ?? [])</span>.map((plugin) =&gt; (
+                    &lt;div
+                        key={plugin.name}
+                        className="col-span-1 p-5 border border-gray-300 rounded-md"
+                        data-testid="container"
+                    &gt;
+                        &lt;h2 className="mb-2 text-xl font-semibold"&gt;
+                            {plugin.name}
+                        &lt;/h2&gt;
+                        &lt;p className="m-0"&gt;{plugin.description}&lt;/p&gt;
+                    &lt;/div&gt;
+                ))}
+            &lt;/div&gt;
+        &lt;/div&gt;
     );
 };
 &nbsp;</pre></td></tr></table></pre>
@@ -139,16 +142,16 @@ export const Button: React.FC&lt;IButton&gt; = ({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-05-23T06:30:02.224Z
+                at 2024-05-23T06:22:22.532Z
             </div>
-        <script src="../../../../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../../sorter.js"></script>
-        <script src="../../../../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     

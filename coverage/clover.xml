@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1716378791569" clover="3.2.0">
-  <project timestamp="1716378791569" name="All files">
+<coverage generated="1716445802260" clover="3.2.0">
+  <project timestamp="1716445802260" name="All files">
     <metrics statements="283" coveredstatements="279" conditionals="15" coveredconditionals="13" methods="9" coveredmethods="9" elements="307" coveredelements="301" complexity="0" loc="283" ncloc="283" packages="10" files="10" classes="10"/>
     <package name="smartegic-frontend">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
