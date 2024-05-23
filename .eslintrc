@@ -43,6 +43,7 @@
         "prefer-destructuring": "error",
 
         // Turned off rules
+        "@typescript-eslint/explicit-module-boundary-types": "off",
         "import/extensions": "off",
         "prettier/prettier": "off",
         "import/no-cycle": "off",
