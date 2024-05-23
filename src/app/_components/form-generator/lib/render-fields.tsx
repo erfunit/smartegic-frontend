@@ -1,4 +1,3 @@
-import { getRegisterOptions } from "@/lib/get-reg-options";
 import { FormField } from "@/types/form-generator";
 import React from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
@@ -7,28 +6,7 @@ import { FileInput } from "../../file-input";
 import { Textarea } from "../../text-area";
 import { Dropdown } from "../../dropdown";
 import { Radio } from "../../radio";
-
-const renderCheckboxField = (
-    field: FormField,
-    register: UseFormRegister<FieldValues>,
-    errors: FieldErrors<FieldValues>,
-) => (
-    <div className="flex gap-x-3">
-        {field.options?.map((option) => (
-            <label key={option} className="flex gap-2 cursor-pointer label">
-                <input
-                    type="checkbox"
-                    {...register(field.name, getRegisterOptions(field))}
-                    value={option}
-                    className={`checkbox checkbox-bordered ${
-                        errors[field.name] ? "checkbox-error" : ""
-                    }`}
-                />
-                <span className="label-text">{option}</span>
-            </label>
-        ))}
-    </div>
-);
+import { Checkbox } from "../../checkbox";
 
 export const renderField = (
     field: FormField,
@@ -59,7 +37,9 @@ export const renderField = (
         case "radio":
             return <Radio field={field} register={register} errors={errors} />;
         case "checkbox":
-            return renderCheckboxField(field, register, errors);
+            return (
+                <Checkbox field={field} register={register} errors={errors} />
+            );
         default:
             return null;
     }
