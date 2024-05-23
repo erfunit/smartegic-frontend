@@ -4,21 +4,7 @@ import React from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import TextInput from "../../text-input";
 import { FileInput } from "../../file-input";
-
-const renderTextareaField = (
-    field: FormField,
-    register: UseFormRegister<FieldValues>,
-    errors: FieldErrors<FieldValues>,
-) => (
-    <textarea
-        {...register(field.name, getRegisterOptions(field))}
-        placeholder={field.placeholder}
-        rows={field.rows}
-        className={`textarea textarea-bordered ${
-            errors[field.name] ? "textarea-error" : ""
-        }`}
-    />
-);
+import { Textarea } from "../../text-area";
 
 const renderSelectField = (
     field: FormField,
@@ -106,7 +92,9 @@ export const renderField = (
                 <FileInput field={field} register={register} errors={errors} />
             );
         case "textarea":
-            return renderTextareaField(field, register, errors);
+            return (
+                <Textarea field={field} register={register} errors={errors} />
+            );
         case "select":
             return renderSelectField(field, register, errors);
         case "radio":
