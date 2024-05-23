@@ -6,31 +6,7 @@ import TextInput from "../../text-input";
 import { FileInput } from "../../file-input";
 import { Textarea } from "../../text-area";
 import { Dropdown } from "../../dropdown";
-
-const renderRadioField = (
-    field: FormField,
-    register: UseFormRegister<FieldValues>,
-    errors: FieldErrors<FieldValues>,
-) => (
-    <div className="flex items-start gap-x-3">
-        {field.options?.map((option) => (
-            <label
-                key={option}
-                className="flex items-center cursor-pointer gap-x-4 label"
-            >
-                <input
-                    type="radio"
-                    {...register(field.name, getRegisterOptions(field))}
-                    value={option}
-                    className={`radio radio-bordered ${
-                        errors[field.name] ? "radio-error" : ""
-                    }`}
-                />
-                <span className="label-text">{option}</span>
-            </label>
-        ))}
-    </div>
-);
+import { Radio } from "../../radio";
 
 const renderCheckboxField = (
     field: FormField,
@@ -81,7 +57,7 @@ export const renderField = (
                 <Dropdown field={field} register={register} errors={errors} />
             );
         case "radio":
-            return renderRadioField(field, register, errors);
+            return <Radio field={field} register={register} errors={errors} />;
         case "checkbox":
             return renderCheckboxField(field, register, errors);
         default:
