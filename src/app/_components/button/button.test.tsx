@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 
-import { Button } from "./index";
+import { Button } from "./button";
 
 describe("Button component testing with testing-library", () => {
     test("renders without crashing", () => {
