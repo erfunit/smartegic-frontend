@@ -1,6 +1,7 @@
+// @ts-nocheck
+
 import { useMutation } from "@tanstack/react-query";
 import { updateData } from "@/core/http-service";
-
 /**
  * Options for the useUpdateData custom hook.
  *

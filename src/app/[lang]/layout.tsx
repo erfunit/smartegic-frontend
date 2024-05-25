@@ -5,11 +5,11 @@ import { Metadata } from "next";
 import QueryProvider from "src/providers/react-query";
 import ReduxProvider from "src/providers/redux";
 
-import { Container } from "@/components/container/index";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Locale, i18n } from "../../../i18n.config";
 import { yekan } from "@/lib/fonts";
+import { AppConfigProvider } from "@/context/app-config-context";
 
 export const metadata: Metadata = {
     title: "Smartegic Home",
@@ -33,15 +33,15 @@ export default function RootLayout({
     return (
         <html dir={params.lang === "en" ? "ltr" : "rtl"} lang={params.lang}>
             <body className={`${yekan.className}`}>
-                <QueryProvider>
-                    <ReduxProvider>
-                        <Container>
+                <AppConfigProvider>
+                    <QueryProvider>
+                        <ReduxProvider>
                             <Header />
                             {children}
                             <Footer />
-                        </Container>
-                    </ReduxProvider>
-                </QueryProvider>
+                        </ReduxProvider>
+                    </QueryProvider>
+                </AppConfigProvider>
             </body>
         </html>
     );

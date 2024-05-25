@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Logo } from "@components";
-import LocaleSwitcher from "@/components/lang-switcher";
+import { LocaleSwitcher } from "@/components/lang-switcher";
+import { ThemeSwitcher } from "../theme-switcher";
 
 export const Header: React.FC = () => {
     return (
@@ -10,8 +11,9 @@ export const Header: React.FC = () => {
             data-testid="container"
         >
             <Logo />
-            <ul>
+            <ul className="flex gap-3">
                 <LocaleSwitcher />
+                <ThemeSwitcher />
             </ul>
         </div>
     );

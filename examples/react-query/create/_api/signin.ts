@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createData } from "@/core/http-service";
 import { SignIn } from "../_types/signin.types";
 import { useMutation } from "@tanstack/react-query";

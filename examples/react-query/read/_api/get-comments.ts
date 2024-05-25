@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { readData } from "@/core/http-service";
 import { CourseCommentList } from "../_types/course-comment.interface";
 import { useQuery } from "@tanstack/react-query";

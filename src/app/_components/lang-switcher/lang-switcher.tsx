@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { i18n } from "../../../../i18n.config";
 
-export default function LocaleSwitcher(): React.JSX.Element {
+export function LocaleSwitcher(): React.JSX.Element {
     const pathName = usePathname();
 
     const redirectedPathName = (locale: string) => {

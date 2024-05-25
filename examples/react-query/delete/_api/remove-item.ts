@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { deleteData } from "@/core/http-service";
 import { useMutation } from "@tanstack/react-query";
 
