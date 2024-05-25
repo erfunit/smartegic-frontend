@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 
-import { Header } from "./index";
+import { Header } from "./header";
 
 describe("Header component testing with testing-library", () => {
     const { getByTestId } = render(<Header />);

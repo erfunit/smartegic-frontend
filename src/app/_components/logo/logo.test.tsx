@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
 
-import { Container } from "./index";
+import { Logo } from "./logo";
 
-describe("Wrapper component testing with testing-library", () => {
-    const component = render(<Container />);
+describe("Logo component testing with testing-library", () => {
+    const component = render(<Logo />);
 
     test("renders without crashing", () => {
         expect(component).toBeTruthy();
