@@ -1,5 +1,5 @@
 {
-    "form": [
+    "test_form": [
         {
             "name": "firstName",
             "label": "First Name",
@@ -105,6 +105,26 @@
             "label": "Subscribe to newsletter",
             "type": "checkbox",
             "options": ["Yes"]
+        }
+    ],
+    "login_form": [
+        {
+            "name": "email",
+            "label": "Email",
+            "type": "email",
+            "required": true,
+            "placeholder": "Enter your email",
+            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+            "errorMessage": "Please enter a valid email address."
+        },
+        {
+            "name": "password",
+            "label": "Password",
+            "type": "password",
+            "required": true,
+            "minLength": 8,
+            "pattern": "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\\$%\\^&\\*])",
+            "errorMessage": "Password must be at least 8 characters long and include one uppercase letter, one number, and one special character."
         }
     ]
 }

@@ -1,5 +1,5 @@
 {
-    "form": [
+    "test_form": [
         {
             "name": "firstName",
             "label": "نام",
@@ -105,6 +105,26 @@
             "label": "اشتراک در خبرنامه",
             "type": "checkbox",
             "options": ["بله"]
+        }
+    ],
+    "login_form": [
+        {
+            "name": "email",
+            "label": "ایمیل",
+            "type": "email",
+            "required": true,
+            "placeholder": "ایمیل خود را وارد کنید",
+            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+            "errorMessage": "لطفاً یک آدرس ایمیل معتبر وارد کنید."
+        },
+        {
+            "name": "password",
+            "label": "رمز عبور",
+            "type": "password",
+            "required": true,
+            "minLength": 8,
+            "pattern": "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\\$%\\^&\\*])",
+            "errorMessage": "رمز عبور باید حداقل ۸ کاراکتر باشد و شامل یک حرف بزرگ، یک عدد و یک کاراکتر خاص باشد."
         }
     ]
 }

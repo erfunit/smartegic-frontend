@@ -8,7 +8,7 @@ import { SubmitHandler } from "react-hook-form";
 const RegistrationForm = ({
     dict,
 }: {
-    dict: { form: FormField[] };
+    dict: { test_form: FormField[] };
 }): React.JSX.Element => {
     const onSubmit: SubmitHandler<Record<string, any>> = (data) => {
         console.log(data);
@@ -16,7 +16,7 @@ const RegistrationForm = ({
 
     return (
         <div className="container max-w-screen-md px-5 py-5 mx-auto lg:px-0">
-            <FormGenerator schema={dict.form} onSubmit={onSubmit} />
+            <FormGenerator schema={dict.test_form} onSubmit={onSubmit} />
         </div>
     );
 };

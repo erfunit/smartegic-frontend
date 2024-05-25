@@ -9,7 +9,7 @@ const Home = async ({
 }: {
     params: { lang: Locale };
 }): Promise<React.JSX.Element> => {
-    const dict: { form: FormField[] } = await getDictionary(lang);
+    const dict: { test_form: FormField[] } = await getDictionary(lang);
 
     return (
         <div className="container max-w-screen-md px-5 py-5 mx-auto lg:px-0">

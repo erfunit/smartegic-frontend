@@ -19,5 +19,7 @@ export interface FormField {
 
 export interface FormGeneratorProps {
     schema: FormField[];
+    className?: string;
+    title?: string;
     onSubmit: SubmitHandler<Record<string, any>>;
 }

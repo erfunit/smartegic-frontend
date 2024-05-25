@@ -4,8 +4,14 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FormGeneratorProps } from "@/types/form-generator";
 import { renderField } from "./lib/render-fields";
+import clsx from "clsx";
 
-const FormGenerator: React.FC<FormGeneratorProps> = ({ schema, onSubmit }) => {
+const FormGenerator: React.FC<FormGeneratorProps> = ({
+    schema,
+    onSubmit,
+    className,
+    title,
+}) => {
     const {
         register,
         handleSubmit,
@@ -13,8 +19,11 @@ const FormGenerator: React.FC<FormGeneratorProps> = ({ schema, onSubmit }) => {
         // watch,
     } = useForm();
 
+    const classes = clsx("space-y-4 text-xl", className);
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xl">
+        <form onSubmit={handleSubmit(onSubmit)} className={classes}>
+            {title && <span className="text-xl font-bold">{title}</span>}
             {schema.map((field) => (
                 <div key={field.name} className="form-control">
                     <label className="label">
