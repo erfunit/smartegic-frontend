@@ -5,21 +5,33 @@ import { useSignIn } from "../_api/signin";
 import { useRouter } from "next/navigation";
 
 const SignInForm = () => {
-    // the form states, which can be handled with react-hook-form (recommended)
     const [mobile, setMobile] = useState<string>("");
     const router = useRouter();
 
-    // getting returned data from use[mutaion] custom hook that we've wrote in ../_api/signin
-    // which accepts a { onSuccess: () => void } function as parameter, which happens on successful operation
-    const signIn = useSignIn({
+    /**
+     * Custom hook for signing in.
+     *
+     * The `useSignIn` hook returns an object with methods for handling sign-in requests.
+     * It accepts an `onSuccess` callback that is called when the sign-in is successful.
+     *
+     * @typedef {Object} SignInHandler
+     * @property {function(Object): void} submit - Function to call with sign-in data.
+     * @property {boolean} isPending - Indicates if the sign-in request is pending.
+     */
+    const signIn: ReturnType<typeof useSignIn> = useSignIn({
         onSuccess: () => {
             router.push(`/verify?mobile=${mobile}`);
         },
     });
 
-    // submit/mutaion handler function that calles
-    // it'd better to be SubmitHanlder (from react-hook-form) if using forms.
-    // it calles mutation.[runner: mutate] function inside to send request to the backend.
+    /**
+     * Submit handler for the sign-in form.
+     *
+     * This function handles the form submission event, prevents the default form submission,
+     * and calls the `submit` method of the `signIn` handler with the mobile number.
+     *
+     * @param {FormEvent} event - The form submission event.
+     */
     const onSubmit = (event: FormEvent) => {
         event.preventDefault();
         signIn.submit({ mobile });
