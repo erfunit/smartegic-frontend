@@ -34,7 +34,7 @@ type UseDeleteOrderOptions = {
  */
 export const useDeleteOrder = ({ onSuccess }: UseDeleteOrderOptions) => {
     const { mutate, isPending } = useMutation({
-        mutationFn: deleteOrder,
+        mutationFn: (id: string) => deleteOrder(id),
         onSuccess,
     });
 
