@@ -19,6 +19,7 @@
             "@/dictionaries/*": ["src/dictionaries/*"],
             "@/components/*": ["src/app/_components/*"],
             "@/lib/*": ["src/lib/*"],
+            "@/core/*": ["src/core/*"],
             "@components": ["src/app/_components"],
             "@public/*": ["public/*"],
             "@public": ["public"],
