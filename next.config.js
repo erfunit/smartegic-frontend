@@ -33,6 +33,10 @@ module.exports = {
                 port: "",
                 pathname: "**",
             },
+            {
+                protocol: "https",
+                hostname: "flagcdn.com",
+            },
         ],
     },
     experimental: {

@@ -1,24 +1,38 @@
 "use client";
 
 import React from "react";
-import FormGenerator from "@/app/_components/form-generator/form-generator";
-import { FormField } from "@/types/form-generator";
-import { SubmitHandler } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
+import PhoneNumberInput from "@/app/_components/phone-number-input/phone-number-input";
+import { CountryOption } from "../../_components/phone-number-input/_types/index";
 
-const RegistrationForm = ({
-    dict,
-}: {
-    dict: { test_form: FormField[] };
-}): React.JSX.Element => {
-    const onSubmit: SubmitHandler<Record<string, any>> = (data) => {
+interface FormData {
+    country: CountryOption | null;
+    phone: string;
+}
+
+const FormComponent: React.FC = () => {
+    const methods = useForm<FormData>();
+
+    const onSubmit = (data: FormData) => {
         console.log(data);
     };
 
     return (
-        <div className="container max-w-screen-md px-5 py-5 mx-auto lg:px-0">
-            <FormGenerator schema={dict.test_form} onSubmit={onSubmit} />
-        </div>
+        <FormProvider {...methods}>
+            <form
+                onSubmit={methods.handleSubmit(onSubmit)}
+                className="space-y-4"
+            >
+                <PhoneNumberInput
+                    control={methods.control}
+                    errors={methods.formState.errors}
+                />
+                <button type="submit" className="btn btn-primary">
+                    Submit
+                </button>
+            </form>
+        </FormProvider>
     );
 };
 
-export default RegistrationForm;
+export default FormComponent;
