@@ -1,0 +1,11 @@
+.leftmenu-wrapper {
+    @apply w-leftbar-width transition-all duration-300 sticky bottom-0 top-0 h-screen min-w-15rem border-r border-opacity-100 bg-white;
+}
+
+.menu {
+    @apply flex flex-col flex-wrap text-sm leading-5 p-2;
+}
+
+.hide {
+    margin-inline-start: calc(var(--leftbar-width) * -1);
+}

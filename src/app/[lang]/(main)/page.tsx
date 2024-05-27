@@ -1,6 +1,6 @@
 import React from "react";
 // import { Locale } from "../../../i18n.config";
-import FormComponent from "./_components/form";
+// import FormComponent from "../_components/form";
 
 // import { getDictionary } from "@/lib/dictionary";
 // import { FormField } from "@/types/form-generator";
@@ -17,7 +17,7 @@ Promise<React.JSX.Element> => {
     return (
         <div className="container max-w-screen-md px-5 py-5 mx-auto lg:px-0">
             {/* <RegistrationForm dict={dict} /> */}
-            <FormComponent />
+            {/* <FormComponent /> */}
         </div>
     );
 };

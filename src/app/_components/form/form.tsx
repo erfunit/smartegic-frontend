@@ -3,7 +3,7 @@
 import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import PhoneNumberInput from "@/app/_components/phone-number-input/phone-number-input";
-import { CountryOption } from "../../_components/phone-number-input/_types/index";
+import { CountryOption } from "../phone-number-input/_types/index";
 
 interface FormData {
     country: CountryOption | null;

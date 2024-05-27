@@ -1,3 +1,9 @@
-.btn {
-    @apply px-4 py-2 text-lg text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none ring-opacity-75 ring-red-400 focus:ring;
+.btn,
+.input,
+.dropdown-content {
+    @apply rounded-md;
+}
+
+.dropdown-content li {
+    @apply rounded-sm;
 }

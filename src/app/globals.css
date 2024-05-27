@@ -1,11 +1,24 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import "react-phone-input-2/lib/style.css";
-
+@import "../styles/index.css";
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
+/* @import "daisyui"; */ /* @import "../styles/index.css"; */
+@layer base {
+    :root {
+        --leftbar-width: 240px;
+        --b2: 93.2587% 0.005189 247.879694;
+        --tw-border-opacity: 1;
+        --leftmenu-background: #fff;
+    }
 
-/* @import "daisyui"; */
-/* @import "../styles/index.css"; */
+    html {
+        font-family: var(--font-yekanbakh);
+    }
+
+    *:lang(en) {
+        font-family: var(--font-figtree);
+    }
+}

@@ -5,8 +5,6 @@ import { Metadata } from "next";
 import QueryProvider from "src/providers/react-query";
 import ReduxProvider from "src/providers/redux";
 
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 import { Locale, i18n } from "../../../i18n.config";
 import { yekan } from "@/lib/fonts";
 import { AppConfigProvider } from "@/context/app-config-context";
@@ -35,11 +33,7 @@ export default function RootLayout({
             <body className={`${yekan.className}`}>
                 <AppConfigProvider>
                     <QueryProvider>
-                        <ReduxProvider>
-                            <Header />
-                            {children}
-                            <Footer />
-                        </ReduxProvider>
+                        <ReduxProvider>{children}</ReduxProvider>
                     </QueryProvider>
                 </AppConfigProvider>
             </body>

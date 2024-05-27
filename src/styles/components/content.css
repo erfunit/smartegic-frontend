@@ -1,0 +1,3 @@
+.content-wrapper {
+    @apply flex-grow bg-lightGray p-6 transition-all ease-cubic duration-150;
+}
