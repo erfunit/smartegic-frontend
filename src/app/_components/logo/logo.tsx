@@ -1,14 +1,17 @@
-// import Image from "next/image";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-export const Logo: React.FC = () => {
+export const Logo: React.FC<{ route?: string }> = ({ route = "/" }) => {
     return (
-        // <Image
-        //     src="/icons/nextjs-icon.svg"
-        //     alt="nextjs"
-        //     width="96"
-        //     height="58"
-        // />
-        <div />
+        <Link href={route} className="flex h-16 items-center justify-center">
+            <Image
+                src="/images/image.avif"
+                className="object-contain"
+                alt="logo"
+                width={60}
+                height={30}
+            />
+        </Link>
     );
 };

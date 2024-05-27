@@ -24,7 +24,6 @@
 
         // React Specific Rules
         "react/button-has-type": "error",
-        "react/require-default-props": "error",
 
         // Accessibility
         "jsx-a11y/control-has-associated-label": "error",

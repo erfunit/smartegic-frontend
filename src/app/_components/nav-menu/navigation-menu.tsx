@@ -1,10 +1,9 @@
 "use client";
 
+import React from "react";
 import useAppConfig from "@/hooks/use-app-config";
 import clsx from "clsx";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { Logo } from "../logo";
 
 export const NavigationMenu: React.FC = () => {
     const { config } = useAppConfig("app-config");
@@ -14,14 +13,7 @@ export const NavigationMenu: React.FC = () => {
                 hide: config?.["hide-left-menu"],
             })}
         >
-            <Link href="/" className="flex h-16 items-center justify-center">
-                <Image
-                    src="/images/image.avif"
-                    alt="logo"
-                    width={60}
-                    height={70}
-                />
-            </Link>
+            <Logo />
             <div
                 data-simplebar="init"
                 className="h-[calc(100vh-64px)] lg:h-[calc(100vh-230px)]"
