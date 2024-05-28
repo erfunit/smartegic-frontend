@@ -18,6 +18,7 @@ Promise<React.JSX.Element> => {
         <div className="container max-w-screen-md px-5 py-5 mx-auto lg:px-0">
             {/* <RegistrationForm dict={dict} /> */}
             {/* <FormComponent /> */}
+            page 1
         </div>
     );
 };

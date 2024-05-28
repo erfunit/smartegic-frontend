@@ -1,11 +1,4 @@
-import { navigationIcons } from "./navigation-icons";
-
-export type NavigationItem = {
-    id: number;
-    title: string;
-    icon: keyof typeof navigationIcons;
-    children?: NavigationItem[];
-};
+import { NavigationItem } from "./_types/navigations";
 
 export const navigationItems: NavigationItem[] = [
     {
@@ -22,6 +15,7 @@ export const navigationItems: NavigationItem[] = [
                         id: 0,
                         title: "sub sub page1",
                         icon: "price",
+                        link: "/",
                     },
                 ],
             },
@@ -34,6 +28,7 @@ export const navigationItems: NavigationItem[] = [
                         id: 0,
                         title: "page1",
                         icon: "price",
+                        link: "/test-page",
                     },
                 ],
             },
@@ -41,6 +36,7 @@ export const navigationItems: NavigationItem[] = [
                 id: 2,
                 title: "sub page3",
                 icon: "price",
+                link: "/test-page",
             },
         ],
     },
@@ -53,6 +49,7 @@ export const navigationItems: NavigationItem[] = [
                 title: "sub page2 page1",
                 icon: "price",
                 id: 0,
+                link: "/test-page",
             },
         ],
     },

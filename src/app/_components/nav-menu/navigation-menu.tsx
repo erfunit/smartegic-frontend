@@ -4,39 +4,8 @@ import React from "react";
 import clsx from "clsx";
 import useAppConfig from "@/hooks/use-app-config";
 import { Logo } from "../logo";
-import { navigationItems, NavigationItem } from "./navigation-items";
-import { navigationIcons } from "./navigation-icons";
-
-const NavigationItemComponent: React.FC<{ item: NavigationItem }> = ({
-    item,
-}) => {
-    const IconComponent = () => navigationIcons[item.icon];
-    return (
-        <li className="mb-0.5">
-            {item.children ? (
-                <details>
-                    <summary>
-                        <IconComponent />
-                        {item.title}
-                    </summary>
-                    <ul>
-                        {item.children.map((child) => (
-                            <NavigationItemComponent
-                                key={child.id}
-                                item={child}
-                            />
-                        ))}
-                    </ul>
-                </details>
-            ) : (
-                <div>
-                    <IconComponent />
-                    {item.title}
-                </div>
-            )}
-        </li>
-    );
-};
+import { navigationItems } from "./navigation-items";
+import { NavigationItemComponent } from "./navigation-item";
 
 export const NavigationMenu: React.FC = () => {
     const { config } = useAppConfig("app-config");
