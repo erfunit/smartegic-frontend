@@ -1,3 +1,6 @@
+import { GridBox } from "@/app/_components/container/grid-box";
+import { GridItem } from "@/app/_components/container/grid-item";
+import { PageContainer } from "@/app/_components/container/page-container";
 import React from "react";
 // import { Locale } from "../../../i18n.config";
 // import FormComponent from "../_components/form";
@@ -15,11 +18,29 @@ Promise<React.JSX.Element> => {
     // const dict: { test_form: FormField[] } = await getDictionary(lang);
 
     return (
-        <div className="container max-w-screen-md px-5 py-5 mx-auto lg:px-0">
-            {/* <RegistrationForm dict={dict} /> */}
-            {/* <FormComponent /> */}
-            page 1
-        </div>
+        <PageContainer>
+            <GridBox
+                cols={{
+                    sm: 1,
+                    lg: 3,
+                }}
+                rows={{
+                    sm: 3,
+                    lg: 1,
+                }}
+            >
+                <GridItem />
+                <GridItem />
+                <GridItem />
+            </GridBox>
+            <GridBox cols="2">
+                <GridItem />
+                <GridItem />
+            </GridBox>
+            <GridBox cols="1">
+                <GridItem />
+            </GridBox>
+        </PageContainer>
     );
 };
 

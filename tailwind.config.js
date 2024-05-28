@@ -2,6 +2,24 @@
 
 // const daisy = "";
 module.exports = {
+    safelist: [
+        // Column span classes
+        ...["", "sm:", "md:", "lg:", "xl:", "2xl:"].flatMap((prefix) =>
+            Array.from({ length: 12 }, (_, i) => `${prefix}col-span-${i + 1}`),
+        ),
+        // Row span classes
+        ...["", "sm:", "md:", "lg:", "xl:", "2xl:"].flatMap((prefix) =>
+            Array.from({ length: 12 }, (_, i) => `${prefix}row-span-${i + 1}`),
+        ),
+        // Grid column classes
+        ...["", "sm:", "md:", "lg:", "xl:", "2xl:"].flatMap((prefix) =>
+            Array.from({ length: 12 }, (_, i) => `${prefix}grid-cols-${i + 1}`),
+        ),
+        // Grid row classes
+        ...["", "sm:", "md:", "lg:", "xl:", "2xl:"].flatMap((prefix) =>
+            Array.from({ length: 12 }, (_, i) => `${prefix}grid-rows-${i + 1}`),
+        ),
+    ],
     purge: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
     darkMode: false, // or 'media' or 'class'
     theme: {

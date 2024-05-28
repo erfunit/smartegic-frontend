@@ -21,15 +21,13 @@ export default function MainLayout({
 }): React.ReactNode {
     return (
         <div className="w-full h-full">
-            <div className="flex overflow-hidden">
+            <div className="flex overflow-hidden h-full">
                 <div className="hidden lg:block">
                     <NavigationMenu />
                 </div>
-                <div className="main-wrapper h-full overflow-auto">
+                <div className="main-wrapper h-full overflow-auto flex flex-col">
                     <Navbar />
-                    <div className="content-wrapper min-h-[calc(100vh-65px)]">
-                        {children}
-                    </div>
+                    <div className="content-wrapper flex-grow">{children}</div>
                 </div>
             </div>
         </div>
