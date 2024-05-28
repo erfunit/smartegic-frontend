@@ -6,3 +6,4 @@ export { default as IconMoon } from './src/moon';
 export { default as IconNavigationToggle } from './src/navigation-toggle';
 export { default as IconPrice } from './src/price';
 export { default as IconProfile } from './src/profile';
+export { default as IconSearch } from './src/search';

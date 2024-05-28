@@ -9,6 +9,7 @@ import {
     IconMoon,
     IconNavigationToggle,
     IconProfile,
+    IconSearch,
 } from "../icons/icons";
 import useAppConfig from "@/hooks/use-app-config";
 
@@ -33,8 +34,9 @@ export const Navbar: React.FC = () => {
                     type="text"
                     aria-label="search"
                     placeholder="search..."
-                    className="input input-bordered font-light h-auto py-2"
+                    className="input hidden md:flex input-bordered font-light h-auto py-2"
                 />
+                <IconSearch className="md:hidden" />
             </div>
             <div className="gap-3 flex items-center">
                 <IconMoon />
