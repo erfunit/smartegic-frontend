@@ -8,6 +8,7 @@ import ReduxProvider from "src/providers/redux";
 import { Locale, i18n } from "../../../i18n.config";
 import { vazirmatm } from "@/lib/fonts";
 import { AppConfigProvider } from "@/context/app-config-context";
+import { ThemeProvider } from "@/providers/theme/theme-provider";
 
 export const metadata: Metadata = {
     title: "Smartegic Home",
@@ -32,9 +33,11 @@ export default function RootLayout({
         <html dir={params.lang === "en" ? "ltr" : "rtl"} lang={params.lang}>
             <body className={`${vazirmatm.className}`}>
                 <AppConfigProvider>
-                    <QueryProvider>
-                        <ReduxProvider>{children}</ReduxProvider>
-                    </QueryProvider>
+                    <ThemeProvider>
+                        <QueryProvider>
+                            <ReduxProvider>{children}</ReduxProvider>
+                        </QueryProvider>
+                    </ThemeProvider>
                 </AppConfigProvider>
             </body>
         </html>
