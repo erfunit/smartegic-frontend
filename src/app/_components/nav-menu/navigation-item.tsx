@@ -20,7 +20,7 @@ const NavigationItemComponent: React.FC<NavigationItemProps> = ({ item }) => {
     const pathname = formatPathname(firstPathName);
 
     return (
-        <li className="mb-0.5 text-base font-light">
+        <li className="mb-0.5 font-light">
             {item.children ? (
                 <details>
                     <summary className="flex gap-2 items-center">
