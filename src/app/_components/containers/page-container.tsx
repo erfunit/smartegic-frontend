@@ -26,7 +26,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                     <h2 className="text-2xl lg:text-3xl font-bold">{title}</h2>
                 )}
                 {subTitle && (
-                    <h3 className="text-base lg:text-lg font-semibold text-neutral-800/70">
+                    <h3 className="text-base lg:text-lg font-semibold opacity-90">
                         {subTitle}
                     </h3>
                 )}

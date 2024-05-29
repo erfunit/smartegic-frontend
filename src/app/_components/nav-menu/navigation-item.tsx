@@ -39,7 +39,7 @@ const NavigationItemComponent: React.FC<NavigationItemProps> = ({ item }) => {
             ) : (
                 <div
                     className={clsx({
-                        "bg-neutral-200": pathname === item.link,
+                        "bg-base-200": pathname === item.link,
                     })}
                 >
                     <Link

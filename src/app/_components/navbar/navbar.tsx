@@ -6,19 +6,19 @@ import Link from "next/link";
 import {
     IconBell,
     IconLogout,
-    IconMoon,
     IconNavigationToggle,
     IconProfile,
     IconSearch,
 } from "../icons/icons";
 import useAppConfig from "@/hooks/use-app-config";
 import { NavigationMenu } from "../nav-menu/navigation-menu";
+import { ThemeSwitcher } from "../theme-switcher";
 
 export const Navbar: React.FC = () => {
     const { setConfig, config } = useAppConfig("app-config");
 
     return (
-        <div className="flex justify-between h-[65px] items-center px-4 border-b border-slate-200 bg-white">
+        <div className="flex justify-between h-[65px] items-center px-4 border-b border-base-200 bg-base-100 transition-all">
             <div className="gap-3 flex items-center ">
                 <div className="drawer lg:drawer-open">
                     <input
@@ -67,7 +67,7 @@ export const Navbar: React.FC = () => {
                 <IconSearch className="md:hidden" />
             </div>
             <div className="gap-3 flex items-center">
-                <IconMoon />
+                <ThemeSwitcher />
                 <IconBell />
                 <div className="dropdown dropdown-bottom dropdown-end">
                     <div

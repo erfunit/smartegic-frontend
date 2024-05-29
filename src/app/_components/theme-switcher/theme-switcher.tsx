@@ -2,6 +2,7 @@
 
 import useAppConfig from "@/hooks/use-app-config";
 import React from "react";
+import { IconMoon, IconSun } from "../icons/icons";
 
 export const ThemeSwitcher: React.FC = () => {
     const { config, setConfig } = useAppConfig("app-theme");
@@ -17,8 +18,20 @@ export const ThemeSwitcher: React.FC = () => {
     };
 
     return (
-        <button type="button" onClick={switchHandler}>
-            switch | {config?.theme ? config.theme : null}
-        </button>
+        <label className="swap swap-rotate">
+            {/* this hidden checkbox controls the state */}
+            <input
+                aria-label="theme toggler"
+                type="checkbox"
+                className="theme-controller"
+                value="synthwave"
+                onChange={() => switchHandler()}
+            />
+
+            {/* sun icon */}
+            <IconSun className="swap-off" />
+            {/* moon icon */}
+            <IconMoon className="swap-on" />
+        </label>
     );
 };

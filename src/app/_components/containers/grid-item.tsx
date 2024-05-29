@@ -25,7 +25,7 @@ export const GridItem: React.FC<GridItemProps> = ({
     const rowClasses = generateResponsiveClasses(rowspan, "row-span");
 
     const classes = clsx(
-        "w-full h-full bg-white border rounded-md",
+        "w-full h-full bg-base-100 border border-base-300 rounded-md",
         className,
         colClasses,
         rowClasses,

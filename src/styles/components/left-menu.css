@@ -1,5 +1,5 @@
 .leftmenu-wrapper {
-    @apply w-leftbar-width transition-all duration-300 sticky bottom-0 top-0 h-screen min-w-15rem border-r border-opacity-100 bg-white;
+    @apply w-leftbar-width transition-all duration-300 sticky bottom-0 top-0 h-screen min-w-15rem border-r border-base-300 border-opacity-100 bg-base-100;
 }
 
 .menu {
