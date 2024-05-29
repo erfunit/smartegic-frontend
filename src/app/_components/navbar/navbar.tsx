@@ -20,35 +20,6 @@ export const Navbar: React.FC = () => {
     return (
         <div className="flex justify-between h-[65px] items-center px-4 border-b border-slate-200 bg-white">
             <div className="gap-3 flex items-center ">
-                {/* <div className="drawer">
-                    <div className="drawer-content">
-                        <button
-                            className="hidden lg:flex"
-                            onClick={() =>
-                                setConfig({
-                                    "hide-left-menu":
-                                        !config?.["hide-left-menu"],
-                                })
-                            }
-                            type="button"
-                            aria-label="navigation toggle"
-                        >
-                            <IconNavigationToggle />
-                        </button>
-                        <button
-                            type="button"
-                            className="flex lg:hidden"
-                            aria-label="navigation toggle"
-                        >
-                            <IconNavigationToggle />
-                        </button>
-                    </div>
-                    <div className="drawer-side">
-                        <div className="menu">
-                            <NavigationMenu />
-                        </div>
-                    </div>
-                </div> */}
                 <div className="drawer lg:drawer-open">
                     <input
                         id="my-drawer-2"
@@ -57,7 +28,6 @@ export const Navbar: React.FC = () => {
                         className="drawer-toggle"
                     />
                     <div className="drawer-content flex flex-col items-center justify-center">
-                        {/* Page content here */}
                         <label
                             htmlFor="my-drawer-2"
                             aria-label="toggler"

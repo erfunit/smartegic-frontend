@@ -10,11 +10,11 @@ import { NavigationItemComponent } from "./navigation-item";
 export const NavigationMenu: React.FC<{ drawer?: boolean }> = ({ drawer }) => {
     const { config } = useAppConfig("app-config");
 
-    if (drawer) return null;
     return (
         <div
             className={clsx("leftmenu-wrapper", {
-                hide: config?.["hide-left-menu"],
+                hide: config?.["hide-left-menu"] && !drawer,
+                "lg:hidden": drawer,
             })}
         >
             <Logo />
