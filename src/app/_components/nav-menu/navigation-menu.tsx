@@ -7,9 +7,10 @@ import { Logo } from "../logo";
 import { navigationItems } from "./navigation-items";
 import { NavigationItemComponent } from "./navigation-item";
 
-export const NavigationMenu: React.FC = () => {
+export const NavigationMenu: React.FC<{ drawer?: boolean }> = ({ drawer }) => {
     const { config } = useAppConfig("app-config");
 
+    if (drawer) return null;
     return (
         <div
             className={clsx("leftmenu-wrapper", {

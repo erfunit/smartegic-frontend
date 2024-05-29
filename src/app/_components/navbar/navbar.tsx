@@ -12,6 +12,7 @@ import {
     IconSearch,
 } from "../icons/icons";
 import useAppConfig from "@/hooks/use-app-config";
+import { NavigationMenu } from "../nav-menu/navigation-menu";
 
 export const Navbar: React.FC = () => {
     const { setConfig, config } = useAppConfig("app-config");
@@ -19,17 +20,74 @@ export const Navbar: React.FC = () => {
     return (
         <div className="flex justify-between h-[65px] items-center px-4 border-b border-slate-200 bg-white">
             <div className="gap-3 flex items-center ">
-                <button
-                    onClick={() =>
-                        setConfig({
-                            "hide-left-menu": !config?.["hide-left-menu"],
-                        })
-                    }
-                    type="button"
-                    aria-label="navigation toggle"
-                >
-                    <IconNavigationToggle />
-                </button>
+                {/* <div className="drawer">
+                    <div className="drawer-content">
+                        <button
+                            className="hidden lg:flex"
+                            onClick={() =>
+                                setConfig({
+                                    "hide-left-menu":
+                                        !config?.["hide-left-menu"],
+                                })
+                            }
+                            type="button"
+                            aria-label="navigation toggle"
+                        >
+                            <IconNavigationToggle />
+                        </button>
+                        <button
+                            type="button"
+                            className="flex lg:hidden"
+                            aria-label="navigation toggle"
+                        >
+                            <IconNavigationToggle />
+                        </button>
+                    </div>
+                    <div className="drawer-side">
+                        <div className="menu">
+                            <NavigationMenu />
+                        </div>
+                    </div>
+                </div> */}
+                <div className="drawer lg:drawer-open">
+                    <input
+                        id="my-drawer-2"
+                        type="checkbox"
+                        aria-label="drawer"
+                        className="drawer-toggle"
+                    />
+                    <div className="drawer-content flex flex-col items-center justify-center">
+                        {/* Page content here */}
+                        <label
+                            htmlFor="my-drawer-2"
+                            aria-label="toggler"
+                            className="btn btn-ghost drawer-button lg:hidden"
+                        >
+                            <IconNavigationToggle />
+                        </label>
+                        <button
+                            className="hidden lg:flex"
+                            onClick={() =>
+                                setConfig({
+                                    "hide-left-menu":
+                                        !config?.["hide-left-menu"],
+                                })
+                            }
+                            type="button"
+                            aria-label="navigation toggle"
+                        >
+                            <IconNavigationToggle />
+                        </button>
+                    </div>
+                    <div className="drawer-side lg:hidden">
+                        <label
+                            htmlFor="my-drawer-2"
+                            aria-label="close sidebar"
+                            className="drawer-overlay"
+                        ></label>
+                        <NavigationMenu drawer />
+                    </div>
+                </div>
                 <input
                     type="text"
                     aria-label="search"

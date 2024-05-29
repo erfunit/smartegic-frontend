@@ -1,21 +1,33 @@
+"use client";
+
 import React from "react";
 import { NavigationItem } from "./_types/navigations";
 import { navigationIcons } from "./navigation-icons";
 import Link from "next/link";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
+import { formatPathname } from "./lib/pathname-formatter";
 
-export const NavigationItemComponent: React.FC<{ item: NavigationItem }> = ({
-    item,
-}) => {
-    const IconComponent = () => navigationIcons[item.icon];
+interface NavigationItemProps {
+    item: NavigationItem;
+}
+
+const IconComponent = ({ icon }: { icon: keyof typeof navigationIcons }) =>
+    navigationIcons[icon];
+
+const NavigationItemComponent: React.FC<NavigationItemProps> = ({ item }) => {
+    const firstPathName = usePathname();
+    const pathname = formatPathname(firstPathName);
+
     return (
-        <li className="mb-0.5">
+        <li className="mb-0.5 text-base font-light">
             {item.children ? (
                 <details>
-                    <summary>
-                        <IconComponent />
-                        {item.title}
+                    <summary className="flex gap-2 items-center">
+                        <IconComponent icon={item.icon} />
+                        <span>{item.title}</span>
                     </summary>
-                    <ul>
+                    <ul className="pl-4">
                         {item.children.map((child) => (
                             <NavigationItemComponent
                                 key={child.id}
@@ -25,12 +37,16 @@ export const NavigationItemComponent: React.FC<{ item: NavigationItem }> = ({
                     </ul>
                 </details>
             ) : (
-                <div>
+                <div
+                    className={clsx({
+                        "bg-neutral-200": pathname === item.link,
+                    })}
+                >
                     <Link
                         href={item.link || ""}
                         className="flex gap-2 items-center"
                     >
-                        <IconComponent />
+                        <IconComponent icon={item.icon} />
                         <span>{item.title}</span>
                     </Link>
                 </div>
@@ -38,3 +54,5 @@ export const NavigationItemComponent: React.FC<{ item: NavigationItem }> = ({
         </li>
     );
 };
+
+export { NavigationItemComponent };

@@ -17,6 +17,18 @@ export const navigationItems: NavigationItem[] = [
                         icon: "price",
                         link: "/",
                     },
+                    {
+                        id: 2,
+                        title: "sub sub page1",
+                        icon: "price",
+                        link: "/",
+                    },
+                    {
+                        id: 3,
+                        title: "sub sub page1",
+                        icon: "price",
+                        link: "/",
+                    },
                 ],
             },
             {

@@ -9,7 +9,7 @@ export const Logo: React.FC<{ route?: string }> = ({ route = "/" }) => {
                 src="/images/image.avif"
                 className="object-contain"
                 alt="logo"
-                width={60}
+                width={73}
                 height={30}
             />
         </Link>
