@@ -1,5 +1,6 @@
 import { NextFont } from "next/dist/compiled/@next/font";
 import localFont from "next/font/local";
+import { Vazirmatn } from "next/font/google";
 
 export const yekan: NextFont = localFont({
     src: [
@@ -29,4 +30,11 @@ export const yekan: NextFont = localFont({
             style: "normal",
         },
     ],
+});
+
+export const vazirmatm = Vazirmatn({
+    weight: ["200", "400", "600", "800"],
+    subsets: ["latin"],
+    style: ["normal"],
+    display: "swap",
 });

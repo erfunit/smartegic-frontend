@@ -6,7 +6,7 @@ import QueryProvider from "src/providers/react-query";
 import ReduxProvider from "src/providers/redux";
 
 import { Locale, i18n } from "../../../i18n.config";
-import { yekan } from "@/lib/fonts";
+import { vazirmatm } from "@/lib/fonts";
 import { AppConfigProvider } from "@/context/app-config-context";
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function RootLayout({
 }): React.ReactNode {
     return (
         <html dir={params.lang === "en" ? "ltr" : "rtl"} lang={params.lang}>
-            <body className={`${yekan.className}`}>
+            <body className={`${vazirmatm.className}`}>
                 <AppConfigProvider>
                     <QueryProvider>
                         <ReduxProvider>{children}</ReduxProvider>

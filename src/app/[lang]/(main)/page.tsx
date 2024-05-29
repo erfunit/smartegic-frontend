@@ -1,6 +1,6 @@
-import { GridBox } from "@/app/_components/container/grid-box";
-import { GridItem } from "@/app/_components/container/grid-item";
-import { PageContainer } from "@/app/_components/container/page-container";
+import { GridBox } from "@/app/_components/containers/grid-box";
+import { GridItem } from "@/app/_components/containers/grid-item";
+import { PageContainer } from "@/app/_components/containers/page-container";
 import React from "react";
 // import { Locale } from "../../../i18n.config";
 // import FormComponent from "../_components/form";
@@ -18,7 +18,10 @@ Promise<React.JSX.Element> => {
     // const dict: { test_form: FormField[] } = await getDictionary(lang);
 
     return (
-        <PageContainer>
+        <PageContainer
+            title="Customers information"
+            subTitle="You can track your customers information and reports within this page"
+        >
             <GridBox
                 cols={{
                     sm: 1,
