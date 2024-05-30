@@ -22,14 +22,6 @@ const LanguageSwitcher = () => {
     }, [router, pathname]);
 
     return (
-        // <div>
-        //     <button type="button" onClick={() => handleLanguageChange("fa")}>
-        //         فارسی
-        //     </button>
-        //     <button type="button" onClick={() => handleLanguageChange("en")}>
-        //         English
-        //     </button>
-        // </div>
         <div className="dropdown dropdown-bottom dropdown-end">
             <div
                 aria-label="profile drop down"

@@ -1,7 +1,12 @@
 {
     "navbar": {
         "edit": "ویرایش",
-        "search": "جست و جو..."
+        "search": "جست و جو...",
+        "profile": {
+            "myProfile": "پروفایل من",
+            "notifications": "اعلانات",
+            "logout": "خروج از حساب"
+        }
     },
     "navigations": [
         {

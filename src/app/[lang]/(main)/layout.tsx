@@ -35,7 +35,10 @@ export default async function MainLayout({
                     />
                 </div>
                 <div className="main-wrapper  h-full overflow-auto flex flex-col">
-                    <Navbar navItems={dict.navigations as NavigationItem[]} />
+                    <Navbar
+                        navbarDict={dict.navbar}
+                        navItems={dict.navigations as NavigationItem[]}
+                    />
                     <div className="content-wrapper z-20 flex-grow">
                         {children}
                     </div>

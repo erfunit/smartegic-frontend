@@ -16,9 +16,20 @@ import { ThemeSwitcher } from "../theme-switcher";
 import { NavigationItem } from "../nav-menu/_types/navigations";
 import LanguageSwitcher from "../lang-switcher";
 
-export const Navbar: React.FC<{ navItems: NavigationItem[] }> = ({
-    navItems,
-}) => {
+type NavbarProps = {
+    navItems: NavigationItem[];
+    navbarDict: {
+        edit: string;
+        search: string;
+        profile: {
+            myProfile: string;
+            notifications: string;
+            logout: string;
+        };
+    };
+};
+
+export const Navbar: React.FC<NavbarProps> = ({ navItems, navbarDict }) => {
     const { setConfig, config } = useAppConfig("app-config");
 
     return (
@@ -65,7 +76,7 @@ export const Navbar: React.FC<{ navItems: NavigationItem[] }> = ({
                 <input
                     type="text"
                     aria-label="search"
-                    placeholder="search..."
+                    placeholder={navbarDict.search}
                     className="input hidden md:flex input-bordered font-light h-auto py-2"
                 />
                 <IconSearch className="md:hidden" />
@@ -91,7 +102,7 @@ export const Navbar: React.FC<{ navItems: NavigationItem[] }> = ({
                         <div className="flex flex-col items-start">
                             <span className="text-sm font-light">Deep</span>
                             <div className="text-xs text-primary font-light">
-                                Edit
+                                {navbarDict.edit}
                             </div>
                         </div>
                     </div>
@@ -103,7 +114,7 @@ export const Navbar: React.FC<{ navItems: NavigationItem[] }> = ({
                             <Link href="/#" className="items-center flex gap-2">
                                 <IconProfile width={20} />
                                 <span className="font-light text-base">
-                                    My Profile
+                                    {navbarDict.profile.myProfile}
                                 </span>
                             </Link>
                         </li>
@@ -111,7 +122,7 @@ export const Navbar: React.FC<{ navItems: NavigationItem[] }> = ({
                             <Link href="/#" className="items-center flex gap-2">
                                 <IconBell width={20} />
                                 <span className="font-light text-base">
-                                    Notifications
+                                    {navbarDict.profile.notifications}
                                 </span>
                             </Link>
                         </li>
@@ -123,7 +134,7 @@ export const Navbar: React.FC<{ navItems: NavigationItem[] }> = ({
                             >
                                 <IconLogout color="red" width={20} />
                                 <span className="font-light text-red-500 text-base">
-                                    Logout
+                                    {navbarDict.profile.logout}
                                 </span>
                             </button>
                         </li>

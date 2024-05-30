@@ -1,7 +1,12 @@
 {
     "navbar": {
         "edit": "Edit",
-        "search": "Search..."
+        "search": "Search...",
+        "profile": {
+            "myProfile": "My Profile",
+            "notifications": "Notifications",
+            "logout": "Logout"
+        }
     },
     "navigations": [
         {
