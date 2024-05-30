@@ -24,6 +24,7 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
         navigationItems,
     });
 
+    // if (drawer) return null;
     return (
         <div
             className={clsx("leftmenu-wrapper z-[1000]", {

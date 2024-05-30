@@ -1,10 +1,11 @@
-import { GridBox } from "@/app/_components/containers/grid-box";
-import { GridItem } from "@/app/_components/containers/grid-item";
+// import { GridBox } from "@/app/_components/containers/grid-box";
+// import { GridItem } from "@/app/_components/containers/grid-item";
 import { PageContainer } from "@/app/_components/containers/page-container";
 import React from "react";
 import { Locale } from "@/i18n.config";
 
 import { getDictionary } from "@/lib/dictionary";
+import FormComponent from "@/app/_components/form/form";
 
 const Home = async ({
     params: { lang },
@@ -18,7 +19,7 @@ const Home = async ({
             title={dict.main_page.title}
             subTitle={dict.main_page.subTitle}
         >
-            <GridBox
+            {/* <GridBox
                 cols={{
                     sm: 1,
                     lg: 3,
@@ -28,7 +29,7 @@ const Home = async ({
                     lg: 1,
                 }}
             >
-                <GridItem />
+                <GridItem back={false}></GridItem>
                 <GridItem />
                 <GridItem />
             </GridBox>
@@ -38,7 +39,8 @@ const Home = async ({
             </GridBox>
             <GridBox cols="1">
                 <GridItem />
-            </GridBox>
+            </GridBox> */}
+            <FormComponent formSchema={dict.form_generator} />
         </PageContainer>
     );
 };

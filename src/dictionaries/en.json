@@ -35,5 +35,113 @@
     },
     "second_page": {
         "title": "Second Page"
-    }
+    },
+    "form_generator": [
+        {
+            "name": "firstName",
+            "label": "First Name",
+            "type": "text",
+            "required": true,
+            "placeholder": "Enter your first name",
+            "minLength": 2,
+            "maxLength": 30,
+            "errorMessage": "First name must be between 2 and 30 characters."
+        },
+        {
+            "name": "lastName",
+            "label": "Last Name",
+            "type": "text",
+            "required": true,
+            "placeholder": "Enter your last name",
+            "minLength": 2,
+            "maxLength": 30,
+            "errorMessage": "Last name must be between 2 and 30 characters."
+        },
+        {
+            "name": "email",
+            "label": "Email",
+            "type": "email",
+            "required": true,
+            "placeholder": "Enter your email",
+            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+            "errorMessage": "Please enter a valid email address."
+        },
+        {
+            "name": "password",
+            "label": "Password",
+            "type": "password",
+            "required": true,
+            "minLength": 8,
+            "pattern": "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\\$%\\^&\\*])",
+            "errorMessage": "Password must be at least 8 characters long and include one uppercase letter, one number, and one special character."
+        },
+        {
+            "name": "confirmPassword",
+            "label": "Confirm Password",
+            "type": "password",
+            "required": true,
+            "minLength": 8,
+            "errorMessage": "Passwords must match."
+        },
+        {
+            "name": "age",
+            "label": "Age",
+            "type": "number",
+            "min": 1,
+            "max": 120,
+            "errorMessage": "Age must be between 1 and 120."
+        },
+        {
+            "name": "gender",
+            "label": "Gender",
+            "type": "radio",
+            "options": ["Male", "Female", "Other"],
+            "required": true,
+            "errorMessage": "Please select your gender."
+        },
+        {
+            "name": "hobbies",
+            "label": "Hobbies",
+            "type": "checkbox",
+            "options": ["Reading", "Traveling", "Cooking", "Gaming"]
+        },
+        {
+            "name": "birthDate",
+            "label": "Birth Date",
+            "type": "date",
+            "required": true,
+            "errorMessage": "Please enter your birth date."
+        },
+        {
+            "name": "profilePicture",
+            "label": "Profile Picture",
+            "type": "file",
+            "accept": "image/*",
+            "errorMessage": "Please upload a valid image file."
+        },
+        {
+            "name": "bio",
+            "label": "Bio",
+            "type": "textarea",
+            "placeholder": "Tell us about yourself",
+            "rows": 4,
+            "minLength": 10,
+            "maxLength": 200,
+            "errorMessage": "Bio must be between 10 and 200 characters."
+        },
+        {
+            "name": "country",
+            "label": "Country",
+            "type": "select",
+            "options": ["Iran", "Canada", "UK", "Australia", "Other"],
+            "required": true,
+            "errorMessage": "Please select your country."
+        },
+        {
+            "name": "newsletter",
+            "label": "Subscribe to newsletter",
+            "type": "checkbox",
+            "options": ["Yes"]
+        }
+    ]
 }

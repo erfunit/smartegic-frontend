@@ -20,15 +20,20 @@ export const GridItem: React.FC<GridItemProps> = ({
     className,
     rowspan,
     colspan,
+    back = true,
 }) => {
     const colClasses = generateResponsiveClasses(colspan, "col-span");
     const rowClasses = generateResponsiveClasses(rowspan, "row-span");
 
     const classes = clsx(
-        "w-full h-full bg-base-100 border border-base-300 rounded-md",
+        "w-full h-full rounded-md",
         className,
         colClasses,
         rowClasses,
+        {
+            "bg-base-100 border border-base-300": back,
+            "bg-transparent": !back,
+        },
     );
 
     return <div className={classes}>{children}</div>;

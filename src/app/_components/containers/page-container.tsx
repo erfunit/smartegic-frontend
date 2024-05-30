@@ -17,7 +17,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
     return (
         <div
             className={clsx(
-                "w-full h-full flex flex-col items-stretch gap-4",
+                "w-full h-full flex flex-col mb-7 items-stretch gap-4",
                 className,
             )}
         >

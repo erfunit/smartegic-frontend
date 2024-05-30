@@ -33,16 +33,16 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems, navbarDict }) => {
     const { setConfig, config } = useAppConfig("app-config");
 
     return (
-        <div className="flex justify-between z-50 h-[65px] items-center px-4 border-b border-base-200 bg-base-100 transition-all">
-            <div className="gap-3 flex items-center ">
-                <div className="drawer lg:drawer-open">
+        <div className="flex justify-between p-4 z-50 h-[65px] items-center px-4 border-b border-base-200 bg-base-100 transition-all">
+            <div className="gap-3 flex items-center rounded-t-xl">
+                <div className="lg:drawer lg:drawer-open max-h-7">
                     <input
                         id="my-drawer-2"
                         type="checkbox"
                         aria-label="drawer"
                         className="drawer-toggle"
                     />
-                    <div className="drawer-content flex flex-col items-center justify-center">
+                    <div className="drawer-content max-h-7 flex flex-col items-center justify-center">
                         <label
                             htmlFor="my-drawer-2"
                             aria-label="toggler"
@@ -64,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems, navbarDict }) => {
                             <IconNavigationToggle />
                         </button>
                     </div>
-                    <div className="drawer-side lg:hidden">
+                    <div className="drawer-side  lg:hidden">
                         <label
                             htmlFor="my-drawer-2"
                             aria-label="close sidebar"

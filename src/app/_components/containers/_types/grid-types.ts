@@ -18,4 +18,5 @@ export type GridItemProps = {
     className?: string;
     rowspan?: ResponsiveClassNames;
     colspan?: ResponsiveClassNames;
+    back?: boolean;
 };
