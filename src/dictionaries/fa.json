@@ -1,130 +1,34 @@
 {
-    "test_form": [
+    "navbar": {
+        "edit": "ویرایش",
+        "search": "جست و جو..."
+    },
+    "navigations": [
         {
-            "name": "firstName",
-            "label": "نام",
-            "type": "text",
-            "required": true,
-            "placeholder": "نام خود را وارد کنید",
-            "minLength": 2,
-            "maxLength": 30,
-            "errorMessage": "نام باید بین ۲ تا ۳۰ کاراکتر باشد."
-        },
-        {
-            "name": "lastName",
-            "label": "نام خانوادگی",
-            "type": "text",
-            "required": true,
-            "placeholder": "نام خانوادگی خود را وارد کنید",
-            "minLength": 2,
-            "maxLength": 30,
-            "errorMessage": "نام خانوادگی باید بین ۲ تا ۳۰ کاراکتر باشد."
-        },
-        {
-            "name": "email",
-            "label": "ایمیل",
-            "type": "email",
-            "required": true,
-            "placeholder": "ایمیل خود را وارد کنید",
-            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
-            "errorMessage": "لطفاً یک آدرس ایمیل معتبر وارد کنید."
-        },
-        {
-            "name": "password",
-            "label": "رمز عبور",
-            "type": "password",
-            "required": true,
-            "minLength": 8,
-            "pattern": "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\\$%\\^&\\*])",
-            "errorMessage": "رمز عبور باید حداقل ۸ کاراکتر باشد و شامل یک حرف بزرگ، یک عدد و یک کاراکتر خاص باشد."
-        },
-        {
-            "name": "confirmPassword",
-            "label": "تأیید رمز عبور",
-            "type": "password",
-            "required": true,
-            "minLength": 8,
-            "errorMessage": "رمزهای عبور باید مطابقت داشته باشند."
-        },
-        {
-            "name": "age",
-            "label": "سن",
-            "type": "number",
-            "min": 1,
-            "max": 120,
-            "errorMessage": "سن باید بین ۱ تا ۱۲۰ باشد."
-        },
-        {
-            "name": "gender",
-            "label": "جنسیت",
-            "type": "radio",
-            "options": ["مرد", "زن", "دیگر"],
-            "required": true,
-            "errorMessage": "لطفاً جنسیت خود را انتخاب کنید."
-        },
-        {
-            "name": "hobbies",
-            "label": "سرگرمی‌ها",
-            "type": "checkbox",
-            "options": ["مطالعه", "سفر", "آشپزی", "بازی"]
-        },
-        {
-            "name": "birthDate",
-            "label": "تاریخ تولد",
-            "type": "date",
-            "required": true,
-            "errorMessage": "لطفاً تاریخ تولد خود را وارد کنید."
-        },
-        {
-            "name": "profilePicture",
-            "label": "عکس پروفایل",
-            "type": "file",
-            "accept": "image/*",
-            "errorMessage": "لطفاً یک فایل تصویر معتبر آپلود کنید."
-        },
-        {
-            "name": "bio",
-            "label": "بیوگرافی",
-            "type": "textarea",
-            "placeholder": "درباره خودتان بنویسید",
-            "rows": 4,
-            "minLength": 10,
-            "maxLength": 200,
-            "errorMessage": "بیوگرافی باید بین ۱۰ تا ۲۰۰ کاراکتر باشد."
-        },
-        {
-            "name": "country",
-            "label": "کشور",
-            "type": "select",
-            "options": ["ایران", "کانادا", "انگلستان", "استرالیا", "دیگر"],
-            "required": true,
-            "errorMessage": "لطفاً کشور خود را انتخاب کنید."
-        },
-        {
-            "name": "newsletter",
-            "label": "اشتراک در خبرنامه",
-            "type": "checkbox",
-            "options": ["بله"]
+            "id": 0,
+            "title": "داشبورد",
+            "icon": "price",
+            "children": [
+                {
+                    "id": 0,
+                    "title": "گزارش مشتریان",
+                    "icon": "price",
+                    "link": "/"
+                },
+                {
+                    "id": 1,
+                    "title": "صفحه دوم",
+                    "icon": "price",
+                    "link": "/test-page"
+                }
+            ]
         }
     ],
-    "login_form": [
-        {
-            "name": "email",
-            "label": "ایمیل",
-            "type": "email",
-            "required": true,
-            "placeholder": "ایمیل خود را وارد کنید",
-            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
-            "errorMessage": "لطفاً یک آدرس ایمیل معتبر وارد کنید."
-        },
-        {
-            "name": "password",
-            "label": "رمز عبور",
-            "type": "password",
-            "required": true,
-            "minLength": 8,
-            "pattern": "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\\$%\\^&\\*])",
-            "errorMessage": "رمز عبور باید حداقل ۸ کاراکتر باشد و شامل یک حرف بزرگ، یک عدد و یک کاراکتر خاص باشد."
-        }
-    ]
+    "main_page": {
+        "title": "گزارش مشتریان",
+        "subTitle": "شما میتوانید در این صفحه به گزارش و اطلاعات مشتریانتان دسترسی داشته باشید"
+    },
+    "second_page": {
+        "title": "صفحه دوم"
+    }
 }

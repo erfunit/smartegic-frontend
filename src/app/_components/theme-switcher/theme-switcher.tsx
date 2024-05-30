@@ -5,7 +5,7 @@ import React from "react";
 import { IconMoon, IconSun } from "../icons/icons";
 
 export const ThemeSwitcher: React.FC = () => {
-    const { config, setConfig } = useAppConfig("app-theme");
+    const { config, setConfig } = useAppConfig("app-config");
 
     const switchHandler = () => {
         setConfig({

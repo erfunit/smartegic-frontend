@@ -1,1 +1,1 @@
-export * from "./lang-switcher";
+export { default } from "./lang-switcher";

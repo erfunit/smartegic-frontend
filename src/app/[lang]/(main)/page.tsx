@@ -2,25 +2,21 @@ import { GridBox } from "@/app/_components/containers/grid-box";
 import { GridItem } from "@/app/_components/containers/grid-item";
 import { PageContainer } from "@/app/_components/containers/page-container";
 import React from "react";
-// import { Locale } from "../../../i18n.config";
-// import FormComponent from "../_components/form";
+import { Locale } from "@/i18n.config";
 
-// import { getDictionary } from "@/lib/dictionary";
-// import { FormField } from "@/types/form-generator";
-// import RegistrationForm from "./_components/form";
+import { getDictionary } from "@/lib/dictionary";
 
-const Home = async (): // {
-// params: { lang },
-// }: {
-// params: { lang: Locale };
-// },
-Promise<React.JSX.Element> => {
-    // const dict: { test_form: FormField[] } = await getDictionary(lang);
+const Home = async ({
+    params: { lang },
+}: {
+    params: { lang: Locale };
+}): Promise<React.JSX.Element> => {
+    const dict = await getDictionary(lang);
 
     return (
         <PageContainer
-            title="Customers information"
-            subTitle="You can track your customers information and reports within this page"
+            title={dict.main_page.title}
+            subTitle={dict.main_page.subTitle}
         >
             <GridBox
                 cols={{

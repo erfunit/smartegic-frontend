@@ -10,7 +10,7 @@ type AppConfigState = {
     config: AppConfig | null;
 };
 
-type Action = { type: "SET_CONFIG"; payload: AppConfig };
+type Action = { type: "SET_CONFIG"; payload: Partial<AppConfig> };
 
 const AppConfigContext = createContext<
     | {
@@ -26,7 +26,7 @@ const appConfigReducer = (
 ): AppConfigState => {
     switch (action.type) {
         case "SET_CONFIG":
-            return { config: action.payload };
+            return { config: { ...state.config, ...action.payload } };
         default:
             return state;
     }

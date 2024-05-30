@@ -39,7 +39,7 @@
         "no-param-reassign": "error",
         "eqeqeq": "error",
         "no-return-assign": "error",
-        "prefer-destructuring": "error",
+        "prefer-destructuring": "off",
 
         // Turned off rules
         "@typescript-eslint/explicit-module-boundary-types": "off",

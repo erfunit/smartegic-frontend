@@ -18,6 +18,7 @@ const IconComponent = ({ icon }: { icon: keyof typeof navigationIcons }) =>
 const NavigationItemComponent: React.FC<NavigationItemProps> = ({ item }) => {
     const firstPathName = usePathname();
     const pathname = formatPathname(firstPathName);
+    const locale = firstPathName.split("/")[1]; // Assuming locale is the first part of the pathname
 
     return (
         <li className="mb-0.5 font-light">
@@ -43,7 +44,7 @@ const NavigationItemComponent: React.FC<NavigationItemProps> = ({ item }) => {
                     })}
                 >
                     <Link
-                        href={item.link || ""}
+                        href={`/${locale}${item.link}`}
                         className="flex gap-2 items-center"
                     >
                         <IconComponent icon={item.icon} />

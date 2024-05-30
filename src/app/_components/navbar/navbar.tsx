@@ -13,12 +13,16 @@ import {
 import useAppConfig from "@/hooks/use-app-config";
 import { NavigationMenu } from "../nav-menu/navigation-menu";
 import { ThemeSwitcher } from "../theme-switcher";
+import { NavigationItem } from "../nav-menu/_types/navigations";
+import LanguageSwitcher from "../lang-switcher";
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC<{ navItems: NavigationItem[] }> = ({
+    navItems,
+}) => {
     const { setConfig, config } = useAppConfig("app-config");
 
     return (
-        <div className="flex justify-between h-[65px] items-center px-4 border-b border-base-200 bg-base-100 transition-all">
+        <div className="flex justify-between z-50 h-[65px] items-center px-4 border-b border-base-200 bg-base-100 transition-all">
             <div className="gap-3 flex items-center ">
                 <div className="drawer lg:drawer-open">
                     <input
@@ -55,7 +59,7 @@ export const Navbar: React.FC = () => {
                             aria-label="close sidebar"
                             className="drawer-overlay"
                         ></label>
-                        <NavigationMenu drawer />
+                        <NavigationMenu navItems={navItems} drawer />
                     </div>
                 </div>
                 <input
@@ -67,6 +71,7 @@ export const Navbar: React.FC = () => {
                 <IconSearch className="md:hidden" />
             </div>
             <div className="gap-3 flex items-center">
+                <LanguageSwitcher />
                 <ThemeSwitcher />
                 <IconBell />
                 <div className="dropdown dropdown-bottom dropdown-end">

@@ -19,11 +19,12 @@ const useAppConfig = (key: string) => {
     }, [key, dispatch]);
 
     const setConfig = useCallback(
-        (newConfig: AppConfig) => {
-            localStorage.setItem(key, JSON.stringify(newConfig));
+        (newConfig: Partial<AppConfig>) => {
+            const updatedConfig = { ...state.config, ...newConfig };
+            localStorage.setItem(key, JSON.stringify(updatedConfig));
             dispatch({ type: "SET_CONFIG", payload: newConfig });
         },
-        [key, dispatch],
+        [key, state.config, dispatch],
     );
 
     return { config: state.config, setConfig };

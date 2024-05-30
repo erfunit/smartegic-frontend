@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { i18n } from "../i18n.config";
-
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
@@ -22,11 +21,11 @@ function getLocale(request: NextRequest): string | undefined {
 
 export function middleware(request: NextRequest): NextResponse | undefined {
     const { pathname } = request.nextUrl;
+    const localeFromCookie = request.cookies.get("NEXT_LOCALE")?.value;
 
     // Handle root path
     if (pathname === "/") {
-        const locale = getLocale(request);
-        console.log(locale);
+        const locale = localeFromCookie || getLocale(request);
         if (locale) {
             return NextResponse.redirect(new URL(`/${locale}`, request.url));
         }
@@ -39,18 +38,18 @@ export function middleware(request: NextRequest): NextResponse | undefined {
 
     // Redirect if there is no locale in the pathname
     if (pathnameIsMissingLocale) {
-        const locale = getLocale(request);
+        const locale = localeFromCookie || getLocale(request);
         if (locale) {
             return NextResponse.redirect(
                 new URL(`/${locale}${pathname}`, request.url),
             );
         }
     }
+
     return NextResponse.next();
 }
 
 export const config = {
-    // Matcher ignoring `/_next/`, `/api/`, and asset paths
     matcher: [
         "/((?!api|_next/static|_next/image|favicon.ico|icons|images|assets).*)",
     ],
