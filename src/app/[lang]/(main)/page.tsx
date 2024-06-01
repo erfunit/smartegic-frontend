@@ -5,7 +5,8 @@ import React from "react";
 import { Locale } from "@/i18n.config";
 
 import { getDictionary } from "@/lib/dictionary";
-import FormComponent from "@/app/_components/form/form";
+// import FormComponent from "@/app/_components/form/form";
+import TextInput from "@/app/_components/text-input/text-input";
 
 const Home = async ({
     params: { lang },
@@ -40,7 +41,8 @@ const Home = async ({
             <GridBox cols="1">
                 <GridItem />
             </GridBox> */}
-            <FormComponent formSchema={dict.form_generator} />
+            <TextInput placeholder="enter what you want" type="email" />
+            {/* <FormComponent formSchema={dict.form_generator} /> */}
         </PageContainer>
     );
 };

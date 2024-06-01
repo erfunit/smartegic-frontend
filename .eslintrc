@@ -42,6 +42,7 @@
         "prefer-destructuring": "off",
 
         // Turned off rules
+        "react/display-name": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "import/extensions": "off",
         "prettier/prettier": "off",

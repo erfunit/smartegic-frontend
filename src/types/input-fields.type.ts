@@ -1,4 +1,4 @@
-import { FormField } from "@/types/form-generator";
+import { FormField } from "@/types/form-generator.type";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 export type FormFieldProps = {

@@ -22,3 +22,16 @@
         font-family: var(--font-figtree);
     }
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    /* Revert text color */
+    -webkit-text-fill-color: black !important;
+    color: black !important;
+    caret-color: black !important;
+
+    /* Revert background color */
+    transition: background-color 5000s ease-in-out 0s;
+}
