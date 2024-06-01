@@ -41,7 +41,12 @@ const Home = async ({
             <GridBox cols="1">
                 <GridItem />
             </GridBox> */}
-            <TextInput placeholder="enter what you want" type="email" />
+            <TextInput
+                placeholder="enter what you want"
+                type="password"
+                variant="info"
+                size="md"
+            />
             {/* <FormComponent formSchema={dict.form_generator} /> */}
         </PageContainer>
     );

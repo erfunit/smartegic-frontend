@@ -1,5 +1,5 @@
 .btn,
-.input,
+/* .input, */
 .dropdown-content {
     @apply rounded-md;
 }

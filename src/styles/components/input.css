@@ -1,0 +1,49 @@
+.textinput {
+    @apply input;
+
+    /* variants */
+    &-bordered {
+        @apply input-bordered;
+    }
+    &-ghost {
+        @apply input-ghost;
+    }
+    &-primary {
+        @apply input-primary;
+    }
+    &-secondary {
+        @apply input-secondary;
+    }
+    &-accent {
+        @apply input-accent;
+    }
+    &-info {
+        @apply input-info;
+    }
+    &-success {
+        @apply input-success;
+    }
+    &-warning {
+        @apply input-warning;
+    }
+    &-error {
+        @apply input-error;
+    }
+    &-disabled {
+        @apply input-disabled;
+    }
+
+    /* sizes */
+    &-md {
+        @apply input-md;
+    }
+    &-xs {
+        @apply input-xs;
+    }
+    &-sm {
+        @apply input-sm;
+    }
+    &-lg {
+        @apply input-lg;
+    }
+}

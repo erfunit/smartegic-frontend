@@ -21,11 +21,11 @@ const TextInput: React.FC<TextInputProps> = forwardRef<
     ) => {
         const [show, setShow] = useState(false);
         const classes = clsx(
-            "flex gap-2 items-center input",
+            "flex gap-2 items-center textinput",
             "w-full",
             {
-                [`input-${variant}`]: variant,
-                [`input-${size}`]: size,
+                [`textinput-${variant}`]: !!variant,
+                [`textinput-${size}`]: !!size,
             },
             className,
         );
