@@ -1,0 +1,49 @@
+.fileinput {
+    @apply file-input;
+
+    /* variants */
+    &-bordered {
+        @apply file-input-bordered;
+    }
+    &-ghost {
+        @apply file-input-ghost;
+    }
+    &-primary {
+        @apply file-input-primary;
+    }
+    &-secondary {
+        @apply file-input-secondary;
+    }
+    &-accent {
+        @apply file-input-accent;
+    }
+    &-info {
+        @apply file-input-info;
+    }
+    &-success {
+        @apply file-input-success;
+    }
+    &-warning {
+        @apply file-input-warning;
+    }
+    &-error {
+        @apply file-input-error;
+    }
+    &-disabled {
+        @apply file-input-disabled;
+    }
+
+    /* sizes */
+    &-md {
+        @apply file-input-md;
+    }
+    &-xs {
+        @apply file-input-xs;
+    }
+    &-sm {
+        @apply file-input-sm;
+    }
+    &-lg {
+        @apply file-input-lg;
+    }
+}

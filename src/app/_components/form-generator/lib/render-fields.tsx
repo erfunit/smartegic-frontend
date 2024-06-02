@@ -4,10 +4,10 @@ import { FormField } from "@/types/form-generator.type";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { Checkbox } from "../checkbox/checkbox";
 import { Radio } from "../radio/radio";
-import { FileInput } from "../file-input/file-input";
 import { TextField } from "../text-field/text-field";
 import { Dropdown } from "../dropdown/dropdown";
 import { TextAreaField } from "../text-area-field";
+import { FileInputField } from "../file-input-field";
 
 export const renderField = (
     field: FormField,
@@ -25,7 +25,11 @@ export const renderField = (
             );
         case "file":
             return (
-                <FileInput field={field} register={register} errors={errors} />
+                <FileInputField
+                    field={field}
+                    register={register}
+                    errors={errors}
+                />
             );
         case "textarea":
             return (

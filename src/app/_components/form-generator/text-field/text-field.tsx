@@ -19,6 +19,7 @@ export const TextField = ({ field, register, errors }: FormFieldProps) => {
             }`}
             setValue={setValue}
             value={getValues(field.name)}
+            // onChange={handleInputChange}
             {...registerProps}
         />
     );
