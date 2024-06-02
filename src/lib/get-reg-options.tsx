@@ -1,4 +1,4 @@
-import { FormField } from "@/types/form-generator";
+import { FormField } from "@/types/form-generator.type";
 
 export const getRegisterOptions = (field: FormField) => ({
     required: field.required

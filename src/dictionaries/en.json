@@ -72,7 +72,6 @@
             "type": "password",
             "required": true,
             "minLength": 8,
-            "pattern": "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\\$%\\^&\\*])",
             "errorMessage": "Password must be at least 8 characters long and include one uppercase letter, one number, and one special character."
         },
         {
@@ -87,11 +86,19 @@
             "name": "age",
             "label": "Age",
             "type": "number",
-            "pattern": "^(?!0)d+$",
             "min": 1,
             "required": true,
             "max": 120,
             "errorMessage": "Age must be between 1 and 120."
+        },
+        {
+            "name": "height",
+            "label": "Height",
+            "type": "number",
+            "min": 140,
+            "required": true,
+            "max": 240,
+            "errorMessage": "Height must be between 140 and 240."
         },
         {
             "name": "gender",

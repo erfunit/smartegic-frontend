@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { FileInputProps } from "./file-input.types";
 
@@ -17,6 +17,12 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
         ref: React.ForwardedRef<HTMLInputElement>,
     ) => {
         const [files, setFiles] = useState<File[]>([]);
+
+        useEffect(() => {
+            if (files.length > 0) {
+                console.log(files);
+            }
+        }, [files]);
 
         const onDrop = useCallback((acceptedFiles: File[]) => {
             setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
