@@ -2,9 +2,11 @@
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import { FormGeneratorProps } from "@/types/form-generator";
+import { FormGeneratorProps } from "@/types/form-generator.type";
 import { renderField } from "./lib/render-fields";
 import clsx from "clsx";
+import { Label } from "../Typography/Label";
+import { FieldError } from "../Typography/FieldError";
 
 const FormGenerator: React.FC<FormGeneratorProps> = ({
     schema,
@@ -26,14 +28,12 @@ const FormGenerator: React.FC<FormGeneratorProps> = ({
             {title && <span className="text-xl font-bold">{title}</span>}
             {schema.map((field) => (
                 <div key={field.name} className="form-control">
-                    <label className="label">
-                        <span className="label-text">{field.label}</span>
-                    </label>
+                    <Label>{field.label}</Label>
                     {renderField(field, register, errors)}
                     {errors[field.name] && (
-                        <span className="mt-2 text-sm font-light text-red-500">
+                        <FieldError>
                             {errors[field.name]?.message as string}
-                        </span>
+                        </FieldError>
                     )}
                 </div>
             ))}

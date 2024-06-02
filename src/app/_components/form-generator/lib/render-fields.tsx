@@ -1,11 +1,11 @@
 import React from "react";
 
-import { FormField } from "@/types/form-generator";
+import { FormField } from "@/types/form-generator.type";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { Checkbox } from "../checkbox/checkbox";
 import { Radio } from "../radio/radio";
 import { FileInput } from "../file-input/file-input";
-import { TextInput } from "../text-input/text-input";
+import { TextField } from "../text-input/text-field";
 import { Textarea } from "../text-area/text-area";
 import { Dropdown } from "../dropdown/dropdown";
 
@@ -21,7 +21,7 @@ export const renderField = (
         case "number":
         case "date":
             return (
-                <TextInput field={field} register={register} errors={errors} />
+                <TextField field={field} register={register} errors={errors} />
             );
         case "file":
             return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { FormFieldProps } from "@/types/input-fields";
+import { FormFieldProps } from "@/types/input-fields.type";
 import { getRegisterOptions } from "@/lib/get-reg-options";
 
 export const Radio = ({ field, register, errors }: FormFieldProps) => (

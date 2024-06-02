@@ -6,7 +6,8 @@ import { Locale } from "@/i18n.config";
 
 import { getDictionary } from "@/lib/dictionary";
 // import FormComponent from "@/app/_components/form/form";
-import TextInput from "@/app/_components/text-input/text-input";
+// import TextInput from "@/app/_components/text-input/text-input";
+import FormComponent from "@/app/_components/form/form";
 
 const Home = async ({
     params: { lang },
@@ -41,13 +42,13 @@ const Home = async ({
             <GridBox cols="1">
                 <GridItem />
             </GridBox> */}
-            <TextInput
+            {/* <TextInput
                 placeholder="enter what you want"
                 type="password"
                 variant="info"
                 size="md"
-            />
-            {/* <FormComponent formSchema={dict.form_generator} /> */}
+            /> */}
+            <FormComponent formSchema={dict.form_generator} />
         </PageContainer>
     );
 };
