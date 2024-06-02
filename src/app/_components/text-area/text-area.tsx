@@ -8,12 +8,12 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         ref: ForwardedRef<HTMLTextAreaElement>,
     ) => {
         const classes = clsx(
-            "flex gap-2 items-center textinput",
+            "flex gap-2 items-center textareafield",
             "w-full",
             {
                 [`textareafield-${variant}`]: !!variant,
                 [`textareafield-${size}`]: !!size,
-                [`textareafield-disabled`]: !!isDisabled,
+                [`textarea-disabled`]: !!isDisabled,
             },
             className,
         );

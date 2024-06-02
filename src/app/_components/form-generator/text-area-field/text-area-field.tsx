@@ -8,7 +8,6 @@ export const TextAreaField = ({ field, register, errors }: FormFieldProps) => (
         {...register(field.name, getRegisterOptions(field))}
         placeholder={field.placeholder}
         rows={field.rows}
-        size="lg"
         className={`textarea textarea-bordered ${
             errors[field.name] ? "textarea-error" : ""
         }`}
