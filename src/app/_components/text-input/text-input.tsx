@@ -1,12 +1,10 @@
 "use client";
 
-import React, { forwardRef, useState, useEffect } from "react";
-
+import React, { forwardRef, useState /*, useEffect*/ } from "react";
 import clsx from "clsx";
-
 import { TextInputProps } from "./text-input.types";
 import { PasswordToggle } from "./password-toggle";
-import { handleNumberInputChange } from "./handle-number-change";
+// import { handleNumberInputChange } from "./handle-number-change";
 import { getInputType } from "./get-input-type";
 
 const TextInput: React.FC<TextInputProps> = forwardRef<
@@ -19,37 +17,40 @@ const TextInput: React.FC<TextInputProps> = forwardRef<
             type = "text",
             className,
             size = "normal",
-            setValue,
-            name,
-            value,
-            onChange,
+            // name,
+            // value,
+            // setValue,
+            // onChange,
             ...rest
         },
         ref,
     ) => {
         const [show, setShow] = useState(false);
-        const [inputValue, setInputValue] = useState(value);
+        // const [inputValue, setInputValue] = useState(value);
 
-        useEffect(() => {
-            setValue(name, inputValue);
-        }, [inputValue, setValue, name]);
+        // useEffect(() => {
+        //     setInputValue(() => value);
+        //     setValue(name, value);
+        //     console.log({ name, value });
+        // }, [value]);
 
-        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            const { value } = e.target;
-            if (type === "number") {
-                handleNumberInputChange(
-                    value,
-                    setInputValue,
-                    setValue,
-                    name,
-                    onChange,
-                    e,
-                );
-            } else {
-                setInputValue(value);
-                onChange(e);
-            }
-        };
+        // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        //     const { value } = e.target;
+        //     if (type === "number") {
+        //         handleNumberInputChange(
+        //             value,
+        //             setInputValue,
+        //             name,
+        //             onChange,
+        //             e,
+        //         );
+        //     } else {
+        //         setInputValue(value);
+        //         if (onChange) {
+        //             onChange(e);
+        //         }
+        //     }
+        // };
 
         const classes = clsx(
             "flex gap-2 items-center textinput",
@@ -68,8 +69,8 @@ const TextInput: React.FC<TextInputProps> = forwardRef<
                     ref={ref}
                     aria-label="text"
                     className="w-full font-light"
-                    value={inputValue}
-                    onChange={handleInputChange}
+                    // value={inputValue}
+                    // onChange={handleInputChange}
                     {...rest}
                 />
                 {type === "password" && <PasswordToggle setShow={setShow} />}

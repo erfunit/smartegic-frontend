@@ -87,7 +87,9 @@
             "name": "age",
             "label": "Age",
             "type": "number",
+            "pattern": "^(?!0)d+$",
             "min": 1,
+            "required": true,
             "max": 120,
             "errorMessage": "Age must be between 1 and 120."
         },
