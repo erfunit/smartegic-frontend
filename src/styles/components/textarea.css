@@ -1,0 +1,49 @@
+.textareafield {
+    @apply textarea;
+
+    /* variants */
+    &-bordered {
+        @apply textarea-bordered;
+    }
+    &-ghost {
+        @apply textarea-ghost;
+    }
+    &-primary {
+        @apply textarea-primary;
+    }
+    &-secondary {
+        @apply textarea-secondary;
+    }
+    &-accent {
+        @apply textarea-accent;
+    }
+    &-info {
+        @apply textarea-info;
+    }
+    &-success {
+        @apply textarea-success;
+    }
+    &-warning {
+        @apply textarea-warning;
+    }
+    &-error {
+        @apply textarea-error;
+    }
+    &-disabled {
+        @apply textarea-disabled;
+    }
+
+    /* sizes */
+    &-md {
+        @apply textarea-md;
+    }
+    &-xs {
+        @apply textarea-xs;
+    }
+    &-sm {
+        @apply textarea-sm;
+    }
+    &-lg {
+        @apply textarea-lg;
+    }
+}

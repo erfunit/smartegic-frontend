@@ -124,7 +124,7 @@
             "label": "Bio",
             "type": "textarea",
             "placeholder": "Tell us about yourself",
-            "rows": 4,
+            "rows": 6,
             "minLength": 10,
             "maxLength": 200,
             "errorMessage": "Bio must be between 10 and 200 characters."

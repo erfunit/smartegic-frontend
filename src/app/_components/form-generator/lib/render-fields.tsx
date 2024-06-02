@@ -5,9 +5,9 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { Checkbox } from "../checkbox/checkbox";
 import { Radio } from "../radio/radio";
 import { FileInput } from "../file-input/file-input";
-import { TextField } from "../text-input/text-field";
-import { Textarea } from "../text-area/text-area";
+import { TextField } from "../text-field/text-field";
 import { Dropdown } from "../dropdown/dropdown";
+import { TextAreaField } from "../text-area-field";
 
 export const renderField = (
     field: FormField,
@@ -29,7 +29,11 @@ export const renderField = (
             );
         case "textarea":
             return (
-                <Textarea field={field} register={register} errors={errors} />
+                <TextAreaField
+                    field={field}
+                    register={register}
+                    errors={errors}
+                />
             );
         case "select":
             return (
