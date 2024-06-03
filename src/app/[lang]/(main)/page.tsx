@@ -5,9 +5,10 @@ import React from "react";
 import { Locale } from "@/i18n.config";
 
 import { getDictionary } from "@/lib/dictionary";
-// import FormComponent from "@/app/_components/form/form";
-// import TextInput from "@/app/_components/text-input/text-input";
 import FormComponent from "@/app/_components/form/form";
+// import FormComponent from "@/app/_components/form/form";
+// import PhoneInput from "react-phone-number-input";
+// import TextInput from "@/app/_components/text-input/text-input";
 
 const Home = async ({
     params: { lang },
@@ -21,33 +22,6 @@ const Home = async ({
             title={dict.main_page.title}
             subTitle={dict.main_page.subTitle}
         >
-            {/* <GridBox
-                cols={{
-                    sm: 1,
-                    lg: 3,
-                }}
-                rows={{
-                    sm: 3,
-                    lg: 1,
-                }}
-            >
-                <GridItem back={false}></GridItem>
-                <GridItem />
-                <GridItem />
-            </GridBox>
-            <GridBox cols="2">
-                <GridItem />
-                <GridItem />
-            </GridBox>
-            <GridBox cols="1">
-                <GridItem />
-            </GridBox> */}
-            {/* <TextInput
-                placeholder="enter what you want"
-                type="password"
-                variant="info"
-                size="md"
-            /> */}
             <FormComponent formSchema={dict.form_generator} />
         </PageContainer>
     );
