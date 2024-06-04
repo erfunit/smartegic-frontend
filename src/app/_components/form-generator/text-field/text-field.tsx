@@ -1,8 +1,8 @@
 import React from "react";
 import { getRegisterOptions } from "@/lib/get-reg-options";
 import { FormFieldProps } from "@/types/input-fields.type";
-import TextInput from "@/components/text-input/text-input";
-import { TextInputType } from "../../text-input/text-input.types";
+import TextInput from "@/app/_components/inputs/text-input/text-input";
+import { TextInputType } from "../../inputs/text-input/text-input.types";
 
 export const TextField = ({ field, register, errors }: FormFieldProps) => {
     const registerProps = register(field.name, getRegisterOptions(field));

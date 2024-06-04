@@ -1,7 +1,7 @@
 import { getRegisterOptions } from "@/lib/get-reg-options";
 import { FormFieldProps } from "@/types/input-fields.type";
 import React from "react";
-import FileInput from "../../file-input/file-input";
+import FileInput from "../../inputs/file-input/file-input";
 
 export const FileInputField = ({ field, register, errors }: FormFieldProps) => {
     const registerProps = register(field.name, getRegisterOptions(field));

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { FormField } from "@/types/form-generator";
+import { FormField } from "@/types/form-generator.type";
 import { SubmitHandler } from "react-hook-form";
 import FormGenerator from "@/app/_components/form-generator/form-generator";
 
