@@ -5,7 +5,8 @@ import React from "react";
 import { Locale } from "@/i18n.config";
 
 import { getDictionary } from "@/lib/dictionary";
-import FormComponent from "@/app/_components/form/form";
+// import FormComponent from "@/app/_components/form/form";
+import { PhoneWrapper } from "./_components/phone-wrapper";
 // import FormComponent from "@/app/_components/form/form";
 // import PhoneInput from "react-phone-number-input";
 // import TextInput from "@/app/_components/text-input/text-input";
@@ -22,7 +23,8 @@ const Home = async ({
             title={dict.main_page.title}
             subTitle={dict.main_page.subTitle}
         >
-            <FormComponent formSchema={dict.form_generator} />
+            {/* <FormComponent formSchema={dict.form_generator} /> */}
+            <PhoneWrapper />
         </PageContainer>
     );
 };

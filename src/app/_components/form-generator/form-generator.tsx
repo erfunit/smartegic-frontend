@@ -42,8 +42,6 @@ const FormGenerator: React.FC<FormGeneratorProps> = ({
                 variant="neutral"
                 size="md"
                 shape="wide"
-                isLink
-                href="/test-page"
                 type="submit"
                 className="px-6 btn btn-primary"
             >
