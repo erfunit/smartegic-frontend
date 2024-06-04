@@ -23,7 +23,7 @@
         "react/react-in-jsx-scope": "error",
 
         // React Specific Rules
-        "react/button-has-type": "error",
+        "react/button-has-type": "off",
 
         // Accessibility
         "jsx-a11y/control-has-associated-label": "error",

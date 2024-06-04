@@ -7,6 +7,7 @@ import { renderField } from "./lib/render-fields";
 import clsx from "clsx";
 import { Label } from "../Typography/Label";
 import { FieldError } from "../Typography/FieldError";
+import { Button } from "../button";
 
 const FormGenerator: React.FC<FormGeneratorProps> = ({
     schema,
@@ -37,9 +38,17 @@ const FormGenerator: React.FC<FormGeneratorProps> = ({
                     )}
                 </div>
             ))}
-            <button type="submit" className="px-6 btn btn-primary">
+            <Button
+                variant="neutral"
+                size="md"
+                shape="wide"
+                isLink
+                href="/test-page"
+                type="submit"
+                className="px-6 btn btn-primary"
+            >
                 Submit
-            </button>
+            </Button>
         </form>
     );
 };

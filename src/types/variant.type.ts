@@ -9,3 +9,15 @@ export type Variant =
     | "warning"
     | "error"
     | "disabled";
+
+export type ButtonVariants =
+    | "neutral"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "ghost"
+    | "link"
+    | "info"
+    | "success"
+    | "warning"
+    | "error";
