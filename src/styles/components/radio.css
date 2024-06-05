@@ -1,0 +1,49 @@
+.radioinput {
+    @apply radio;
+
+    /* variants */
+    &-primary {
+        @apply radio-primary;
+    }
+    &-secondary {
+        @apply radio-secondary;
+    }
+    &-accent {
+        @apply radio-accent;
+    }
+    &-info {
+        @apply radio-info;
+    }
+    &-success {
+        @apply radio-success;
+    }
+    &-warning {
+        @apply radio-warning;
+    }
+    &-error {
+        @apply radio-error;
+    }
+
+    /* sizes */
+    &-md {
+        @apply radio-md;
+    }
+    &-xs {
+        @apply radio-xs;
+    }
+    &-sm {
+        @apply radio-sm;
+    }
+    &-lg {
+        @apply radio-lg;
+    }
+
+    /* additional styling for labels and inputs */
+    .radioinput-label {
+        @apply inline-flex items-center space-x-2;
+    }
+
+    .radioinput-input {
+        @apply radio;
+    }
+}
