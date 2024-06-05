@@ -1,18 +1,26 @@
-import { getRegisterOptions } from "@/lib/get-reg-options";
+// import { getRegisterOptions } from "@/lib/get-reg-options";
 import { FormFieldProps } from "@/types/input-fields.type";
 import React from "react";
+import { Controller, useFormContext } from "react-hook-form";
 import FileInput from "../../inputs/file-input/file-input";
 
-export const FileInputField = ({ field, register, errors }: FormFieldProps) => {
-    const registerProps = register(field.name, getRegisterOptions(field));
+export const FileInputField = ({ field, errors }: FormFieldProps) => {
+    const { control } = useFormContext();
 
     return (
-        <FileInput
-            variant="bordered"
-            acceptFormat={field.accept}
-            placeholder={field.placeholder}
-            className={`${errors[field.name] ? "input-error" : ""}`}
-            {...registerProps}
+        <Controller
+            name={field.name}
+            control={control}
+            defaultValue={[]}
+            render={({ field: { onChange } }) => (
+                <FileInput
+                    variant="bordered"
+                    acceptFormat={field.accept}
+                    placeholder={field.placeholder}
+                    className={`${errors[field.name] ? "input-error" : ""}`}
+                    onChange={onChange}
+                />
+            )}
         />
     );
 };

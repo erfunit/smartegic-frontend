@@ -4,4 +4,5 @@ import { HTMLAttributes } from "react";
 export type FileInputProps = HTMLAttributes<HTMLInputElement> &
     ComponentBase & {
         acceptFormat?: string;
+        onChange?: (file: File[]) => void;
     };
