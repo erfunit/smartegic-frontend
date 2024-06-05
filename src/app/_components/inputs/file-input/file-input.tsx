@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React, { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { FileInputProps } from "./file-input.types";
+import { Button } from "../../button";
 
 const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
     (
@@ -75,21 +76,23 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
                     {files.map((file, index) => (
                         <div
                             key={index}
-                            className="flex justify-between items-center bg-gray-100 p-2 rounded-md mb-2"
+                            className="flex justify-between items-center bg-base-200 p-2 rounded-md mb-2"
                         >
-                            <span className="text-sm text-gray-800">
+                            <span className="text-sm text-gray-800 dark:text-gray-300">
                                 {file.name}
                             </span>
-                            <button
+                            <Button
+                                variant="ghost"
+                                // isOutline
                                 type="button"
-                                className="text-red-500 hover:text-red-700"
+                                className="text-red-500"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     handleRemoveFile(file);
                                 }}
                             >
                                 Remove
-                            </button>
+                            </Button>
                         </div>
                     ))}
                 </div>
