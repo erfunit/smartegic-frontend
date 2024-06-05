@@ -1,0 +1,49 @@
+.selectinput {
+    @apply select;
+
+    /* variants */
+    &-bordered {
+        @apply select-bordered;
+    }
+    &-ghost {
+        @apply select-ghost;
+    }
+    &-primary {
+        @apply select-primary;
+    }
+    &-secondary {
+        @apply select-secondary;
+    }
+    &-accent {
+        @apply select-accent;
+    }
+    &-info {
+        @apply select-info;
+    }
+    &-success {
+        @apply select-success;
+    }
+    &-warning {
+        @apply select-warning;
+    }
+    &-error {
+        @apply select-error;
+    }
+    &-disabled {
+        @apply select-disabled;
+    }
+
+    /* sizes */
+    &-md {
+        @apply select-md;
+    }
+    &-xs {
+        @apply select-xs;
+    }
+    &-sm {
+        @apply select-sm;
+    }
+    &-lg {
+        @apply select-lg;
+    }
+}
