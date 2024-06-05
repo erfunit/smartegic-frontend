@@ -78,8 +78,10 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
                             key={index}
                             className="flex justify-between items-center bg-base-200 p-2 rounded-md mb-2"
                         >
-                            <span className="text-sm text-gray-800 dark:text-gray-300">
-                                {file.name}
+                            <span className="text-sm text-gray-800 dark:text-gray-500">
+                                {file.name.length > 30
+                                    ? file.name.slice(0, 30).concat("...")
+                                    : file.name}
                             </span>
                             <Button
                                 variant="ghost"

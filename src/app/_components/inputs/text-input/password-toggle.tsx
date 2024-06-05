@@ -6,6 +6,7 @@ export const PasswordToggle: React.FC<{
 }> = ({ setShow }) => (
     <label className="swap">
         <input
+            tabIndex={-1}
             aria-label="switch"
             type="checkbox"
             onClick={() => setShow((prev) => !prev)}
