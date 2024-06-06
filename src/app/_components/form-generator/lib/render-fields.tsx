@@ -8,6 +8,7 @@ import { TextField } from "../text-field/text-field";
 import { Dropdown } from "../dropdown/dropdown";
 import { TextAreaField } from "../text-area-field";
 import { FileInputField } from "../file-input-field";
+import { RangeField } from "../range-field/range-field";
 
 export const renderField = (
     field: FormField,
@@ -54,6 +55,10 @@ export const renderField = (
                     register={register}
                     errors={errors}
                 />
+            );
+        case "range":
+            return (
+                <RangeField field={field} register={register} errors={errors} />
             );
         default:
             return null;

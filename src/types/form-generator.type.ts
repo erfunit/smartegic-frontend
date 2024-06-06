@@ -6,6 +6,7 @@ export interface FormField {
     type: string;
     required?: boolean;
     placeholder?: string;
+    step?: number;
     minLength?: number;
     maxLength?: number;
     min?: number;

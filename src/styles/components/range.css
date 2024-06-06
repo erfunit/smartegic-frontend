@@ -1,0 +1,43 @@
+.rangeinput {
+    @apply range;
+
+    /* variants */
+    &-primary {
+        @apply range-primary;
+    }
+    &-secondary {
+        @apply range-secondary;
+    }
+    &-accent {
+        @apply range-accent;
+    }
+    &-info {
+        @apply range-info;
+    }
+    &-success {
+        @apply range-success;
+    }
+    &-warning {
+        @apply range-warning;
+    }
+    &-error {
+        @apply range-error;
+    }
+    &-disabled {
+        @apply range-disabled;
+    }
+
+    /* sizes */
+    &-md {
+        @apply range-md;
+    }
+    &-xs {
+        @apply range-xs;
+    }
+    &-sm {
+        @apply range-sm;
+    }
+    &-lg {
+        @apply range-lg;
+    }
+}

@@ -151,6 +151,15 @@
             "label": "Subscribe to newsletter",
             "type": "checkbox",
             "options": ["Yes"]
+        },
+        {
+            "name": "satisfaction",
+            "label": "Satisfaction Level",
+            "type": "range",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "errorMessage": "Please select a satisfaction level between 0 and 100."
         }
     ]
 }
