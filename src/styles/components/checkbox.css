@@ -1,0 +1,49 @@
+.checkboxinput {
+    @apply checkbox;
+
+    /* variants */
+    &-primary {
+        @apply checkbox-primary;
+    }
+    &-secondary {
+        @apply checkbox-secondary;
+    }
+    &-accent {
+        @apply checkbox-accent;
+    }
+    &-info {
+        @apply checkbox-info;
+    }
+    &-success {
+        @apply checkbox-success;
+    }
+    &-warning {
+        @apply checkbox-warning;
+    }
+    &-error {
+        @apply checkbox-error;
+    }
+
+    /* sizes */
+    &-md {
+        @apply checkbox-md;
+    }
+    &-xs {
+        @apply checkbox-xs;
+    }
+    &-sm {
+        @apply checkbox-sm;
+    }
+    &-lg {
+        @apply checkbox-lg;
+    }
+
+    /* additional styling for labels and inputs */
+    .checkboxinput-label {
+        @apply inline-flex items-center space-x-2;
+    }
+
+    .checkboxinput-input {
+        @apply checkbox;
+    }
+}

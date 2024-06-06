@@ -4,7 +4,7 @@ import { getRegisterOptions } from "@/lib/get-reg-options";
 // import { RadioInput } from "../../inputs/radio-input/radio-input";
 import { RadioGroup } from "../../inputs/radio-input/radio-group";
 
-export const Radio = ({ field, register, errors }: FormFieldProps) => {
+export const RadioField = ({ field, register, errors }: FormFieldProps) => {
     const registerProps = register(field.name, getRegisterOptions(field));
     return (
         <RadioGroup

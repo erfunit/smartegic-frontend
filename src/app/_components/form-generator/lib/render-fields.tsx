@@ -2,8 +2,8 @@ import React from "react";
 
 import { FormField } from "@/types/form-generator.type";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import { Checkbox } from "../checkbox/checkbox";
-import { Radio } from "../radio/radio";
+import { CheckboxField } from "../checkbox-field/checkbox-field";
+import { RadioField } from "../radio-field/radio-field";
 import { TextField } from "../text-field/text-field";
 import { Dropdown } from "../dropdown/dropdown";
 import { TextAreaField } from "../text-area-field";
@@ -44,10 +44,16 @@ export const renderField = (
                 <Dropdown field={field} register={register} errors={errors} />
             );
         case "radio":
-            return <Radio field={field} register={register} errors={errors} />;
+            return (
+                <RadioField field={field} register={register} errors={errors} />
+            );
         case "checkbox":
             return (
-                <Checkbox field={field} register={register} errors={errors} />
+                <CheckboxField
+                    field={field}
+                    register={register}
+                    errors={errors}
+                />
             );
         default:
             return null;
