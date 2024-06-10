@@ -4,4 +4,5 @@ import { SelectHTMLAttributes } from "react";
 export type SelectInputProps = SelectHTMLAttributes<HTMLSelectElement> &
     ComponentBase & {
         items?: string[];
+        text?: string;
     };

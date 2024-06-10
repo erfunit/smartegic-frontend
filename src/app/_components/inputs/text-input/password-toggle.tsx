@@ -1,5 +1,5 @@
 import React from "react";
-import { IconHide, IconShow } from "../../icons/icons";
+import { IconHide, IconShow } from "../../icons";
 
 export const PasswordToggle: React.FC<{
     setShow: React.Dispatch<React.SetStateAction<boolean>>;

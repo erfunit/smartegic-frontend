@@ -27,13 +27,13 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
     const classes = clsx(
         "button",
-        className,
         { [`button-${variant}`]: variant },
         { [`button-${size}`]: size },
         { "button-outline": isOutline },
         { "button-link": isLink },
         { [`${shapeClasses[shape]}`]: shape },
         { "pointer-events-none opacity-80": isLoading },
+        className,
     );
 
     if (isLink) {

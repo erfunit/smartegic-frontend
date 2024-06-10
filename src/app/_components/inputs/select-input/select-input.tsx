@@ -5,7 +5,7 @@ import { SelectInputProps } from "./select-input.types";
 export const SelectInput: React.FC<SelectInputProps> = forwardRef<
     HTMLSelectElement,
     SelectInputProps
->(({ className, items, size, variant, ...rest }, ref) => {
+>(({ className, items, size, variant, text, ...rest }, ref) => {
     const classes = clsx(
         "selectinput",
         className,
@@ -17,7 +17,7 @@ export const SelectInput: React.FC<SelectInputProps> = forwardRef<
     );
     return (
         <select ref={ref} className={classes} {...rest}>
-            <option value="">Select...</option>
+            <option value="">{text || "Select..."}</option>
             {items?.map((option) => (
                 <option key={option} value={option}>
                     {option}

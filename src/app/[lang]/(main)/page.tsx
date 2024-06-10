@@ -3,6 +3,7 @@ import React from "react";
 import { Locale } from "@/i18n.config";
 
 import { getDictionary } from "@/lib/dictionary";
+// import FormComponent from "@/app/_components/form/form";
 import FormComponent from "@/app/_components/form/form";
 
 const Home = async ({
