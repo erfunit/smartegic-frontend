@@ -1,4 +1,4 @@
-type Column<T> = {
+export type Column<T> = {
     Header: string;
     accessor: keyof T;
 };

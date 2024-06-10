@@ -1,19 +1,15 @@
 "React.use client";
 
 import React from "react";
-import {
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    PencilAltIcon,
-    TrashIcon,
-} from "@heroicons/react/solid";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import TextInput from "../inputs/text-input/text-input";
 import { Button } from "../button";
 import { SelectInput } from "../inputs/select-input/select-input";
 import { Label } from "../Typography/Label";
 import { CheckboxInput } from "../inputs/checkbox-input/checkbox-input";
-import { IconFillStar, IconOutlineStart } from "../icons";
 import { TableProps } from "./table.types";
+import { useTable } from "./hooks/use-table";
+import { TableRow } from "./table-row";
 
 export const Table = <T,>({
     columns,
@@ -21,117 +17,42 @@ export const Table = <T,>({
     pageSize = 10,
     loading,
 }: TableProps<T>) => {
-    const [duplicatedData, setDuplicatedData] = React.useState<T[]>(data || []);
-    const [searchTerm, setSearchTerm] = React.useState<string>("");
-    const [selectedRows, setSelectedRows] = React.useState<Set<T>>(new Set());
-    const [pinnedRows, setPinnedRows] = React.useState<Set<T>>(new Set());
-    const [pinColumn, setPinColumn] = React.useState<keyof T | null>(null);
-    const [page, setPage] = React.useState<number>(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState<number>(pageSize);
+    const {
+        searchTerm,
+        setSearchTerm,
+        selectedRows,
+        handleSelectRow,
+        pinnedRows,
+        handlePinRow,
+        handleSelectAll,
+        page,
+        rowsPerPage,
+        handleChangeRowsPerPage,
+        handleChangePage,
+        handleDeleteRow,
+        filteredData,
+        pinColumn,
+        setPinColumn,
+        accessors,
+    } = useTable(data, pageSize, columns);
 
-    React.useEffect(() => {
-        if (data) setDuplicatedData(data);
-    }, [data]);
-
-    const accessors = columns.map((item) => item.accessor);
-
-    const getStringValue = (value: unknown): string => {
-        if (value === null || value === undefined) return "";
-        if (typeof value === "string") return value;
-        if (typeof value === "number" || typeof value === "boolean")
-            return value.toString();
-        return "";
-    };
-
-    const filteredData = React.useMemo(() => {
-        const filtered = duplicatedData.filter((row) => {
-            return columns.some((column) => {
-                return getStringValue(row[column.accessor])
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase());
-            });
-        });
-        const pinned = Array.from(pinnedRows);
-        const unpinned = filtered.filter((row) => !pinnedRows.has(row));
-        return [...pinned, ...unpinned];
-    }, [duplicatedData, columns, searchTerm, pinnedRows]);
-
-    const handleSelectRow = (row: T) => {
-        setSelectedRows((prev) => {
-            const newSet = new Set(prev);
-            if (newSet.has(row)) {
-                newSet.delete(row);
-            } else {
-                newSet.add(row);
-            }
-            return newSet;
-        });
-    };
-
-    const handlePinRow = (row: T) => {
-        setPinnedRows((prev) => {
-            const newSet = new Set(prev);
-            if (newSet.has(row)) {
-                newSet.delete(row);
-            } else {
-                newSet.add(row);
-            }
-            return newSet;
-        });
-    };
-
-    const handleSelectAll = () => {
-        setSelectedRows((prev) => {
-            if (prev.size === filteredData.length) {
-                return new Set();
-            } else {
-                return new Set(filteredData);
-            }
-        });
-    };
-
-    const handleChangePage = (newPage: number) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-    };
-
-    const handleDeleteRow = (row: T) => {
-        setDuplicatedData((prev) => prev.filter((r) => r !== row));
-        setSelectedRows((prev) => {
-            const newSet = new Set(prev);
-            newSet.delete(row);
-            return newSet;
-        });
-        setPinnedRows((prev) => {
-            const newSet = new Set(prev);
-            newSet.delete(row);
-            return newSet;
-        });
-    };
-
-    const renderSkeletonRows = () => {
+    const renderSkeletonRows = React.useCallback(() => {
         return Array.from({ length: rowsPerPage }).map((_, index) => (
             <tr key={index} className="animate-pulse">
                 <td aria-label="td" className="p-2">
-                    <div className="h-4 bg-base-300 rounded"></div>
+                    <div className="h-8 bg-base-300 rounded"></div>
                 </td>
-                {columns.map((column, colIndex) => (
+                {columns.map((_, colIndex) => (
                     <td aria-label="td" key={colIndex} className="p-2">
-                        <div className="h-4 bg-base-300 rounded"></div>
+                        <div className="h-8 bg-base-300 rounded"></div>
                     </td>
                 ))}
                 <td aria-label="td" className="p-2">
-                    <div className="h-4 bg-base-300 rounded"></div>
+                    <div className="h-8 bg-base-300 rounded"></div>
                 </td>
             </tr>
         ));
-    };
+    }, [rowsPerPage, columns]);
 
     return (
         <div className="p-4">
@@ -195,97 +116,17 @@ export const Table = <T,>({
                                       page * rowsPerPage + rowsPerPage,
                                   )
                                   .map((row, rowIndex) => (
-                                      <tr
+                                      <TableRow
                                           key={rowIndex}
-                                          className={`${
-                                              selectedRows.has(row)
-                                                  ? "selected"
-                                                  : ""
-                                          } ${
-                                              pinnedRows.has(row)
-                                                  ? "bg-base-200"
-                                                  : ""
-                                          }`}
-                                      >
-                                          <td aria-label="td">
-                                              <CheckboxInput
-                                                  type="checkbox"
-                                                  checked={selectedRows.has(
-                                                      row,
-                                                  )}
-                                                  onChange={() =>
-                                                      handleSelectRow(row)
-                                                  }
-                                              />
-                                          </td>
-                                          {columns.map((column) => (
-                                              <td
-                                                  key={
-                                                      column.accessor as string
-                                                  }
-                                                  className={
-                                                      column.accessor ===
-                                                      pinColumn
-                                                          ? "sticky left-0 bg-base-200"
-                                                          : ""
-                                                  }
-                                              >
-                                                  {getStringValue(
-                                                      row[column.accessor],
-                                                  )}
-                                              </td>
-                                          ))}
-                                          <td
-                                              aria-label="table data"
-                                              className="flex space-x-2"
-                                          >
-                                              <Button
-                                                  variant="primary"
-                                                  shape="square"
-                                                  size="sm"
-                                                  aria-label="pin this row"
-                                                  onClick={() =>
-                                                      handlePinRow(row)
-                                                  }
-                                              >
-                                                  {pinnedRows.has(row) ? (
-                                                      <IconOutlineStart
-                                                          fill="white"
-                                                          className="text-white"
-                                                          width={19}
-                                                      />
-                                                  ) : (
-                                                      <IconFillStar
-                                                          className="text-white"
-                                                          width={19}
-                                                      />
-                                                  )}
-                                              </Button>
-                                              <Button
-                                                  variant="secondary"
-                                                  shape="square"
-                                                  size="sm"
-                                                  aria-label="edit this row"
-                                                  onClick={() => {
-                                                      /* handle edit */
-                                                  }}
-                                              >
-                                                  <PencilAltIcon className="h-5 w-5 text-white" />
-                                              </Button>
-                                              <Button
-                                                  variant="error"
-                                                  shape="square"
-                                                  size="sm"
-                                                  aria-label="delete this row"
-                                                  onClick={() =>
-                                                      handleDeleteRow(row)
-                                                  }
-                                                  className="text-white"
-                                              >
-                                                  <TrashIcon className="h-5 w-5 text-white" />
-                                              </Button>
-                                          </td>
-                                      </tr>
+                                          row={row}
+                                          columns={columns}
+                                          selectedRows={selectedRows}
+                                          pinnedRows={pinnedRows}
+                                          pinColumn={pinColumn}
+                                          handleSelectRow={handleSelectRow}
+                                          handlePinRow={handlePinRow}
+                                          handleDeleteRow={handleDeleteRow}
+                                      />
                                   ))}
                     </tbody>
                 </table>
