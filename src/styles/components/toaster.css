@@ -1,0 +1,17 @@
+.toaster {
+    @apply alert;
+
+    /* variants */
+    &-info {
+        @apply alert-info;
+    }
+    &-warning {
+        @apply alert-warning;
+    }
+    &-error {
+        @apply alert-error;
+    }
+    &-success {
+        @apply alert-success;
+    }
+}
