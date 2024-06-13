@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes } from "react";
 import { ComponentBase } from "@/types/component-base.type";
 
 export type TextInputType = "text" | "number" | "email" | "password";
@@ -10,6 +10,4 @@ export type TextInputProps = Omit<
     ComponentBase & {
         type?: TextInputType;
         name: string;
-        startElement?: React.ReactNode;
-        endElement?: React.ReactNode;
     };

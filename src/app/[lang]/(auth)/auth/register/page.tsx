@@ -8,12 +8,7 @@ import { Button } from "@/app/_components/button";
 import { CheckboxInput } from "@/app/_components/inputs/checkbox-input";
 import Link from "next/link";
 import Image from "next/image";
-import {
-    IconKey,
-    IconMail,
-    IconRegister,
-    IconUser,
-} from "@/app/_components/icons";
+import { IconRegister } from "@/app/_components/icons";
 
 const page = () => {
     return (
@@ -27,7 +22,6 @@ const page = () => {
                             name="username"
                             type="text"
                             placeholder="Username"
-                            startElement={<IconUser />}
                         />
                     </div>
                     <div className="w-full space-x-1">
@@ -36,7 +30,6 @@ const page = () => {
                             name="email"
                             placeholder="Email Address"
                             type="email"
-                            startElement={<IconMail />}
                         />
                     </div>
                     <div className="w-full space-x-1">
@@ -45,7 +38,6 @@ const page = () => {
                             name="password"
                             placeholder="Password"
                             type="password"
-                            startElement={<IconKey />}
                         />
                     </div>
 

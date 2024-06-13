@@ -21,7 +21,6 @@ const page = () => {
                             name="email"
                             type="email"
                             placeholder="Email Address"
-                            startElement={<IconMail />}
                         />
                     </div>
 

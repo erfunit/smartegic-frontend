@@ -20,4 +20,5 @@ export { default as IconRegister } from './src/register';
 export { default as IconSearch } from './src/search';
 export { default as IconShow } from './src/show';
 export { default as IconSun } from './src/sun';
+export { default as IconTick } from './src/tick';
 export { default as IconUser } from './src/user';
