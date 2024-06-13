@@ -66,6 +66,6 @@
 
     /* outlined */
     &-outline {
-        @apply btn-outline;
+        @apply btn-outline border-neutral-200 dark:border-neutral-700;
     }
 }

@@ -15,6 +15,8 @@ const TextInput: React.FC<TextInputProps> = forwardRef<
             variant = "bordered",
             type = "text",
             className,
+            startElement = null,
+            endElement = null,
             size = "normal",
             ...rest
         },
@@ -33,6 +35,7 @@ const TextInput: React.FC<TextInputProps> = forwardRef<
 
         return (
             <div className={classes}>
+                {startElement}
                 <input
                     type={getInputType(type, show)}
                     aria-label="text"
@@ -41,6 +44,7 @@ const TextInput: React.FC<TextInputProps> = forwardRef<
                     ref={ref}
                 />
                 {type === "password" && <PasswordToggle setShow={setShow} />}
+                {endElement}
             </div>
         );
     },

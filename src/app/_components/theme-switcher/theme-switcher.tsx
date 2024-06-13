@@ -15,6 +15,8 @@ export const ThemeSwitcher: React.FC = () => {
                     : "light"
                 : "light",
         });
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.remove("light");
     };
 
     return (
@@ -29,9 +31,9 @@ export const ThemeSwitcher: React.FC = () => {
             />
 
             {/* sun icon */}
-            <IconSun className="swap-off" />
+            <IconSun className="swap-on" />
             {/* moon icon */}
-            <IconMoon className="swap-on" />
+            <IconMoon className="swap-off" />
         </label>
     );
 };
