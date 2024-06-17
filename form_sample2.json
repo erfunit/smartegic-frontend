@@ -1,0 +1,325 @@
+{
+    "ok": true,
+    "status": 200,
+    "data": {
+        "name": "organization",
+        "fields": [
+            {
+                "name": "is_published",
+                "default": true,
+                "required": false,
+                "description": null,
+                "type": "bool"
+            },
+            {
+                "name": "name",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "MultilingualString"
+            },
+            {
+                "name": "phone",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Phone"
+            },
+            {
+                "name": "type",
+                "default": 2,
+                "required": false,
+                "description": null,
+                "type": "Enum",
+                "type_name": "OrganizationTypeEnum",
+                "options": [
+                    "SMALL",
+                    "MEDIUM",
+                    "ENTERPRISE"
+                ]
+            },
+            {
+                "name": "dict_list_link",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "Link",
+                    "multiple": true,
+                    "to": "User"
+                }
+            },
+            {
+                "name": "dict_list_cls",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "Class",
+                    "multiple": true,
+                    "type_name": "OrganizationInner",
+                    "fields": [
+                        {
+                            "name": "a",
+                            "default": null,
+                            "required": true,
+                            "description": null,
+                            "type": "str"
+                        },
+                        {
+                            "name": "b",
+                            "default": null,
+                            "required": true,
+                            "description": null,
+                            "type": "int"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "dict_dict_cls",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "Dict",
+                    "key": {
+                        "type": "str"
+                    },
+                    "value": {
+                        "type": "Class",
+                        "type_name": "OrganizationInner",
+                        "fields": [
+                            {
+                                "name": "a",
+                                "default": null,
+                                "required": true,
+                                "description": null,
+                                "type": "str"
+                            },
+                            {
+                                "name": "b",
+                                "default": null,
+                                "required": true,
+                                "description": null,
+                                "type": "int"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "dict_dict_List_cls",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "Dict",
+                    "key": {
+                        "type": "str"
+                    },
+                    "value": {
+                        "type": "Class",
+                        "multiple": true,
+                        "type_name": "OrganizationInner",
+                        "fields": [
+                            {
+                                "name": "a",
+                                "default": null,
+                                "required": true,
+                                "description": null,
+                                "type": "str"
+                            },
+                            {
+                                "name": "b",
+                                "default": null,
+                                "required": true,
+                                "description": null,
+                                "type": "int"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "single_dict",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "int"
+                }
+            },
+            {
+                "name": "single_list",
+                "default": [
+                    1,
+                    2,
+                    3
+                ],
+                "required": false,
+                "description": null,
+                "type": "int",
+                "multiple": true
+            },
+            {
+                "name": "single_link",
+                "default": null,
+                "required": false,
+                "description": null,
+                "type": "Link",
+                "to": "User"
+            },
+            {
+                "name": "single_cls",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Class",
+                "type_name": "OrganizationInner",
+                "fields": [
+                    {
+                        "name": "a",
+                        "default": null,
+                        "required": true,
+                        "description": null,
+                        "type": "str"
+                    },
+                    {
+                        "name": "b",
+                        "default": null,
+                        "required": true,
+                        "description": null,
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "list_link",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Link",
+                "multiple": true,
+                "to": "User"
+            },
+            {
+                "name": "list_cls",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Class",
+                "multiple": true,
+                "type_name": "OrganizationInner",
+                "fields": [
+                    {
+                        "name": "a",
+                        "default": null,
+                        "required": true,
+                        "description": null,
+                        "type": "str"
+                    },
+                    {
+                        "name": "b",
+                        "default": null,
+                        "required": true,
+                        "description": null,
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "list_dict",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "multiple": true,
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "int"
+                }
+            },
+            {
+                "name": "dict_cls",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "Class",
+                    "type_name": "OrganizationInner",
+                    "fields": [
+                        {
+                            "name": "a",
+                            "default": null,
+                            "required": true,
+                            "description": null,
+                            "type": "str"
+                        },
+                        {
+                            "name": "b",
+                            "default": null,
+                            "required": true,
+                            "description": null,
+                            "type": "int"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "dict_link",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "Link",
+                    "to": "User"
+                }
+            },
+            {
+                "name": "dict_list",
+                "default": null,
+                "required": true,
+                "description": null,
+                "type": "Dict",
+                "key": {
+                    "type": "str"
+                },
+                "value": {
+                    "type": "int",
+                    "multiple": true
+                }
+            }
+        ]
+    }
+}
