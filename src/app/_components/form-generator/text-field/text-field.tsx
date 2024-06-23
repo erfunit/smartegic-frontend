@@ -4,14 +4,23 @@ import { FormFieldProps } from "@/types/input-fields.type";
 import TextInput from "@/app/_components/inputs/text-input/text-input";
 import { TextInputType } from "../../inputs/text-input/text-input.types";
 
-export const TextField = ({ field, register, errors }: FormFieldProps) => {
+type TextFieldProps = Omit<FormFieldProps, "type"> & {
+    type?: "number" | "text" | "email" | "password";
+};
+
+export const TextField: React.FC<TextFieldProps> = ({
+    field,
+    register,
+    errors,
+}) => {
     const registerProps = register(field.name, getRegisterOptions(field));
 
     return (
         <TextInput
             type={field?.type as TextInputType}
-            placeholder={field.placeholder}
-            accept={field.accept}
+            placeholder={
+                field.description === null ? undefined : field.description
+            }
             className={`input input-bordered ${
                 errors[field.name] ? "input-error" : ""
             }`}

@@ -6,7 +6,7 @@ import clsx from "clsx";
 import "react-phone-number-input/style.css";
 import { PhoneInputProps } from "./phone-input.types"; // Define your types
 
-const PhoneNumberInputV2: React.FC<PhoneInputProps> = forwardRef<
+const PhoneNumberInput: React.FC<PhoneInputProps> = forwardRef<
     HTMLInputElement,
     PhoneInputProps
 >(
@@ -51,6 +51,6 @@ const PhoneNumberInputV2: React.FC<PhoneInputProps> = forwardRef<
     },
 );
 
-PhoneNumberInputV2.displayName = "PhoneNumberInputV2";
+PhoneNumberInput.displayName = "PhoneNumberInput";
 
-export default PhoneNumberInputV2;
+export default PhoneNumberInput;

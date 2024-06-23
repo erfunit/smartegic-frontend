@@ -14,6 +14,7 @@ const FormGenerator: React.FC<FormGeneratorProps> = ({
     onSubmit,
     className,
     title,
+    languages,
 }) => {
     const {
         register,
@@ -27,10 +28,10 @@ const FormGenerator: React.FC<FormGeneratorProps> = ({
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={classes}>
             {title && <span className="text-xl font-bold">{title}</span>}
-            {schema.map((field) => (
+            {schema?.map((field) => (
                 <div key={field.name} className="form-control">
-                    <Label>{field.label}</Label>
-                    {renderField(field, register, errors)}
+                    <Label>{field.description}</Label>
+                    {renderField(field, register, errors, languages)}
                     {errors[field.name] && (
                         <FieldError>
                             {errors[field.name]?.message as string}

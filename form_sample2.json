@@ -8,41 +8,37 @@
                 "name": "is_published",
                 "default": true,
                 "required": false,
-                "description": null,
+                "description": "is published",
                 "type": "bool"
             },
             {
                 "name": "name",
-                "default": null,
+                "default": "name",
                 "required": true,
-                "description": null,
+                "description": "business name",
                 "type": "MultilingualString"
             },
             {
                 "name": "phone",
                 "default": null,
                 "required": true,
-                "description": null,
+                "description": "phone number",
                 "type": "Phone"
             },
             {
                 "name": "type",
                 "default": 2,
                 "required": false,
-                "description": null,
+                "description": "select test",
                 "type": "Enum",
                 "type_name": "OrganizationTypeEnum",
-                "options": [
-                    "SMALL",
-                    "MEDIUM",
-                    "ENTERPRISE"
-                ]
+                "options": ["SMALL", "MEDIUM", "ENTERPRISE"]
             },
             {
                 "name": "dict_list_link",
                 "default": null,
                 "required": true,
-                "description": null,
+                "description": "dict test",
                 "type": "Dict",
                 "key": {
                     "type": "str"
@@ -172,11 +168,7 @@
             },
             {
                 "name": "single_list",
-                "default": [
-                    1,
-                    2,
-                    3
-                ],
+                "default": [1, 2, 3],
                 "required": false,
                 "description": null,
                 "type": "int",

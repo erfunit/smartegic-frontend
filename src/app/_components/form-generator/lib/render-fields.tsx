@@ -1,66 +1,119 @@
 import React from "react";
-
 import { FormField } from "@/types/form-generator.type";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import { CheckboxField } from "../checkbox-field/checkbox-field";
-import { RadioField } from "../radio-field/radio-field";
-import { TextField } from "../text-field/text-field";
-import { Dropdown } from "../dropdown/dropdown";
-import { TextAreaField } from "../text-area-field";
-import { FileInputField } from "../file-input-field";
-import { RangeField } from "../range-field/range-field";
+import { UseFormRegister, FieldErrors, FieldValues } from "react-hook-form";
+import { TextField } from "../text-field";
+import { CheckboxField } from "../checkbox-field";
+import { Dropdown } from "../dropdown";
+import { ListField } from "../list-field/list-field";
+import { DictField } from "../dict-field/dict-field";
+import PhoneNumberInput from "../../inputs/phone-input/phone-input";
+import { ClassField } from "../class-field/class-field";
 
 export const renderField = (
     field: FormField,
     register: UseFormRegister<FieldValues>,
     errors: FieldErrors<FieldValues>,
+    languages: string[] = ["en", "fa"],
 ): React.JSX.Element | null => {
+    if (field.multiple) {
+        return (
+            <ListField
+                key={field.name}
+                field={field}
+                register={register}
+                errors={errors}
+                languages={languages}
+            />
+        );
+    }
+
     switch (field.type) {
-        case "text":
-        case "email":
-        case "password":
-        case "number":
-        case "date":
-            return (
-                <TextField field={field} register={register} errors={errors} />
-            );
-        case "file":
-            return (
-                <FileInputField
-                    field={field}
-                    register={register}
-                    errors={errors}
-                />
-            );
-        case "textarea":
-            return (
-                <TextAreaField
-                    field={field}
-                    register={register}
-                    errors={errors}
-                />
-            );
-        case "select":
-            return (
-                <Dropdown field={field} register={register} errors={errors} />
-            );
-        case "radio":
-            return (
-                <RadioField field={field} register={register} errors={errors} />
-            );
-        case "checkbox":
+        case "bool":
             return (
                 <CheckboxField
+                    key={field.name}
+                    field={{ ...field, options: [field.description!] }}
+                    register={register}
+                    errors={errors}
+                />
+            );
+        case "MultilingualString":
+            return (
+                <div>
+                    {languages.map((lang) => (
+                        <TextField
+                            key={lang}
+                            field={{
+                                ...field,
+                                name: `${field.name}[${lang}]`,
+                                description: `${field.description} (${lang})`,
+                            }}
+                            register={register}
+                            errors={errors}
+                        />
+                    ))}
+                </div>
+            );
+
+        case "Phone":
+            return (
+                <PhoneNumberInput
+                    onChange={() => false}
+                    key={field.name}
                     field={field}
                     register={register}
                     errors={errors}
                 />
             );
-        case "range":
+        case "Enum":
             return (
-                <RangeField field={field} register={register} errors={errors} />
+                <Dropdown
+                    key={field.name}
+                    field={field}
+                    register={register}
+                    errors={errors}
+                />
             );
+        case "Dict":
+            return (
+                <DictField
+                    key={field.name}
+                    field={field}
+                    register={register}
+                    errors={errors}
+                    languages={languages}
+                />
+            );
+        case "Class":
+            return (
+                <ClassField
+                    key={field.name}
+                    field={field}
+                    register={register}
+                    errors={errors}
+                    languages={languages}
+                />
+            );
+        case "Link":
+            return (
+                <Dropdown
+                    to={field.to}
+                    key={field.name}
+                    field={field}
+                    register={register}
+                    errors={errors}
+                />
+            );
+        case "int":
+        case "str":
         default:
-            return null;
+            return (
+                <TextField
+                    key={field.name}
+                    field={field}
+                    register={register}
+                    errors={errors}
+                />
+            );
     }
 };

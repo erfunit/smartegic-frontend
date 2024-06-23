@@ -7,9 +7,10 @@ import FormGenerator from "../form-generator/form-generator";
 import { FormField } from "@/types/form-generator.type";
 import { useToastStore } from "@/stores/toast.store";
 
-const FormComponent: React.FC<{ formSchema: FormField[] }> = ({
-    formSchema,
-}) => {
+const FormComponent: React.FC<{
+    formSchema: FormField[];
+    languages?: string[];
+}> = ({ formSchema, languages = ["en", "fa"] }) => {
     const showToast = useToastStore((state) => state.showToast);
     const methods = useForm<FormData>();
 
@@ -23,7 +24,11 @@ const FormComponent: React.FC<{ formSchema: FormField[] }> = ({
 
     return (
         <FormProvider {...methods}>
-            <FormGenerator onSubmit={onSubmit} schema={formSchema} />
+            <FormGenerator
+                onSubmit={onSubmit}
+                schema={formSchema}
+                languages={languages}
+            />
         </FormProvider>
     );
 };

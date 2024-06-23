@@ -5,13 +5,12 @@ import clsx from "clsx";
 import { TextInputProps, TextInputType } from "./text-input.types";
 import { PasswordToggle } from "./password-toggle";
 import { getInputType } from "./get-input-type";
-import { IconKey } from "../../icons";
-import { MailIcon } from "@heroicons/react/solid";
+import { IconKey, IconMail } from "../../icons";
 
 const inputIcons: Record<TextInputType, React.ReactNode> = {
-    email: <MailIcon />,
+    email: <IconMail width={19} height={19} />,
     number: null,
-    password: <IconKey />,
+    password: <IconKey width={19} height={19} />,
     text: null,
 };
 

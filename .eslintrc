@@ -51,6 +51,7 @@
         "import/no-extraneous-dependencies": "off",
         "arrow-body-style": "off",
         "react/function-component-definition": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
         "import/prefer-default-export": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "global-require": "off",

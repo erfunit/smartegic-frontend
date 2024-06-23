@@ -3,8 +3,18 @@ import { FormFieldProps } from "@/types/input-fields.type";
 import { getRegisterOptions } from "@/lib/get-reg-options";
 import { SelectInput } from "../../inputs/select-input/select-input";
 
-export const Dropdown = ({ field, register, errors }: FormFieldProps) => {
+type DropdownProps = FormFieldProps & {
+    to?: string;
+};
+
+export const Dropdown: React.FC<DropdownProps> = ({
+    field,
+    register,
+    errors,
+    to,
+}) => {
     const registerProps = register(field.name, getRegisterOptions(field));
+    console.log(to);
     return (
         <SelectInput
             variant="bordered"
