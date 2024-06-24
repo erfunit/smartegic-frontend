@@ -3,6 +3,8 @@ import { FormField } from "@/types/form-generator.type";
 import { UseFormRegister, FieldErrors, FieldValues } from "react-hook-form";
 import { TextField } from "../text-field";
 import { renderField } from "../lib/render-fields";
+import { IconClose, IconPlus } from "../../icons";
+import { Button } from "../../button";
 
 interface DictFieldProps {
     field: FormField;
@@ -17,7 +19,7 @@ export const DictField: React.FC<DictFieldProps> = ({
     errors,
     languages,
 }) => {
-    const [items, setItems] = React.useState([...(field.default || [])]);
+    const [items, setItems] = React.useState([...(field.default || [{}])]);
 
     const addItem = () => {
         setItems([...items, {}]);
@@ -28,7 +30,7 @@ export const DictField: React.FC<DictFieldProps> = ({
     };
 
     return (
-        <div>
+        <div className="space-y-2">
             <label>{field.description}</label>
             {items.map((item, index) => (
                 <div key={index} className="flex items-center space-x-2">
@@ -54,14 +56,27 @@ export const DictField: React.FC<DictFieldProps> = ({
                         errors,
                         languages,
                     )}
-                    <button type="button" onClick={() => removeItem(index)}>
-                        X
-                    </button>
+                    <Button
+                        variant="error"
+                        shape="square"
+                        aria-label="delete item"
+                        type="button"
+                        onClick={() => removeItem(index)}
+                    >
+                        <IconClose />
+                    </Button>
                 </div>
             ))}
-            <button type="button" onClick={addItem}>
-                +
-            </button>
+            <Button
+                variant="primary"
+                // shape="square"
+                aria-label="add item"
+                type="button"
+                onClick={addItem}
+            >
+                Add Item
+                <IconPlus />
+            </Button>
         </div>
     );
 };

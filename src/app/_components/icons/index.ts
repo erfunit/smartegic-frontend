@@ -14,6 +14,7 @@ export { default as IconMail } from './src/mail';
 export { default as IconMoon } from './src/moon';
 export { default as IconNavigationToggle } from './src/navigation-toggle';
 export { default as IconOutlineStart } from './src/outline-start';
+export { default as IconPlus } from './src/plus';
 export { default as IconPrice } from './src/price';
 export { default as IconProfile } from './src/profile';
 export { default as IconRegister } from './src/register';

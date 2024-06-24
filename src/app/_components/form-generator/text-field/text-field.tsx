@@ -21,9 +21,7 @@ export const TextField: React.FC<TextFieldProps> = ({
             placeholder={
                 field.description === null ? undefined : field.description
             }
-            className={`input input-bordered ${
-                errors[field.name] ? "input-error" : ""
-            }`}
+            className={`w-full ${errors[field.name] ? "input-error" : ""}`}
             {...registerProps}
         />
     );

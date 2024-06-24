@@ -39,7 +39,7 @@ export const renderField = (
             );
         case "MultilingualString":
             return (
-                <div>
+                <div className="flex gap-3 flex-col md:flex-row items-center justify-center">
                     {languages.map((lang) => (
                         <TextField
                             key={lang}

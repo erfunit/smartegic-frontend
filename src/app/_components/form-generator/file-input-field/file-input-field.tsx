@@ -15,8 +15,8 @@ export const FileInputField = ({ field, errors }: FormFieldProps) => {
             render={({ field: { onChange } }) => (
                 <FileInput
                     variant="bordered"
-                    acceptFormat={field.accept}
-                    placeholder={field.placeholder}
+                    // acceptFormat={field?.accept}
+                    placeholder={field.description || undefined}
                     className={`${errors[field.name] ? "input-error" : ""}`}
                     onChange={onChange}
                 />
