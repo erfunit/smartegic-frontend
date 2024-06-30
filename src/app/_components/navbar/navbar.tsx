@@ -9,7 +9,7 @@ import {
     IconNavigationToggle,
     IconProfile,
     IconSearch,
-} from "../icons/icons";
+} from "../icons";
 import useAppConfig from "@/hooks/use-app-config";
 import { NavigationMenu } from "../nav-menu/navigation-menu";
 import { ThemeSwitcher } from "../theme-switcher";

@@ -3,12 +3,12 @@ import "@/app/globals.css";
 
 import { Metadata } from "next";
 import QueryProvider from "src/providers/react-query";
-import ReduxProvider from "src/providers/redux";
 
 import { Locale, i18n } from "../../../i18n.config";
 import { vazirmatm } from "@/lib/fonts";
 import { AppConfigProvider } from "@/context/app-config-context";
 import { ThemeProvider } from "@/providers/theme/theme-provider";
+import { Toaster } from "../_components/toast/toaster";
 
 export const metadata: Metadata = {
     title: "Smartegic Home",
@@ -35,7 +35,8 @@ export default function RootLayout({
                 <AppConfigProvider>
                     <ThemeProvider>
                         <QueryProvider>
-                            <ReduxProvider>{children}</ReduxProvider>
+                            <Toaster />
+                            {children}
                         </QueryProvider>
                     </ThemeProvider>
                 </AppConfigProvider>

@@ -2,7 +2,7 @@
 
 import useAppConfig from "@/hooks/use-app-config";
 import React from "react";
-import { IconMoon, IconSun } from "../icons/icons";
+import { IconMoon, IconSun } from "../icons";
 
 export const ThemeSwitcher: React.FC = () => {
     const { config, setConfig } = useAppConfig("app-config");

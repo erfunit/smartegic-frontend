@@ -1,11 +1,13 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { RadioGroupProps } from "./radio-group.types";
 import { RadioInput } from "./radio-input";
 
-export const RadioGroup: React.FC<RadioGroupProps> = forwardRef<
-    HTMLInputElement,
-    RadioGroupProps
->(({ className, items, variant, inputProps }) => {
+export const RadioGroup: React.FC<RadioGroupProps> = ({
+    className,
+    items,
+    variant,
+    inputProps,
+}) => {
     return (
         <div className="flex items-center gap-3 flex-wrap">
             {items?.map((option) => (
@@ -19,4 +21,4 @@ export const RadioGroup: React.FC<RadioGroupProps> = forwardRef<
             ))}
         </div>
     );
-});
+};

@@ -24,7 +24,6 @@ const TextInput: React.FC<TextInputProps> = forwardRef<
 
         const classes = clsx(
             "flex gap-2 items-center textinput",
-            "w-full",
             {
                 [`textinput-${variant}`]: !!variant,
                 [`textinput-${size}`]: !!size,
