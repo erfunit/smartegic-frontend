@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-// const daisy = "";
 module.exports = {
     safelist: [
         // Column span classes
@@ -21,7 +20,7 @@ module.exports = {
         ),
     ],
     purge: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
-    darkMode: false, // or 'media' or 'class'
+    darkMode: "class", // or 'media' or 'class'
     theme: {
         extend: {
             spacing: {

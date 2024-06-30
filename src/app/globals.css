@@ -25,11 +25,6 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     /* Revert text color */
-    -webkit-text-fill-color: black !important;
-    color: black !important;
-    caret-color: black !important;
-
-    /* Revert background color */
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -38,9 +33,4 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
 }

@@ -30,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
         { [`button-${variant}`]: variant },
         { [`button-${size}`]: size },
         { "button-outline": isOutline },
-        { "button-link": isLink },
+        { "button-link p-0 w-fit": isLink },
         { [`${shapeClasses[shape]}`]: shape },
         { "pointer-events-none opacity-80": isLoading },
         className,
