@@ -12,7 +12,7 @@ const shapeClasses: Record<ButtonShape, `button-${ButtonShape}` | ""> = {
 };
 
 export const Button: React.FC<ButtonProps> = ({
-    variant,
+    variant = "default",
     size = "md",
     isDisabled = false,
     isOutline = false,
@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
     const classes = clsx(
         "button",
-        { [`button-${variant}`]: variant },
+        { [`button-${variant}`]: variant !== "default" },
         { [`button-${size}`]: size },
         { "button-outline": isOutline },
         { "button-link p-0 w-fit": isLink },

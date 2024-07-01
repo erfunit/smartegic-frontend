@@ -20,4 +20,5 @@ export type ButtonVariants =
     | "info"
     | "success"
     | "warning"
-    | "error";
+    | "error"
+    | "default";

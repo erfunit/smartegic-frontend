@@ -1,5 +1,6 @@
 import { useModalContext } from "@/context/confirm-context";
 import React from "react";
+import { Button } from "../button";
 
 interface ConfirmationModalProps {
     message: string;
@@ -18,12 +19,12 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
                 <h3 className="font-bold text-lg">Confirmation</h3>
                 <p className="py-4">{message}</p>
                 <div className="modal-action">
-                    <button className="btn" onClick={hideModal}>
+                    <Button variant="default" onClick={hideModal}>
                         Cancel
-                    </button>
-                    <button className="btn btn-primary" onClick={onConfirm}>
+                    </Button>
+                    <Button variant="primary" onClick={onConfirm}>
                         OK
-                    </button>
+                    </Button>
                 </div>
             </div>
         </dialog>
