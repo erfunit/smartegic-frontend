@@ -1,6 +1,7 @@
 import React from "react";
 import { Column } from "../table.types";
 import { getStringValue } from "@/lib/get-string-value";
+import useConfirm from "@/hooks/use-confirm";
 
 export const useTable = <T>(
     data: T[] | undefined,
@@ -97,6 +98,11 @@ export const useTable = <T>(
         });
     }, []);
 
+    const withConfirmDeleteRow = useConfirm(
+        handleDeleteRow,
+        "Are you sure you want to delete this row?",
+    );
+
     return {
         duplicatedData,
         searchTerm,
@@ -111,7 +117,7 @@ export const useTable = <T>(
         rowsPerPage,
         handleChangeRowsPerPage,
         handleChangePage,
-        handleDeleteRow,
+        handleDeleteRow: withConfirmDeleteRow,
         filteredData,
         pinColumn,
         setPinColumn,

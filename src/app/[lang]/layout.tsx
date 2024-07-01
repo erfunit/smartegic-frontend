@@ -9,6 +9,7 @@ import { vazirmatm } from "@/lib/fonts";
 import { AppConfigProvider } from "@/context/app-config-context";
 import { ThemeProvider } from "@/providers/theme/theme-provider";
 import { Toaster } from "../_components/toast/toaster";
+import { ModalProvider } from "@/context/confirm-context";
 
 export const metadata: Metadata = {
     title: "Smartegic Home",
@@ -35,8 +36,10 @@ export default function RootLayout({
                 <AppConfigProvider>
                     <ThemeProvider>
                         <QueryProvider>
-                            <Toaster />
-                            {children}
+                            <ModalProvider>
+                                <Toaster />
+                                {children}
+                            </ModalProvider>
                         </QueryProvider>
                     </ThemeProvider>
                 </AppConfigProvider>
