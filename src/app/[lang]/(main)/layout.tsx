@@ -9,12 +9,12 @@ const NavigationMenu = dynamic(
         import("@/app/_components/nav-menu/navigation-menu").then(
             (mod) => mod.NavigationMenu,
         ),
-    { ssr: false },
+    { ssr: true },
 );
 
 const Navbar = dynamic(
     () => import("@/app/_components/navbar/navbar").then((mod) => mod.Navbar),
-    { ssr: false },
+    { ssr: true },
 );
 
 export default async function MainLayout({
