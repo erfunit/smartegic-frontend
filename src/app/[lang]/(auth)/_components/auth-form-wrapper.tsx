@@ -5,7 +5,7 @@ import React from "react";
 
 export const AuthFormWrapper: React.FC = ({ children }) => {
     return (
-        <div className="col-span-12  lg:col-span-5 xl:col-span-4 2xl:col-span-3">
+        <div className="col-span-12 bg-white dark:bg-base-100 lg:col-span-5 xl:col-span-4 2xl:col-span-3">
             <div className="flex flex-col items-stretch p-8 lg:p-16">
                 <div className="flex items-center justify-between">
                     <Logo />
