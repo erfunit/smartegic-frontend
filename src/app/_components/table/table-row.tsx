@@ -52,7 +52,7 @@ export const TableRow = <T,>({
                     {getStringValue(row[column.accessor])}
                 </td>
             ))}
-            <td aria-label="table data" className="flex space-x-2">
+            <td aria-label="table data" className="flex gap-x-2">
                 <Button
                     variant="primary"
                     shape="square"
