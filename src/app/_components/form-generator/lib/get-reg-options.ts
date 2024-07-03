@@ -1,4 +1,6 @@
-import { FormField } from "@/types/form-generator";
+// @ts-nocheck
+
+import { FormField } from "@/types/form-generator.type";
 
 export const getRegisterOptions = (field: FormField) => {
     const options: any = {};

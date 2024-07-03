@@ -7,9 +7,9 @@ export const RangeField = ({ field, register, errors }: FormFieldProps) => {
 
     return (
         <RangeInput
-            min={field.min}
-            max={field.max}
-            step={field.step}
+            min={field?.min}
+            max={field?.max}
+            step={field?.step}
             {...registerProps}
             className={`range ${errors[field.name] ? "range-error" : ""}`}
         />

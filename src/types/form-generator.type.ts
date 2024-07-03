@@ -20,6 +20,9 @@ export interface FormField {
     type_name?: string;
     options?: string[];
     multiple?: boolean;
+    min?: number;
+    max?: number;
+    step?: number;
     to?: string;
     fields?: FormField[];
     key?: {
