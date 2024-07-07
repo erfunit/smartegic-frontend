@@ -25,7 +25,12 @@ export const ToastItem: React.FC<ToastItemProps> = ({
     const dismissToast = useToastStore((state) => state.dismissToast);
 
     return (
-        <div className={`toaster toaster-${type}`}>
+        <div
+            className={`toaster toaster-${type} gap-3`}
+            style={{
+                display: "flex",
+            }}
+        >
             <div className={``}>{notificationIcons[type]} </div>
             <div>{message}</div>
             <button

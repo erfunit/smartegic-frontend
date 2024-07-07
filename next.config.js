@@ -1,4 +1,5 @@
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+require("dotenv").config();
 
 module.exports = {
     compiler: {
@@ -25,21 +26,10 @@ module.exports = {
 
         return config;
     },
-    images: {
-        remotePatterns: [
-            {
-                protocol: "https",
-                hostname: "cdn.discordapp.com",
-                port: "",
-                pathname: "**",
-            },
-            {
-                protocol: "https",
-                hostname: "flagcdn.com",
-            },
-        ],
-    },
     experimental: {
         webVitalsAttribution: ["CLS", "LCP"],
+    },
+    env: {
+        API_URL: process.env.API_URL,
     },
 };

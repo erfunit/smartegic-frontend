@@ -34,3 +34,7 @@ export const useToastStore = create<ToastState>((set, get) => ({
         }));
     },
 }));
+
+export const showToast = (notifications: Omit<Toast, "id">[]) => {
+    notifications.forEach((p) => useToastStore.getState().showToast(p));
+};
