@@ -59,7 +59,12 @@ export function middleware(request: NextRequest): NextResponse | undefined {
             new URL(`/${localePath}/auth/login`, request.url),
         );
     }
-
+    if (
+        accessToken !== undefined &&
+        pathname.startsWith(`/${localePath}/auth/`)
+    ) {
+        return NextResponse.redirect(new URL(`/${localePath}/`, request.url));
+    }
     return NextResponse.next();
 }
 
