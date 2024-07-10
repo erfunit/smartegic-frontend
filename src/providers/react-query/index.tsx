@@ -32,7 +32,6 @@ const QueryProvider: React.FC = ({ children }) => {
                 mutationCache: new MutationCache({
                     onError: (error: unknown) => {
                         showNotifications(error as any);
-                        console.log(error);
                     },
                 }),
             }),

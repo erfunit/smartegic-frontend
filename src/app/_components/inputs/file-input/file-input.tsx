@@ -17,7 +17,6 @@ const FileInput: React.FC<FileInputProps> = ({
 
     useEffect(() => {
         if (files.length > 0) {
-            console.log(files);
             onChange?.(files);
         }
     }, [files, onChange]);

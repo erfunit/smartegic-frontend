@@ -7,7 +7,7 @@ import { getDictionary } from "@/lib/dictionary";
 import FormComponent from "@/app/_components/form/form";
 import { getFormSchema } from "@/app/_components/form-generator/lib/get-form-schema";
 
-const Home = async ({
+const HomePage = async ({
     params: { lang },
 }: {
     params: { lang: Locale };
@@ -25,4 +25,4 @@ const Home = async ({
     );
 };
 
-export default Home;
+export default HomePage;

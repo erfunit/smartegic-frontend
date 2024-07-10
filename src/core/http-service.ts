@@ -17,7 +17,6 @@ const httpService = axios.create({
 httpService.interceptors.response.use(
     (response) => response,
     (error) => {
-        console.log(error.response.data.error[0].type);
         if (error.response.data.error[0].type === "UserAlreadyExist") {
             showToast([
                 {

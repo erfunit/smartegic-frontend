@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { FormEvent } from "react";
 import { AuthFormWrapper } from "../../_components/auth-form-wrapper";
 import { AuthFormTitle } from "../../_components/auth-form-title";
 import { AuthFormContainer } from "../../_components/auth-form-container";
@@ -9,13 +11,24 @@ import { CheckboxInput } from "@/app/_components/inputs/checkbox-input";
 import Link from "next/link";
 import Image from "next/image";
 import { IconLogin } from "@/app/_components/icons";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+const LoginPage = () => {
+    const router = useRouter();
+    const onSubmitHanlder = async (event: FormEvent) => {
+        event.preventDefault();
+        await fetch("/api/auth/", {
+            method: "POST",
+        })
+            .then((res) => res.json())
+            .then(console.log);
+        router.replace("/");
+    };
     return (
         <AuthFormWrapper>
             <AuthFormTitle title="Login" />
             <AuthFormContainer>
-                <form action="" className="space-y-3">
+                <form onSubmit={onSubmitHanlder} className="space-y-3">
                     <div className="w-full space-x-1">
                         <Label>Email Address</Label>
                         <TextInput name="email" type="email" />
@@ -44,6 +57,7 @@ const page = () => {
                         </Label>
                     </div>
                     <Button
+                        type="submit"
                         variant="primary"
                         shape="block"
                         className="items-center flex"
@@ -71,4 +85,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default LoginPage;

@@ -4,7 +4,6 @@ import React from "react";
 import clsx from "clsx";
 import useAppConfig from "@/hooks/use-app-config";
 import { Logo } from "../logo";
-import { navigationItems } from "./navigation-items";
 import { NavigationItemComponent } from "./navigation-item";
 import { NavigationItem } from "./_types/navigations";
 
@@ -18,11 +17,6 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
     navItems,
 }) => {
     const { config } = useAppConfig("app-config");
-
-    console.log({
-        navItems,
-        navigationItems,
-    });
 
     // if (drawer) return null;
     return (

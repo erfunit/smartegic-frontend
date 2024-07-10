@@ -13,8 +13,7 @@ const FormComponent: React.FC<{
     const showToast = useToastStore((state) => state.showToast);
     const methods = useForm<FormData>();
 
-    const onSubmit: SubmitHandler<Record<string, any>> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<Record<string, any>> = () => {
         showToast({
             type: "success",
             message: "your information is submitted",

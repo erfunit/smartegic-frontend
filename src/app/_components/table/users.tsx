@@ -22,10 +22,9 @@ const Users: React.FC = () => {
             .then((response) => response.json())
             .then((data) => {
                 setUsers(data);
-                console.log(data);
             })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
+            .catch(() => {
+                // console.error("Error fetching data:", error);
             })
             .finally(() => {
                 setLoading(() => false);

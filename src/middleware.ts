@@ -22,6 +22,7 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest): NextResponse | undefined {
     const { pathname } = request.nextUrl;
     const localeFromCookie = request.cookies.get("NEXT_LOCALE")?.value;
+    const accessToken = request.cookies.get("access-token")?.value;
 
     // Handle root path
     if (pathname === "/") {
@@ -44,6 +45,19 @@ export function middleware(request: NextRequest): NextResponse | undefined {
                 new URL(`/${locale}${pathname}`, request.url),
             );
         }
+    }
+
+    // Check if the path starts with a locale
+    const localePath = i18n.locales.find((locale) =>
+        pathname.startsWith(`/${locale}/`),
+    );
+    if (
+        !pathname.startsWith(`/${localePath}/auth/`) &&
+        accessToken === undefined
+    ) {
+        return NextResponse.redirect(
+            new URL(`/${localePath}/auth/login`, request.url),
+        );
     }
 
     return NextResponse.next();
