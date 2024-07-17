@@ -11,7 +11,7 @@ import Link from "next/link";
 import { IconRegister } from "@/app/_components/icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterSchema, RegisterSchemaType } from "./_schema/register.type";
+import { RegisterSchema, RegisterSchemaType } from "./_schema/register.schema";
 import { FieldError } from "@/app/_components/Typography/FieldError";
 import { useRegister } from "./_api/register";
 import { useRouter } from "next/navigation";

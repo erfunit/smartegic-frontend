@@ -13,13 +13,13 @@ import Link from "next/link";
 import { IconRegister } from "@/app/_components/icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterSchema, RegisterSchemaType } from "./_schema/setotp.types";
+import { RegisterSchema, RegisterSchemaType } from "./_schema/setotp.schema";
 import { FieldError } from "@/app/_components/Typography/FieldError";
 import { useSetotp } from "./_api/setotp";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useToastStore } from "@/stores/toast.store";
 
-const SetotpPage = () => {
+const SetotpPage: React.FC = () => {
     const {
         register,
         handleSubmit,

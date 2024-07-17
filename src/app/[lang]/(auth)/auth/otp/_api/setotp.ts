@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { RegisterSchemaType } from "../_schema/setotp.types";
+import { RegisterSchemaType } from "../_schema/setotp.schema";
 import { createData } from "@/core/http-service";
 
 const setotp = async (

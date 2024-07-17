@@ -13,13 +13,18 @@ const httpService = axios.create({
     headers: {
         "Content-Type": "application/json",
     },
+    withCredentials: true,
 });
 
 httpService.interceptors.response.use(
     (response) => response,
     (error) => {
         const axiosError: AxiosError = error as AxiosError;
-        httpErrors[axiosError?.response?.status as keyof typeof httpErrors]();
+        const url: string | undefined = axiosError.config?.url;
+        httpErrors[axiosError?.response?.status as keyof typeof httpErrors](
+            error,
+            url,
+        );
     },
 );
 
