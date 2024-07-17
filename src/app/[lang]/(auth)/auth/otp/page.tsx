@@ -7,40 +7,44 @@ import { AuthFormContainer } from "../../_components/auth-form-container";
 import { TextInput } from "@/app/_components/inputs/text-input";
 import { Label } from "@/app/_components/Typography/Label";
 import { Button } from "@/app/_components/button";
+// import { CheckboxInput } from "@/app/_components/inputs/checkbox-input";
 import Link from "next/link";
+// import Image from "next/image";
 import { IconRegister } from "@/app/_components/icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterSchema, RegisterSchemaType } from "./_schema/register.type";
+import { RegisterSchema, RegisterSchemaType } from "./_schema/setotp.types";
 import { FieldError } from "@/app/_components/Typography/FieldError";
-import { useRegister } from "./_api/register";
-import { useRouter } from "next/navigation";
+import { useSetotp } from "./_api/setotp";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useToastStore } from "@/stores/toast.store";
 
-const RegisterPage = () => {
+const SetotpPage = () => {
     const {
         register,
         handleSubmit,
-        getValues,
         formState: { errors },
     } = useForm<RegisterSchemaType>({
         resolver: zodResolver(RegisterSchema),
     });
     const router = useRouter();
     const showToast = useToastStore((state) => state.showToast);
+    const searchParams = useSearchParams();
+    const email: string | null = searchParams.get("email");
 
-    const registerHandler = useRegister({
+    const registerHandler = useSetotp({
         onSuccess: () => {
-            router.push(`/auth/otp?email=${getValues("email")}`);
+            router.push(`/auth/login`);
             showToast({
-                message: "verification code is sent!",
+                message: "registeration succeeded",
                 type: "success",
             });
         },
     });
 
     const onSubmit: SubmitHandler<RegisterSchemaType> = (data) => {
-        registerHandler.submit(data);
+        if (!email) router.push("/auth/register");
+        registerHandler.submit({ ...data, email });
     };
 
     return (
@@ -53,15 +57,41 @@ const RegisterPage = () => {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className="w-full space-y-1">
-                        <Label>Email Address</Label>
+                        <Label>Verification code</Label>
                         <TextInput
-                            {...register("email")}
-                            name="email"
-                            placeholder="Email Address"
-                            type="email"
+                            {...register("otp")}
+                            name="otp"
+                            placeholder="Verification code"
+                            type="text"
                         />
-                        {errors.email?.message && (
-                            <FieldError>{errors.email.message}</FieldError>
+                        {errors.otp?.message && (
+                            <FieldError>{errors.otp.message}</FieldError>
+                        )}
+                    </div>
+                    <div className="w-full space-y-1">
+                        <Label>Password</Label>
+                        <TextInput
+                            {...register("password")}
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                        />
+                        {errors.password?.message && (
+                            <FieldError>{errors.password.message}</FieldError>
+                        )}
+                    </div>
+                    <div className="w-full space-y-1">
+                        <Label>confirmPassword</Label>
+                        <TextInput
+                            {...register("confirmPassword")}
+                            name="confirmPassword"
+                            placeholder="confirmPassword"
+                            type="password"
+                        />
+                        {errors.confirmPassword?.message && (
+                            <FieldError>
+                                {errors.confirmPassword.message}
+                            </FieldError>
                         )}
                     </div>
                     <Button
@@ -69,10 +99,10 @@ const RegisterPage = () => {
                         shape="block"
                         type="submit"
                         isDisabled={registerHandler.isPending}
-                        className="items-center flex"
+                        className="items-center flex mt-3"
                     >
                         <IconRegister />
-                        Get verification code
+                        Register
                     </Button>
                 </form>
                 <div className="flex mt-3">
@@ -91,4 +121,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage;
+export default SetotpPage;

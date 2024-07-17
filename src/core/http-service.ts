@@ -1,11 +1,12 @@
 import { API_URL } from "@/configs/global";
-import { showToast } from "@/stores/toast.store";
 
 import axios, {
+    AxiosError,
     AxiosRequestConfig,
     AxiosRequestHeaders,
     AxiosResponse,
 } from "axios";
+import { httpErrors } from "./http-errors";
 
 const httpService = axios.create({
     baseURL: API_URL,
@@ -17,17 +18,8 @@ const httpService = axios.create({
 httpService.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response.data.error[0].type === "UserAlreadyExist") {
-            showToast([
-                {
-                    message: "this email already exists",
-                    type: "error",
-                },
-            ]);
-        }
-        throw {
-            error,
-        };
+        const axiosError: AxiosError = error as AxiosError;
+        httpErrors[axiosError?.response?.status as keyof typeof httpErrors]();
     },
 );
 

@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-
 import { i18n } from "../i18n.config";
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
@@ -9,7 +8,6 @@ function getLocale(request: NextRequest): string | undefined {
     const negotiatorHeaders: Record<string, string> = {};
     request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-    // @ts-ignore locales are readonly
     const { locales } = i18n;
     const languages = new Negotiator({
         headers: negotiatorHeaders,
@@ -20,7 +18,7 @@ function getLocale(request: NextRequest): string | undefined {
 }
 
 export function middleware(request: NextRequest): NextResponse | undefined {
-    const { pathname } = request.nextUrl;
+    const { pathname, search } = request.nextUrl;
     const localeFromCookie = request.cookies.get("NEXT_LOCALE")?.value;
     const accessToken = request.cookies.get("access-token")?.value;
 
@@ -28,7 +26,9 @@ export function middleware(request: NextRequest): NextResponse | undefined {
     if (pathname === "/") {
         const locale = localeFromCookie || getLocale(request);
         if (locale) {
-            return NextResponse.redirect(new URL(`/${locale}`, request.url));
+            return NextResponse.redirect(
+                new URL(`/${locale}${search}`, request.url),
+            );
         }
     }
 
@@ -42,7 +42,7 @@ export function middleware(request: NextRequest): NextResponse | undefined {
         const locale = localeFromCookie || getLocale(request);
         if (locale) {
             return NextResponse.redirect(
-                new URL(`/${locale}${pathname}`, request.url),
+                new URL(`/${locale}${pathname}${search}`, request.url),
             );
         }
     }
@@ -51,20 +51,25 @@ export function middleware(request: NextRequest): NextResponse | undefined {
     const localePath = i18n.locales.find((locale) =>
         pathname.startsWith(`/${locale}/`),
     );
+
     if (
         !pathname.startsWith(`/${localePath}/auth/`) &&
         accessToken === undefined
     ) {
         return NextResponse.redirect(
-            new URL(`/${localePath}/auth/login`, request.url),
+            new URL(`/${localePath}/auth/login${search}`, request.url),
         );
     }
+
     if (
         accessToken !== undefined &&
         pathname.startsWith(`/${localePath}/auth/`)
     ) {
-        return NextResponse.redirect(new URL(`/${localePath}/`, request.url));
+        return NextResponse.redirect(
+            new URL(`/${localePath}/${search}`, request.url),
+        );
     }
+
     return NextResponse.next();
 }
 

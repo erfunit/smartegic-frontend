@@ -7,7 +7,7 @@ export const Label: React.FC<React.LabelHTMLAttributes<HTMLLabelElement>> = ({
     htmlFor,
     ...rest
 }) => {
-    const classes = clsx("label", className);
+    const classes = clsx("", className);
     return (
         <label htmlFor={htmlFor} className={classes} {...rest}>
             <span className="label-text">{children}</span>
