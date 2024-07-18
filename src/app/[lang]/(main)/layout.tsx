@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 import { NavigationItem } from "@/app/_components/nav-menu/_types/navigations";
+import getMe from "@/lib/auth/getMe";
 
 const NavigationMenu = dynamic(
     () =>
@@ -25,6 +26,7 @@ export default async function MainLayout({
     params: { lang: Locale };
 }): Promise<React.JSX.Element> {
     const dict = await getDictionary(lang);
+    const userInfo = await getMe();
 
     return (
         <div className="w-full h-full">
@@ -36,6 +38,7 @@ export default async function MainLayout({
                 </div>
                 <div className="main-wrapper  h-full overflow-auto flex flex-col">
                     <Navbar
+                        userInfo={userInfo}
                         navbarDict={dict.navbar}
                         navItems={dict.navigations as NavigationItem[]}
                     />

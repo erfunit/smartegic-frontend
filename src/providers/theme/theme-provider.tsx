@@ -3,7 +3,9 @@
 import useAppConfig from "@/hooks/use-app-config";
 import React, { useEffect } from "react";
 
-export const ThemeProvider: React.FC = ({ children }) => {
+export const ThemeProvider: React.FC<React.PropsWithChildren> = ({
+    children,
+}) => {
     const { config } = useAppConfig("app-config");
     useEffect(() => {
         if (config && config.theme)

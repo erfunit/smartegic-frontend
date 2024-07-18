@@ -15,8 +15,10 @@ import { NavigationMenu } from "../nav-menu/navigation-menu";
 import { ThemeSwitcher } from "../theme-switcher";
 import { NavigationItem } from "../nav-menu/_types/navigations";
 import LanguageSwitcher from "../lang-switcher";
+import { UserInfo } from "@/types/user-info.type";
 
 type NavbarProps = {
+    userInfo?: UserInfo;
     navItems: NavigationItem[];
     navbarDict: {
         edit: string;
@@ -29,7 +31,11 @@ type NavbarProps = {
     };
 };
 
-export const Navbar: React.FC<NavbarProps> = ({ navItems, navbarDict }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+    navItems,
+    navbarDict,
+    userInfo,
+}) => {
     const { setConfig, config } = useAppConfig("app-config");
 
     return (
@@ -100,7 +106,9 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems, navbarDict }) => {
                             height={30}
                         />
                         <div className="flex flex-col items-start">
-                            <span className="text-sm font-light">Deep</span>
+                            <span className="text-sm font-light">
+                                {userInfo ? userInfo.email : " - - "}
+                            </span>
                             <div className="text-xs text-primary font-light">
                                 {navbarDict.edit}
                             </div>

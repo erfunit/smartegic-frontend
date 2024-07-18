@@ -1,5 +1,4 @@
 import { API_URL } from "@/configs/global";
-
 import axios, {
     AxiosError,
     AxiosRequestConfig,
@@ -18,13 +17,15 @@ const httpService = axios.create({
 
 httpService.interceptors.response.use(
     (response) => response,
-    (error) => {
+    async (error) => {
         const axiosError: AxiosError = error as AxiosError;
+        const statusCode: number | undefined = axiosError.response?.status;
+
         const url: string | undefined = axiosError.config?.url;
-        httpErrors[axiosError?.response?.status as keyof typeof httpErrors](
-            error,
-            url,
-        );
+        if (Object.hasOwn(httpErrors, statusCode || 0))
+            httpErrors[statusCode as keyof typeof httpErrors](axiosError, url);
+
+        return Promise.reject(error);
     },
 );
 

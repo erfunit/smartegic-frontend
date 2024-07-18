@@ -11,7 +11,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toast } from "@/types/toast.interface";
 import { showToast } from "@/stores/toast.store";
 
-const QueryProvider: React.FC = ({ children }) => {
+const QueryProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     const [queryClient] = useState(
         () =>
             new QueryClient({
