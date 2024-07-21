@@ -81,22 +81,24 @@ const LoginPage = () => {
                     }}
                     className="space-y-3"
                 >
-                    <div className="w-full space-x-1">
+                    <div className="w-full">
                         <Label>Email Address</Label>
                         <TextInput
                             {...register("email")}
                             name="email"
                             type="email"
+                            placeholder="email"
                         />
                         {errors.email?.message && (
                             <FieldError>{errors.email.message}</FieldError>
                         )}
                     </div>
-                    <div className="w-full space-x-1">
+                    <div className="w-full">
                         <Label>Password</Label>
                         <TextInput
                             {...register("password")}
                             name="password"
+                            placeholder="password"
                             type="password"
                         />
                         {errors.password?.message && (
@@ -107,21 +109,14 @@ const LoginPage = () => {
                         <Button
                             variant="ghost"
                             size="xs"
+                            isLink
+                            href="/auth/forgot-password"
                             type="button"
                             className="ms-auto"
                         >
                             Forgot Password?
                         </Button>
                     </div>
-                    {/* <Button
-                        type="submit"
-                        variant="primary"
-                        shape="block"
-                        className="items-center flex"
-                    >
-                        <IconLogin />
-                        Login
-                    </Button> */}
                     <ButtonWithLoading />
                 </form>
                 <div className="flex mt-3">
