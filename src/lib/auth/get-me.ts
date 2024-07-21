@@ -1,15 +1,14 @@
 import { readData } from "@/core/http-service";
 import { UserInfo } from "@/types/user-info.type";
-import { AxiosRequestHeaders, AxiosResponse } from "axios";
-import { getAccessToken } from "./get-session";
+import { AxiosRequestHeaders } from "axios";
+import protectedQuery from "../protected-query";
 
-export default async function getMe(): Promise<UserInfo> {
-    console.log("GET ME CALLING .......................");
-    const token = await getAccessToken(true);
-    if (!token) throw new Error("No access token found");
-
-    const response: AxiosResponse<UserInfo> = await readData("/auth/me", {
-        Authorization: token as string,
-    } as AxiosRequestHeaders);
-    return response.data;
+export default async function getMe(): Promise<UserInfo | undefined> {
+    return protectedQuery(async function (headers: AxiosRequestHeaders) {
+        const response = await readData<{ data: UserInfo }>(
+            "/auth/me",
+            headers,
+        );
+        return response.data;
+    });
 }

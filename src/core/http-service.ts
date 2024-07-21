@@ -23,48 +23,10 @@ httpService.interceptors.response.use(
             _retry?: boolean;
         };
 
-        // if (statusCode === 401 && !originalConfig["_retry"]) {
-        //     originalConfig["_retry"] = true;
-        //     try {
-        //         const refreshToken = cookies().get("refresh-token")?.value;
-        //         const {
-        //             data,
-        //         }: AxiosResponse<{
-        //             data: { access_token: string; refresh_token: string };
-        //         }> = await axios.post(
-        //             `${process.env.API_URL}/auth/refresh`,
-        //             { token: refreshToken },
-        //             { withCredentials: true },
-        //         );
-
-        //         if (data) {
-        //             const newAccessToken = data.data.access_token;
-        //             const newRefreshToken = data.data.refresh_token;
-
-        //             // Update cookies here by calling a server action
-        //             await saveSession(newAccessToken, newRefreshToken);
-
-        //             originalConfig.headers![
-        //                 "Authorization"
-        //             ] = `Bearer ${newAccessToken}`;
-        //             return httpService(originalConfig);
-        //         }
-        //     } catch (refreshError) {
-        //         const refreshTokenError: AxiosError =
-        //             refreshError as AxiosError;
-        //         if (refreshTokenError.response?.status === 403) {
-        //             await removeSession();
-        //             if (typeof window !== "undefined") {
-        //                 window.location.href = "/auth/login";
-        //             }
-        //         }
-        //     }
-        // }
-
         if (statusCode && Object.hasOwn(httpErrors, statusCode)) {
             httpErrors[statusCode as keyof typeof httpErrors](
                 axiosError,
-                originalConfig.url,
+                originalConfig.url!,
             );
         }
 
