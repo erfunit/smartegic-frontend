@@ -3,6 +3,11 @@ import type { NextRequest } from "next/server";
 import { i18n } from "../i18n.config";
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
+import { createData } from "./core/http-service";
+import { AxiosResponse } from "axios";
+import { cookieName, refreshName, timeStampName } from "./lib/auth/token-names";
+
+const TOKEN_VALIDITY_PERIOD = 2 * 60 * 60 * 1000;
 
 function getLocale(request: NextRequest): string | undefined {
     const negotiatorHeaders: Record<string, string> = {};
@@ -12,17 +17,24 @@ function getLocale(request: NextRequest): string | undefined {
     const languages = new Negotiator({
         headers: negotiatorHeaders,
     }).languages();
-
     const locale = matchLocale(languages, locales, i18n.defaultLocale);
     return locale;
 }
 
-export function middleware(request: NextRequest): NextResponse | undefined {
+export async function middleware(
+    request: NextRequest,
+): Promise<NextResponse | undefined> {
+    console.log("MIDDLEWARE RUNNING...............................");
     const { pathname, search } = request.nextUrl;
     const localeFromCookie = request.cookies.get("NEXT_LOCALE")?.value;
-    const accessToken = request.cookies.get("access-token")?.value;
+    const refreshToken = request.cookies.get(cookieName)?.value;
+    const accessToken = request.cookies.get(refreshName)?.value;
+    const timestamp = parseInt(
+        request.cookies.get(timeStampName)?.value || "0",
+        10,
+    );
+    const currentTime = Date.now();
 
-    // Handle root path
     if (pathname === "/") {
         const locale = localeFromCookie || getLocale(request);
         if (locale) {
@@ -37,7 +49,6 @@ export function middleware(request: NextRequest): NextResponse | undefined {
             !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
     );
 
-    // Redirect if there is no locale in the pathname
     if (pathnameIsMissingLocale) {
         const locale = localeFromCookie || getLocale(request);
         if (locale) {
@@ -47,27 +58,64 @@ export function middleware(request: NextRequest): NextResponse | undefined {
         }
     }
 
-    // Check if the path starts with a locale
-    const localePath = i18n.locales.find((locale) =>
-        pathname.startsWith(`/${locale}/`),
-    );
+    const localePath =
+        i18n.locales.find((locale) => pathname.startsWith(`/${locale}/`)) ||
+        "en";
 
-    if (
-        !pathname.startsWith(`/${localePath}/auth/`) &&
-        accessToken === undefined
-    ) {
-        return NextResponse.redirect(
-            new URL(`/${localePath}/auth/login${search}`, request.url),
-        );
-    }
+    if (localePath) {
+        if (!pathname.startsWith(`/${localePath}/auth/`) && !accessToken) {
+            return NextResponse.redirect(
+                new URL(`/${localePath}/auth/login${search}`, request.url),
+            );
+        }
 
-    if (
-        accessToken !== undefined &&
-        pathname.startsWith(`/${localePath}/auth/`)
-    ) {
-        return NextResponse.redirect(
-            new URL(`/${localePath}/${search}`, request.url),
-        );
+        if (accessToken) {
+            if (currentTime - timestamp > TOKEN_VALIDITY_PERIOD) {
+                try {
+                    console.log("CALLING REFRESH TOKEN 🔥");
+                    const response: AxiosResponse<any> = await createData(
+                        "/auth/refresh",
+                        {
+                            token: refreshToken,
+                        },
+                    );
+                    console.log(response.data);
+                    const resopnse = NextResponse.next();
+                    resopnse.cookies.set(timeStampName, Date.now().toString(), {
+                        httpOnly: true,
+                    });
+                    resopnse.cookies.set(
+                        cookieName,
+                        response.data.refresh_token,
+                    );
+                    resopnse.cookies.set(
+                        refreshName,
+                        response.data.access_token,
+                        {
+                            httpOnly: true,
+                        },
+                    );
+                    return resopnse;
+                } catch (error) {
+                    console.log(error);
+                    const resopnse = NextResponse.redirect(
+                        new URL(
+                            `/${localePath}/auth/login${search}`,
+                            request.url,
+                        ),
+                    );
+                    resopnse.cookies.delete(timeStampName);
+                    resopnse.cookies.delete(cookieName);
+                    resopnse.cookies.delete(refreshName);
+                    return resopnse;
+                }
+            }
+
+            if (pathname.startsWith(`/${localePath}/auth/`))
+                return NextResponse.redirect(
+                    new URL(`/${localePath}/${search}`, request.url),
+                );
+        }
     }
 
     return NextResponse.next();

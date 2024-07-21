@@ -1,4 +1,3 @@
-import { API_URL } from "@/configs/global";
 import axios, {
     AxiosError,
     AxiosRequestConfig,
@@ -8,7 +7,7 @@ import axios, {
 import { httpErrors } from "./http-errors";
 
 const httpService = axios.create({
-    baseURL: API_URL,
+    baseURL: process.env.API_URL,
     headers: {
         "Content-Type": "application/json",
     },
@@ -20,10 +19,54 @@ httpService.interceptors.response.use(
     async (error) => {
         const axiosError: AxiosError = error as AxiosError;
         const statusCode: number | undefined = axiosError.response?.status;
+        const originalConfig = axiosError.config as AxiosRequestConfig & {
+            _retry?: boolean;
+        };
 
-        const url: string | undefined = axiosError.config?.url;
-        if (Object.hasOwn(httpErrors, statusCode || 0))
-            httpErrors[statusCode as keyof typeof httpErrors](axiosError, url);
+        // if (statusCode === 401 && !originalConfig["_retry"]) {
+        //     originalConfig["_retry"] = true;
+        //     try {
+        //         const refreshToken = cookies().get("refresh-token")?.value;
+        //         const {
+        //             data,
+        //         }: AxiosResponse<{
+        //             data: { access_token: string; refresh_token: string };
+        //         }> = await axios.post(
+        //             `${process.env.API_URL}/auth/refresh`,
+        //             { token: refreshToken },
+        //             { withCredentials: true },
+        //         );
+
+        //         if (data) {
+        //             const newAccessToken = data.data.access_token;
+        //             const newRefreshToken = data.data.refresh_token;
+
+        //             // Update cookies here by calling a server action
+        //             await saveSession(newAccessToken, newRefreshToken);
+
+        //             originalConfig.headers![
+        //                 "Authorization"
+        //             ] = `Bearer ${newAccessToken}`;
+        //             return httpService(originalConfig);
+        //         }
+        //     } catch (refreshError) {
+        //         const refreshTokenError: AxiosError =
+        //             refreshError as AxiosError;
+        //         if (refreshTokenError.response?.status === 403) {
+        //             await removeSession();
+        //             if (typeof window !== "undefined") {
+        //                 window.location.href = "/auth/login";
+        //             }
+        //         }
+        //     }
+        // }
+
+        if (statusCode && Object.hasOwn(httpErrors, statusCode)) {
+            httpErrors[statusCode as keyof typeof httpErrors](
+                axiosError,
+                originalConfig.url,
+            );
+        }
 
         return Promise.reject(error);
     },
@@ -33,19 +76,15 @@ async function apiBase<T>(
     url: string,
     options?: AxiosRequestConfig,
 ): Promise<T> {
-    const response: AxiosResponse = await httpService(url, options);
-    return response.data as T;
+    const response: AxiosResponse<T> = await httpService(url, options);
+    return response.data;
 }
 
 async function readData<T>(
     url: string,
     headers?: AxiosRequestHeaders,
 ): Promise<T> {
-    const options: AxiosRequestConfig = {
-        headers,
-        method: "GET",
-    };
-    return await apiBase<T>(url, options);
+    return apiBase<T>(url, { headers, method: "GET" });
 }
 
 async function createData<TModel, TResult>(
@@ -53,13 +92,11 @@ async function createData<TModel, TResult>(
     data: TModel,
     headers?: AxiosRequestHeaders,
 ): Promise<TResult> {
-    const options: AxiosRequestConfig = {
+    return apiBase<TResult>(url, {
         method: "POST",
         headers,
         data: JSON.stringify(data),
-    };
-
-    return await apiBase<TResult>(url, options);
+    });
 }
 
 async function updateData<TModel, TResult>(
@@ -67,25 +104,18 @@ async function updateData<TModel, TResult>(
     data: TModel,
     headers?: AxiosRequestHeaders,
 ): Promise<TResult> {
-    const options: AxiosRequestConfig = {
+    return apiBase<TResult>(url, {
         method: "PUT",
         headers,
         data: JSON.stringify(data),
-    };
-
-    return await apiBase<TResult>(url, options);
+    });
 }
 
 async function deleteData(
     url: string,
     headers?: AxiosRequestHeaders,
 ): Promise<void> {
-    const options: AxiosRequestConfig = {
-        method: "DELETE",
-        headers,
-    };
-
-    return await apiBase(url, options);
+    return apiBase(url, { method: "DELETE", headers });
 }
 
 export { createData, readData, updateData, deleteData };

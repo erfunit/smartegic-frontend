@@ -2,10 +2,11 @@
 
 import { LoginSchema, LoginSchemaType } from "../_schema/login.schema";
 import { createData } from "@/core/http-service";
-import { saveSession } from "@/lib/auth/saveSession";
+import { saveSession } from "@/lib/auth/save-session";
+import { timeStampName } from "@/lib/auth/token-names";
 import { cookies } from "next/headers";
 
-type LoginReponse = {
+type LoginResponse = {
     data: {
         refresh_token: string;
         access_token: string;
@@ -23,20 +24,23 @@ export const loginAction = async (
         password: model.password,
     });
 
-    if (!validatedFields.success)
+    if (!validatedFields.success) {
         return {
-            message: "validation faild",
+            message: "Validation failed",
             type: "error",
         };
+    }
 
     try {
-        const result = await createData<LoginSchemaType, LoginReponse>(
+        const result = await createData<LoginSchemaType, LoginResponse>(
             "/auth/login",
             model,
         );
-        saveSession(result.data.access_token);
-        cookies().set("refresh-token", result.data.refresh_token, {
-            httpOnly: false,
+        const currentTimestamp = Date.now();
+        await saveSession(result.data.access_token, result.data.refresh_token);
+
+        cookies().set(timeStampName, currentTimestamp.toString(), {
+            httpOnly: true,
         });
 
         return {

@@ -51,6 +51,6 @@
         "next.config.js",
         "tailwind.config.js",
         "postcss.config.js"
-    ],
+, "src/lib/auth/remove-session.ts"    ],
     "exclude": ["node_modules", "examples"]
 }

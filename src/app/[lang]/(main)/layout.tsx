@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 import { NavigationItem } from "@/app/_components/nav-menu/_types/navigations";
-import getMe from "@/lib/auth/getMe";
+import getMe from "@/lib/auth/get-me";
 
 const NavigationMenu = dynamic(
     () =>
