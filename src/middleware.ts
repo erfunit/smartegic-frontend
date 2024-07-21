@@ -97,7 +97,6 @@ export async function middleware(
                     );
                     return resopnse;
                 } catch (error) {
-                    console.log(error);
                     const resopnse = NextResponse.redirect(
                         new URL(
                             `/${localePath}/auth/login${search}`,

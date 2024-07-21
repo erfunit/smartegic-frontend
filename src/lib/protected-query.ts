@@ -7,7 +7,7 @@ export default async function protectedQuery<T>(
 ): Promise<T | undefined> {
     console.log("Protected Query Calling .......................");
     const token = await getAccessToken(true);
-    if (!token) throw new Error("No access token found");
+    if (!token) redirect("/auth/login");
 
     try {
         return await fetchFunction({

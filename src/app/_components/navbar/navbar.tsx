@@ -16,6 +16,7 @@ import { ThemeSwitcher } from "../theme-switcher";
 import { NavigationItem } from "../nav-menu/_types/navigations";
 import LanguageSwitcher from "../lang-switcher";
 import { UserInfo } from "@/types/user-info.type";
+import { signout } from "@/lib/auth/sign-out";
 
 type NavbarProps = {
     userInfo?: UserInfo;
@@ -139,6 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             <button
                                 type="button"
                                 className="items-center flex gap-2"
+                                onClick={() => signout()}
                             >
                                 <IconLogout color="red" width={20} />
                                 <span className="font-light text-red-500 text-base">
