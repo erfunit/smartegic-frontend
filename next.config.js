@@ -28,6 +28,7 @@ module.exports = {
     },
     experimental: {
         webVitalsAttribution: ["CLS", "LCP"],
+        missingSuspenseWithCSRBailout: false,
     },
     env: {
         API_URL: process.env.API_URL,

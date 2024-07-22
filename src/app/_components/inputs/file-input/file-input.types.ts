@@ -1,7 +1,7 @@
 import { ComponentBase } from "@/types/component-base.type";
-import { HTMLAttributes } from "react";
+import { InputHTMLAttributes } from "react";
 
-export type FileInputProps = HTMLAttributes<HTMLInputElement> &
+export type FileInputProps = InputHTMLAttributes<HTMLInputElement> &
     ComponentBase & {
         acceptFormat?: string;
         onChange?: (file: File[]) => void;

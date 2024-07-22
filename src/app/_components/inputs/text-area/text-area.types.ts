@@ -1,7 +1,7 @@
 import { ComponentBase } from "@/types/component-base.type";
-import { HTMLAttributes } from "react";
+import { TextareaHTMLAttributes } from "react";
 
-export type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> &
+export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
     ComponentBase & {
         rows?: number;
     };

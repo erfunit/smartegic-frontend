@@ -12,7 +12,7 @@ export const FileInputField = ({ field, errors }: FormFieldProps) => {
             name={field.name}
             control={control}
             defaultValue={[]}
-            render={({ field: { onChange } }) => (
+        render={({ field: { onChange } }) => (
                 <FileInput
                     variant="bordered"
                     // acceptFormat={field?.accept}
