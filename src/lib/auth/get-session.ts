@@ -12,7 +12,6 @@ import { cookieName, refreshName, tokenType } from "./token-names";
 export async function getAccessToken(
     withBearer = false,
 ): Promise<string | undefined> {
-    console.log("GETTING ACCESS TOKEN CALLING............................");
     const token = cookies().get(cookieName)?.value;
 
     if (withBearer && token) return tokenType.concat(token);

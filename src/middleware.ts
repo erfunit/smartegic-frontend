@@ -24,7 +24,6 @@ function getLocale(request: NextRequest): string | undefined {
 export async function middleware(
     request: NextRequest,
 ): Promise<NextResponse | undefined> {
-    console.log("MIDDLEWARE RUNNING...............................");
     const { pathname, search } = request.nextUrl;
     const localeFromCookie = request.cookies.get("NEXT_LOCALE")?.value;
     const refreshToken = request.cookies.get(cookieName)?.value;
@@ -72,14 +71,12 @@ export async function middleware(
         if (accessToken) {
             if (currentTime - timestamp > TOKEN_VALIDITY_PERIOD) {
                 try {
-                    console.log("CALLING REFRESH TOKEN 🔥");
                     const response: AxiosResponse<any> = await createData(
                         "/auth/refresh",
                         {
                             token: refreshToken,
                         },
                     );
-                    console.log(response.data);
                     const resopnse = NextResponse.next();
                     resopnse.cookies.set(timeStampName, Date.now().toString(), {
                         httpOnly: true,

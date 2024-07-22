@@ -71,7 +71,7 @@
         "prefer-promise-reject-errors": "off",
         "jsx-a11y/heading-has-content": "off",
         "@typescript-eslint/ban-ts-comment": "off",
-        "no-console": "off",
+        "no-console": "error",
         "no-plusplus": "off",
         "jsx-a11y/anchor-has-content": "off"
     },

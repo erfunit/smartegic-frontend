@@ -5,7 +5,6 @@ import { getAccessToken } from "./auth/get-session";
 export default async function protectedQuery<T>(
     fetchFunction: (headers: AxiosRequestHeaders) => Promise<T>,
 ): Promise<T | undefined> {
-    console.log("Protected Query Calling .......................");
     const token = await getAccessToken(true);
     if (!token) redirect("/auth/login");
 
