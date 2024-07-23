@@ -9,14 +9,12 @@ interface ListFieldProps {
     field: FormField;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors<FieldValues>;
-    languages: string[];
 }
 
 export const ListField: React.FC<ListFieldProps> = ({
     field,
     register,
     errors,
-    languages,
 }) => {
     const [items, setItems] = React.useState([...(field.default || [{}])]);
 
@@ -41,7 +39,6 @@ export const ListField: React.FC<ListFieldProps> = ({
                         },
                         register,
                         errors,
-                        languages,
                     )}
                     <Button
                         shape="square"

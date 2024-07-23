@@ -7,14 +7,12 @@ interface ClassFieldProps {
     field: FormField;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors<FieldValues>;
-    languages: string[];
 }
 
 export const ClassField: React.FC<ClassFieldProps> = ({
     field,
     register,
     errors,
-    languages,
 }) => {
     return (
         <div>
@@ -29,7 +27,6 @@ export const ClassField: React.FC<ClassFieldProps> = ({
                             },
                             register,
                             errors,
-                            languages,
                         )}
                     </div>
                 ))}

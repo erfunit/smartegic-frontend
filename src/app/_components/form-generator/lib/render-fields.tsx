@@ -13,7 +13,7 @@ export const renderField = (
     field: FormField,
     register: UseFormRegister<FieldValues>,
     errors: FieldErrors<FieldValues>,
-    languages: string[] = ["en", "fa"],
+    lang: string | null,
 ): React.JSX.Element | null => {
     if (field.multiple) {
         return (
@@ -22,7 +22,6 @@ export const renderField = (
                 field={field}
                 register={register}
                 errors={errors}
-                languages={languages}
             />
         );
     }
@@ -39,20 +38,14 @@ export const renderField = (
             );
         case "MultilingualString":
             return (
-                <div className="flex gap-3 flex-col md:flex-row items-center justify-center">
-                    {languages.map((lang) => (
-                        <TextField
-                            key={lang}
-                            field={{
-                                ...field,
-                                name: field.name,
-                                description: `${field.description} (${lang})`,
-                            }}
-                            register={register}
-                            errors={errors}
-                        />
-                    ))}
-                </div>
+                <TextField
+                    field={{
+                        ...field,
+                        name: `${field.name}.${lang}`,
+                    }}
+                    register={register}
+                    errors={errors}
+                />
             );
 
         case "Phone":
@@ -81,7 +74,6 @@ export const renderField = (
                     field={field}
                     register={register}
                     errors={errors}
-                    languages={languages}
                 />
             );
         case "Class":
@@ -91,7 +83,6 @@ export const renderField = (
                     field={field}
                     register={register}
                     errors={errors}
-                    languages={languages}
                 />
             );
         case "Link":

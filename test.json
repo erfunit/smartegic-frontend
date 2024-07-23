@@ -1,0 +1,10 @@
+{
+    "is_published": false,
+    "name": "my organization name",
+    "description": "this is a test description",
+    "email": "erfungraph@gmail.com",
+    "type": "MEDIUM",
+    "industry": "RETAIL",
+    "business_type": "B2B",
+    "staff_count": "12"
+}

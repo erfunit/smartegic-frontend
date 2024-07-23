@@ -31,7 +31,7 @@ export default async function RootLayout({
     return (
         <html dir={params.lang === "en" ? "ltr" : "rtl"} lang={params.lang}>
             <body className={`${vazirmatm.className}`}>
-                <ProvidersWrapper dict={dictionary}>
+                <ProvidersWrapper dict={dictionary} lang={params.lang}>
                     {children}
                 </ProvidersWrapper>
             </body>

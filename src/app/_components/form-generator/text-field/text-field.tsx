@@ -7,12 +7,14 @@ import { useDictionary } from "@/context/dictionary-context";
 
 type TextFieldProps = Omit<FormFieldProps, "type"> & {
     type?: "number" | "text" | "email" | "password";
+    lang?: string;
 };
 
 export const TextField: React.FC<TextFieldProps> = ({
     field,
     register,
     errors,
+    lang,
 }) => {
     const registerProps = register(field.name, getRegisterOptions(field));
     const dictionary: any = useDictionary();
@@ -20,7 +22,9 @@ export const TextField: React.FC<TextFieldProps> = ({
     return (
         <TextInput
             type={field?.type as TextInputType}
-            placeholder={dictionary.form_labels[field.name]}
+            placeholder={`${dictionary.form_labels[field.name.split(".")[0]]}${
+                lang ? ` (${lang})` : ""
+            }`}
             className={`w-full ${errors[field.name] ? "input-error" : ""}`}
             {...registerProps}
         />

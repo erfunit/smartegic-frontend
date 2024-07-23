@@ -40,6 +40,5 @@ export type FormGeneratorProps = {
     title?: string;
     schema?: FormField[];
     onSubmit: SubmitHandler<FieldValues>;
-    languages?: string[];
     className?: string;
 };

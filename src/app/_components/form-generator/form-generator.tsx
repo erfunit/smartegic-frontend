@@ -9,19 +9,20 @@ import { Label } from "../Typography/Label";
 import { FieldError } from "../Typography/FieldError";
 import { Button } from "../button";
 import { useDictionary } from "@/context/dictionary-context";
+import { useLang } from "@/context/lang-context";
 
 const FormGenerator: React.FC<FormGeneratorProps> = ({
     schema,
     onSubmit,
     className,
     title,
-    languages,
 }) => {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
+    const lang = useLang();
 
     const classes = clsx("space-y-4 text-xl", className);
     const dictionary: any = useDictionary();
@@ -32,7 +33,7 @@ const FormGenerator: React.FC<FormGeneratorProps> = ({
             {schema?.map((field) => (
                 <div key={field.name} className="form-control">
                     <Label>{dictionary.form_labels[field.name]}</Label>
-                    {renderField(field, register, errors, languages)}
+                    {renderField(field, register, errors, lang)}
                     {errors[field.name] && (
                         <FieldError>
                             {errors[field.name]?.message as string}

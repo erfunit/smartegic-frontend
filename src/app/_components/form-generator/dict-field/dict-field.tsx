@@ -10,14 +10,12 @@ interface DictFieldProps {
     field: FormField;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors<FieldValues>;
-    languages: string[];
 }
 
 export const DictField: React.FC<DictFieldProps> = ({
     field,
     register,
     errors,
-    languages,
 }) => {
     const [items, setItems] = React.useState([...(field.default || [{}])]);
 
@@ -54,7 +52,6 @@ export const DictField: React.FC<DictFieldProps> = ({
                         },
                         register,
                         errors,
-                        languages,
                     )}
                     <Button
                         variant="error"
