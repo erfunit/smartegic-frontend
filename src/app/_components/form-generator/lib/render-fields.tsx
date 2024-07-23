@@ -45,7 +45,7 @@ export const renderField = (
                             key={lang}
                             field={{
                                 ...field,
-                                name: `${field.name}[${lang}]`,
+                                name: field.name,
                                 description: `${field.description} (${lang})`,
                             }}
                             register={register}

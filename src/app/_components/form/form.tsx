@@ -9,6 +9,7 @@ import { useToastStore } from "@/stores/toast.store";
 const FormComponent: React.FC<{
     formSchema: FormField[];
     languages?: string[];
+    formLabels?: Record<string, string>;
 }> = ({ formSchema, languages = ["en", "fa"] }) => {
     const showToast = useToastStore((state) => state.showToast);
     const methods = useForm<FormData>();

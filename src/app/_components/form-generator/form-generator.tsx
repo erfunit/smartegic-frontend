@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { Label } from "../Typography/Label";
 import { FieldError } from "../Typography/FieldError";
 import { Button } from "../button";
+import { useDictionary } from "@/context/dictionary-context";
 
 const FormGenerator: React.FC<FormGeneratorProps> = ({
     schema,
@@ -20,17 +21,17 @@ const FormGenerator: React.FC<FormGeneratorProps> = ({
         register,
         handleSubmit,
         formState: { errors },
-        // watch,
     } = useForm();
 
     const classes = clsx("space-y-4 text-xl", className);
+    const dictionary: any = useDictionary();
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={classes}>
             {title && <span className="text-xl font-bold">{title}</span>}
             {schema?.map((field) => (
                 <div key={field.name} className="form-control">
-                    <Label>{field.description}</Label>
+                    <Label>{dictionary.form_labels[field.name]}</Label>
                     {renderField(field, register, errors, languages)}
                     {errors[field.name] && (
                         <FieldError>

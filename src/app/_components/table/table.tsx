@@ -1,4 +1,4 @@
-"React.use client";
+"use client";
 
 import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
@@ -15,8 +15,8 @@ export const Table = <T,>({
     columns,
     data,
     pageSize = 10,
-    loading,
-}: TableProps<T>) => {
+}: // loading,
+TableProps<T>) => {
     const {
         searchTerm,
         setSearchTerm,
@@ -36,23 +36,23 @@ export const Table = <T,>({
         accessors,
     } = useTable(data, pageSize, columns);
 
-    const renderSkeletonRows = React.useCallback(() => {
-        return Array.from({ length: rowsPerPage }).map((_, index) => (
-            <tr key={index} className="animate-pulse">
-                <td aria-label="td" className="p-2">
-                    <div className="h-8 bg-base-300 rounded"></div>
-                </td>
-                {columns.map((_, colIndex) => (
-                    <td aria-label="td" key={colIndex} className="p-2">
-                        <div className="h-8 bg-base-300 rounded"></div>
-                    </td>
-                ))}
-                <td aria-label="td" className="p-2">
-                    <div className="h-8 bg-base-300 rounded"></div>
-                </td>
-            </tr>
-        ));
-    }, [rowsPerPage, columns]);
+    // const renderSkeletonRows = React.useCallback(() => {
+    //     return Array.from({ length: rowsPerPage }).map((_, index) => (
+    //         <tr key={index} className="animate-pulse">
+    //             <td aria-label="td" className="p-2">
+    //                 <div className="h-8 bg-base-300 rounded"></div>
+    //             </td>
+    //             {columns.map((_, colIndex) => (
+    //                 <td aria-label="td" key={colIndex} className="p-2">
+    //                     <div className="h-8 bg-base-300 rounded"></div>
+    //                 </td>
+    //             ))}
+    //             <td aria-label="td" className="p-2">
+    //                 <div className="h-8 bg-base-300 rounded"></div>
+    //             </td>
+    //         </tr>
+    //     ));
+    // }, [rowsPerPage, columns]);
 
     return (
         <div className="p-4">
@@ -108,26 +108,24 @@ export const Table = <T,>({
                         </tr>
                     </thead>
                     <tbody>
-                        {loading
-                            ? renderSkeletonRows()
-                            : filteredData
-                                  .slice(
-                                      page * rowsPerPage,
-                                      page * rowsPerPage + rowsPerPage,
-                                  )
-                                  .map((row, rowIndex) => (
-                                      <TableRow
-                                          key={rowIndex}
-                                          row={row}
-                                          columns={columns}
-                                          selectedRows={selectedRows}
-                                          pinnedRows={pinnedRows}
-                                          pinColumn={pinColumn}
-                                          handleSelectRow={handleSelectRow}
-                                          handlePinRow={handlePinRow}
-                                          handleDeleteRow={handleDeleteRow}
-                                      />
-                                  ))}
+                        {filteredData
+                            .slice(
+                                page * rowsPerPage,
+                                page * rowsPerPage + rowsPerPage,
+                            )
+                            .map((row, rowIndex) => (
+                                <TableRow
+                                    key={rowIndex}
+                                    row={row}
+                                    columns={columns}
+                                    selectedRows={selectedRows}
+                                    pinnedRows={pinnedRows}
+                                    pinColumn={pinColumn}
+                                    handleSelectRow={handleSelectRow}
+                                    handlePinRow={handlePinRow}
+                                    handleDeleteRow={handleDeleteRow}
+                                />
+                            ))}
                     </tbody>
                 </table>
             </div>

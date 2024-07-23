@@ -33,6 +33,10 @@
         "title": "Customer information",
         "subTitle": "You can trakc your customer information and reports within this page."
     },
+    "organization_page": {
+        "title": "Organization",
+        "subTitle": "Add your organization information to start your new journey"
+    },
     "second_page": {
         "title": "Second Page"
     },
@@ -161,5 +165,16 @@
             "step": 1,
             "errorMessage": "Please select a satisfaction level between 0 and 100."
         }
-    ]
+    ],
+    "form_labels": {
+        "is_published": "publish",
+        "name": "name",
+        "description": "description",
+        "phone": "phone number",
+        "email": "email",
+        "type": "type",
+        "industry": "industry",
+        "business_type": "business type",
+        "staff_count": "staff count"
+    }
 }

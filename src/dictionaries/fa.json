@@ -11,20 +11,20 @@
     "navigations": [
         {
             "id": 0,
-            "title": "داشبورد",
-            "icon": "price",
+            "title": "ارگان",
+            "icon": "organization",
             "children": [
                 {
                     "id": 0,
-                    "title": "گزارش مشتریان",
-                    "icon": "price",
-                    "link": "/"
+                    "title": "لیست",
+                    "icon": "list",
+                    "link": "/organization"
                 },
                 {
                     "id": 1,
-                    "title": "صفحه دوم",
-                    "icon": "price",
-                    "link": "/test-page"
+                    "title": "افزودن",
+                    "icon": "plus",
+                    "link": "/organization/add"
                 }
             ]
         }
@@ -32,6 +32,10 @@
     "main_page": {
         "title": "گزارش مشتریان",
         "subTitle": "شما میتوانید در این صفحه به گزارش و اطلاعات مشتریانتان دسترسی داشته باشید"
+    },
+    "organization_page": {
+        "title": "افزودن ارگان",
+        "subTitle": "اطلاعات ارگان خود را برای شروع سفر شگفت انگیز جدید خود وارد کنید."
     },
     "second_page": {
         "title": "صفحه دوم"
@@ -143,5 +147,16 @@
             "type": "checkbox",
             "options": ["Yes"]
         }
-    ]
+    ],
+    "form_labels": {
+        "is_published": "انتشار",
+        "name": "نام",
+        "description": "توضیحات",
+        "phone": "شماره تلفن",
+        "email": "ایمیل",
+        "type": "نوع",
+        "industry": "صنعت",
+        "business_type": "نوع کسب و کار",
+        "staff_count": "تعداد اعضا"
+    }
 }

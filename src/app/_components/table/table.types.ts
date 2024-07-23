@@ -7,5 +7,5 @@ export type TableProps<T> = {
     columns: Column<T>[];
     data?: T[];
     pageSize?: number;
-    loading: boolean;
+    loading?: boolean;
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Column } from "../table.types";
 import { getStringValue } from "@/lib/get-string-value";
